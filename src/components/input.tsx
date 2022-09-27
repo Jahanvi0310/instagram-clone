@@ -1,24 +1,26 @@
 import React from 'react'
+import Button from './button';
 import './input.css'
 
 const Input = () => {
   return (
     <div className="container">
-    <div className="box">
+    <div className="box upper" >
         <div className="heading"></div>
         <form className="login-form">
             <div className="field">
                 <input id="username" type="name" placeholder="Phone number, username, or email" />
-                <label htmlFor="username">Phone number, username, or email</label>
+                <label htmlFor="username">Phone number, username, or email address</label>
             </div>
             <div className="field">
                 <input id="password" type="password" placeholder="password" />
                 <label htmlFor="password">Password</label>
             </div>
             {/* add button here */}
+            <Button/>
         </form>
     </div>
-    <div className="box">
+    <div className="box b1">
         <p>Don't have an account? <a className="signup" href="#">Sign Up</a></p>
     </div>
     <p>Get the app.</p>
