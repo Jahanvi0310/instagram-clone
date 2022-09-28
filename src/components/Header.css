@@ -1,0 +1,30 @@
+.Container{
+    height: 3.375rem;
+    background-color: #ffffff;
+    border: 1px solid rgba(219,219,219,1);
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+
+}
+.HeaderLogo{
+    display:flex;
+    align-items: center;
+}
+img{
+    object-fit: contain;
+    width: 100%;
+}
+.HeaderRight{
+    display: flex;
+    align-items: center;
+
+}
+.Down{
+    
+    
+}
+
+    
+
+
