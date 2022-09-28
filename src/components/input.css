@@ -1,3 +1,5 @@
+.css
+
 body {
     font-family: sans-serif;
     background-color: #fafafa;
@@ -9,6 +11,7 @@ body {
   a {
     text-decoration: none;
   }
+
 
   form{
   margin-top:1rem;
@@ -22,6 +25,13 @@ body {
     align-items: center;
     margin-top: 1.5rem;
     font-size: 14px;
+    
+  }
+  .c1{
+    padding-top: 2rem;
+  }
+  .c2{
+    padding-top: 0.7rem;
   }
   .b1{
     height:4rem;
@@ -29,7 +39,7 @@ body {
 
   }
   .box {
-    /* margin-top: 0; */
+    /* margin: 10em 0 0; */
     max-width: 350px;
     width: 100%;
     display: flex;
@@ -43,12 +53,21 @@ body {
     flex-grow: 1;
   }
   .upper{
-    height:25rem;
+    height:26rem;
     padding: 0 0;
   }
-  
-  .heading {
+  .upperr {
+    height: 40rem;
+    padding: 0 0;
+  }
+  .h1{
     margin: 22px auto 12px;
+  }
+  .h2{
+    margin: 0px 0 0.5rem;
+  }
+  .heading {
+    
     background-image: url("https://www.instagram.com/static/bundles/es6/sprite_core_b20f2a3cd7e4.png/b20f2a3cd7e4.png");
     background-position: -98px 0;
     height: 51px;
@@ -131,7 +150,7 @@ body {
     width: 100%;
     padding: 0.2rem;
     border: 1px solid transparent;
-    background-color: #acd4f9;
+    background-color: #c0dffd;
     border-radius: 4px;
     color: #fff;
     font-weight: 700;
@@ -150,7 +169,7 @@ body {
   .separator .line {
     height: 1px;
     width: 40%;
-    background-color: #dbdbdb;
+    background-color: #ededed;
   }
   
   .other {
@@ -190,5 +209,3 @@ body {
   input::placeholder {
     visibility: hidden;
   }
-  
-  

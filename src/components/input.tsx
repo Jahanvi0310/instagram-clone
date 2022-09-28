@@ -4,9 +4,9 @@ import './input.css'
 
 const Input = () => {
   return (
-    <div className="container">
+    <div className="container c1">
     <div className="box upper" >
-        <div className="heading"></div>
+        <div className="heading h1"></div>
         <form className="login-form">
             <div className="field">
                 <input id="username" type="name" placeholder="Phone number, username, or email" />
@@ -34,3 +34,4 @@ const Input = () => {
 }
 
 export default Input
+
