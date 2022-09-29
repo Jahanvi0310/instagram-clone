@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import Story from '../components/Story';
+
 
 const Home=()=>{
     return(
         <Conatiner>
             <Section>
-                <Story/>
+               
             </Section>
         </Conatiner>    
         )
