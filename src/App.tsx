@@ -6,8 +6,15 @@ import Header from './components/Header';
 const App=()=>{
   return(
     <Container>
-   
-<Header/>
+     <Router>
+       <Header />
+       
+        <Routes>
+            <Route path="/" element={<Home/>} />
+        </Routes>
+      
+     
+    </Router>
     </Container>
   )
 }
