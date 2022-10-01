@@ -1,8 +1,18 @@
-import React from 'react'
+import React, { useState,  useEffect, ReactElement ,ChangeEvent, FC} from 'react'
 import Button from './button';
 import './input.css'
 
-const Input = () => {
+const Input:FC= () => {
+    const [password,setpassword]=useState<any>();
+    const changeText:(event:ChangeEvent)=>void=(event)=>{
+        if((event.target as HTMLInputElement).value.length<8){
+            setpassword(false)
+        }
+        else{
+            setpassword(true)
+        }
+    }
+    // const obj = {password:{password}}
   return (
     <div className="container c1">
     <div className="box upper" >
@@ -13,11 +23,11 @@ const Input = () => {
                 <label htmlFor="username">Phone number, username, or email address</label>
             </div>
             <div className="field">
-                <input id="password" type="password" placeholder="password" />
+                <input id="password" type="password" placeholder="password" onChange={changeText}/>
                 <label htmlFor="password">Password</label>
             </div>
             {/* add button here */}
-            <Button/>
+            <Button password={password}/>
         </form>
     </div>
     <div className="box b1">

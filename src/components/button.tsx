@@ -1,14 +1,15 @@
-import React from 'react'
+import React from 'react';
+import Input from './input'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-    faFacebook,
     faFacebookSquare
   } from "@fortawesome/free-brands-svg-icons";
 
-function Button() {
+function Button(props:any) {
+
   return (
     <div>
-       <button className="login-button" title="login">Log In</button>
+       <button className="login-button" title="login" disabled={props.password? false:true}>Log In</button>
             <div className="separator">
                 <div className="line"></div>
                 <p>OR</p>

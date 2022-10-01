@@ -9,6 +9,7 @@ function App() {
   return (
     <Router>
       <Input/>
+      <h1></h1>
     </Router>
   );
 }
