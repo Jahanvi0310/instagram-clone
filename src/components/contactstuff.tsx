@@ -1,29 +1,45 @@
 import { Avatar } from '@mui/material';
+import { signOut } from 'firebase/auth';
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
-const contactstuff=()=>{
+import { selectName, selectPhoto, setLogout } from '../reducers/userSlice';
+import { auth } from '../firebase/firebase';
+const Contactstuff=()=>{
+   const name=useSelector(selectName);
+   const photo=useSelector(selectPhoto);
+   const shorten=name?name.split("")[0]:name;
+   const dispatch=useDispatch();
+   const logout=()=>{
+    signOut(auth).then((result)=>{
+        dispatch(setLogout({name : null, photo : null,email : null,uid : null}))
+        console.log("button clicked");
+    });
+    
+   }
     return(
         <>
         <Container>
             <Wrapper>
 <User>
-    <Avatar/>
-<span>Welcome Tino</span>
+    <Avatar src={photo}/>
+<span>Welcome {shorten?shorten:"Guest"}</span>
     
 </User>
-<button>LogOut</button>
+<button onClick={logout}>LogOut</button>
 
             </Wrapper>
         </Container>
         </>
     )
 }
-export default contactstuff;
+export default Contactstuff;
 
 const Container=styled.div`
 width:400px;
 border-radius:20px;
-background-color:#fafafafa
+background-color:offwhite;
 height:500px;
 position:fixed;
 top:4rem;

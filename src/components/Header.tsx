@@ -2,17 +2,33 @@ import React from 'react';
 import styled from "styled-components"
 import { AddCircleOutline, FavoriteBorderRounded, HomeRounded, SendRounded } from '@mui/icons-material';
 import { Avatar } from '@mui/material';
-
-import './Header.css';
-
-
 import { useDispatch,useSelector } from 'react-redux';
+import './Header.css';
+import {signInWithPopup} from "firebase/auth";
+import {auth,provider} from '../firebase/firebase';
+import { selectName, selectPhoto, setLogIn } from '../reducers/userSlice';
 
 const Header=()=>{
     
-    const username = useSelector((state:any) => state.userData)
+    const username = useSelector(selectName);
+    const photo=useSelector(selectPhoto);
     const dispatch=useDispatch();
-    
+    const login=()=>{
+        signInWithPopup(auth,provider)
+        .then((result)=>{
+const user=result.user;
+dispatch(
+    setLogIn({
+        name:user.displayName,
+        email:user.email,
+        uid:user.uid,
+        photo:user.photoURL,
+    })
+);
+        })
+        .catch((error)=>console.error(error.message));
+    }
+
     return(
         <div className="Container">
 <Wrapper>
@@ -41,12 +57,12 @@ const Header=()=>{
             <FavoriteBorderRounded/>
         </List>
         <List>
-            <Avatar/>
+            <Avatar src={photo} />
         </List>
     </Down>
     </>
 ):(
-    <Buttons>SignIn</Buttons>
+    <Buttons onClick={login}>SignIn</Buttons>
 )}
     
 </div>
@@ -57,16 +73,18 @@ const Header=()=>{
 export default Header;
 
 const List=styled.li`
-list-style:none
-margin:0 1rem
+list-style:none;
+margin:0 1rem;
+
 svg{
     font-size:1.5625rem;
     cursor:pointer;
     display:flex;
-    align-items:center
+    justify-content: center;
+    align-items:center;
 }
 .rotate{
-    transform:rotate(-46deg);
+    transform:rotate(-45deg);
 }`;
 
 const Wrapper=styled.div`
@@ -97,7 +115,7 @@ svg{
 }
 input{
     border:none;
-    height:100%
+    height:100%;
     background-color:transparent;
 
 :focus{

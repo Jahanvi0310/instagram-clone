@@ -1,0 +1,12 @@
+.HeaderLogo{
+    display: flex;
+    align-items: center;
+}
+img{
+    object-fit: contain;
+    width: 100%;
+}
+.HeaderRight{
+    display: flex;
+    align-items: center;
+}
