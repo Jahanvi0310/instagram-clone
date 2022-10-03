@@ -2,9 +2,17 @@ import React from 'react';
 import styled from "styled-components"
 import { AddCircleOutline, FavoriteBorderRounded, HomeRounded, SendRounded } from '@mui/icons-material';
 import { Avatar } from '@mui/material';
+
 import './Header.css';
+
+
+import { useDispatch,useSelector } from 'react-redux';
+
 const Header=()=>{
-    const username=null;
+    
+    const username = useSelector((state:any) => state.userData)
+    const dispatch=useDispatch();
+    
     return(
         <div className="Container">
 <Wrapper>

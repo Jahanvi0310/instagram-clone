@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-
+import Contactstuff from '../components/contactstuff';
 
 const Home=()=>{
     return(
         <Conatiner>
             <Section>
-               
+               <Contactstuff/>
             </Section>
         </Conatiner>    
         )
