@@ -4,7 +4,10 @@ import './input.css'
 
 const Input:FC= () => {
     const [password,setpassword]=useState<any>();
+    const [passInput,setPassInput]=useState<any>();
+    const [passwordType,setPasswordType]=useState("password");
     const changeText:(event:ChangeEvent)=>void=(event)=>{
+        setPassInput((event.target as HTMLInputElement).value);
         if((event.target as HTMLInputElement).value.length<8){
             setpassword(false)
         }
@@ -13,6 +16,18 @@ const Input:FC= () => {
         }
     }
     // const obj = {password:{password}}
+    // const handleclickpass=(e)=>{
+    //     setPassInput(e.target.value);
+    // }
+    const togglePassword =(e)=>{
+        e.preventDefault();
+        if(passwordType==="password")
+        {
+         setPasswordType("text")
+         return;
+        }
+        setPasswordType("password")
+      }
   return (
     <div className="container c1">
     <div className="box upper" >
@@ -23,10 +38,11 @@ const Input:FC= () => {
                 <label htmlFor="username">Phone number, username, or email address</label>
             </div>
             <div className="field">
-                <input id="password" type="password" placeholder="password" onChange={changeText}/>
+                <div className='passdiv'><input id="password" type={passwordType} placeholder="password" onChange={changeText}/>
                 <label htmlFor="password">Password</label>
+                <button id="hide"onClick={togglePassword}>{passwordType==="password"? <p className='para'>Show</p> :<p className='para'>Hide</p>}</button>
+                </div>    
             </div>
-            {/* add button here */}
             <Button password={password}/>
         </form>
     </div>

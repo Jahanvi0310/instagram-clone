@@ -7,16 +7,31 @@ body {
       Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     box-sizing: border-box;
   }
-  
+  .passdiv{
+    border: 1px solid #d3d3d3;
+    border-radius:3.5px;
+    /* height:2.5rem; */
+
+  }
+  .para{
+    margin: auto;
+    font-size:14px;
+    font-weight: bolder;
+  }
   a {
     text-decoration: none;
   }
   #username{
+    width: 17rem;
     padding-left : 0.78em;
     font-size: 13px;
   }
   #password{
+    height:2.5rem;
+    width:14rem;
     padding-left:  1em;
+    border:none;
+    font-size:11px;
   }
 
   form{
@@ -91,13 +106,15 @@ body {
   
   input {
     font-size: 10px;
-    width: 17rem;
     height: 2.5rem;
     outline: none;
     background: #fafafa;
     border-radius: 3px;
     border: 1px solid lightgray;
   }
+input:focus,.passdiv{
+  border:1px solid gray;
+}
   
   
   label {
