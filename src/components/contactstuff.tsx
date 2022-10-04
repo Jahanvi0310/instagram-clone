@@ -9,7 +9,7 @@ import { auth } from '../firebase/firebase';
 const Contactstuff=()=>{
    const name=useSelector(selectName);
    const photo=useSelector(selectPhoto);
-   const shorten=name?name.split("")[0]:name;
+   
    const dispatch=useDispatch();
    const logout=()=>{
     signOut(auth).then((result)=>{
@@ -24,7 +24,7 @@ const Contactstuff=()=>{
             <Wrapper>
 <User>
     <Avatar src={photo}/>
-<span>Welcome {shorten?shorten:"Guest"}</span>
+<span>Welcome {name}</span>
     
 </User>
 <button onClick={logout}>LogOut</button>
@@ -39,7 +39,7 @@ export default Contactstuff;
 const Container=styled.div`
 width:400px;
 border-radius:20px;
-background-color:offwhite;
+background-color:#ffffff;
 height:500px;
 position:fixed;
 top:4rem;
@@ -49,14 +49,12 @@ right:10px;
 const Wrapper=styled.div`
 button{
     font-weight:bold;
-    border:1px solid black;
-    color:#fff;
-    background-color:blue;
+    color:blue;
     
 }
 display:flex;
 align-items:center;
-justify-content:space-around;
+justify-content:space-between;
 margin:15px;
 margin-top:20px`;
 const User=styled.div`

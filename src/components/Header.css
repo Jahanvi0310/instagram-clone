@@ -10,3 +10,7 @@ img{
     display: flex;
     align-items: center;
 }
+.Container{
+  
+    background-color:#ffffff;
+}
