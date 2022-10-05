@@ -1,12 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import Contactstuff from '../components/Contactstuff';
-
+// import Postlist from '../components/PostList';
 const Home=()=>{
     return(
         <Conatiner>
             <Section>
-               <Contactstuff/>
+{/* <Postlist/> */}
+
+              <Contactstuff/>
             </Section>
         </Conatiner>    
         )
