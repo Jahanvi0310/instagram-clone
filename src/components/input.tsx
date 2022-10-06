@@ -47,7 +47,9 @@ const Input:FC= () => {
                 <button id="hide"onClick={togglePassword}>{passwordType==="password"? <p className='para'>Show</p> :<p className='para'>Hide</p>}</button>
                 </div>    
             </div>
-            <Button password={password}/>
+            <Button Password={password} className='login-button'children="log In" onClick={()=>console.log("you clicked")}/>
+ 
+
         </form>
     </div>
     <div className="box b1">
