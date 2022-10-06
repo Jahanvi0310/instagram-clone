@@ -1,20 +1,26 @@
 import React from 'react';
 import styled from 'styled-components';
-import Contactstuff from '../components/Contactstuff';
+import Contactstuff from '../components/contactstuff';
 // import Postlist from '../components/PostList';
+import Header from '../components/Header';
+
 const Home=()=>{
     return(
-        <Conatiner>
+<>        
+
+        <Container>
+            
             <Section>
 {/* <Postlist/> */}
 
               <Contactstuff/>
             </Section>
-        </Conatiner>    
+        </Container>    
+        </>
         )
 }
 export default Home;
-const Conatiner=styled.div`
+const Container=styled.div`
 display:grid;
 grid-coloumn:span1/span1;
 grid-template-coloumns:repeat(1,minmax(0,1fr));

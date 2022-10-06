@@ -2,11 +2,11 @@ import React,{useEffect} from 'react';
 import styled from 'styled-components';
 import {BrowserRouter as Router,Routes,Route} from 'react-router-dom';
 import Home from './pages/Home'
-import Header from './components/Header';
 import { onAuthStateChanged } from 'firebase/auth';
 import {auth} from './firebase/firebase';
 import { useDispatch } from 'react-redux';
 import { setLogIn } from './reducers/userSlice';
+import Header from './components/Header';
 const App=()=>{
   const dispatch=useDispatch();
   useEffect(()=>{
@@ -24,10 +24,12 @@ if(user){
   return(
     <Container>
      <Router>
-       <Header />
-       
+      
+     <Header/>
         <Routes>
-            <Route path="/" element={<Home/>} />
+            <Route path="/" element={<Home/>}/>
+              
+         
         </Routes>
       
      
