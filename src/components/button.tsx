@@ -1,9 +1,28 @@
 import React from 'react'
+interface Props{
 
-function Button() {
+className:string;
+
+children?:React.ReactNode;
+onClick:()=>void;
+
+}
+const Button:React.FC<Props>=({
+  
+  
+  children,
+  
+  onClick,
+  className
+
+})=> {
   return (
     <div>
-       <button className="login-button" title="login">Log In</button>
+       <button
+      className={className}
+      
+        
+       >{children}</button>
             <div className="separator">
                 <div className="line"></div>
                 <p>OR</p>
@@ -12,7 +31,7 @@ function Button() {
             <div className="other">
                 <button className="fb-login-btn" type="button">
                     <i className="fa fa-facebook-official fb-icon"></i>
-                    <span className="">Log in with Facebook</span>
+                    <span className="">Log in with email</span>
                 </button>
                 <a className="forgot-password" href="#">Forgot password?</a>
             </div>
@@ -21,3 +40,9 @@ function Button() {
 }
 
 export default Button;
+
+
+
+
+
+
