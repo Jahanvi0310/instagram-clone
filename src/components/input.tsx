@@ -3,10 +3,10 @@ import Button from './button';
 import './input.css'
 
 const Input:FC= () => {
-    const [inputfield,setinput]=useState<any>();
-    const [password,setpassword]=useState<any>();
-    const [passInput,setPassInput]=useState<any>();
-    const [passwordType,setPasswordType]=useState("password");
+    const [inputfield,setInput]=useState<string>();
+    const [password,setpassword]=useState<boolean>();
+    const [passInput,setPassInput]=useState<string>();
+    const [passwordType,setPasswordType]=useState<string>("password");
     const changeText:(event:ChangeEvent)=>void=(event)=>{
         setPassInput((event.target as HTMLInputElement).value);
         if((event.target as HTMLInputElement).value.length<8){
@@ -21,7 +21,7 @@ const Input:FC= () => {
     //     setPassInput(e.target.value);
     // }
     const input:(event:ChangeEvent)=>void=(event)=>{
-        setinput((event.target as HTMLInputElement).value);
+        setInput((event.target as HTMLInputElement).value);
     }
     const togglePassword =(e)=>{
         e.preventDefault();
