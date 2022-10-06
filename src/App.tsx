@@ -7,6 +7,7 @@ import {auth} from './firebase/firebase';
 import { useDispatch } from 'react-redux';
 import { setLogIn } from './reducers/userSlice';
 import Header from './components/Header';
+import Button from './components/Button';
 const App=()=>{
   const dispatch=useDispatch();
   useEffect(()=>{
@@ -25,10 +26,14 @@ if(user){
     <Container>
      <Router>
       
-     <Header/>
+     
         <Routes>
-            <Route path="/" element={<Home/>}/>
-              
+            <Route path="/home" element={<Home/>}/>
+              <Route path='/signIn' element={<Button
+              className='login-button'
+              children="logIn"
+              onClick={()=>console.log("you clicked")
+              }/>}/>
          
         </Routes>
       

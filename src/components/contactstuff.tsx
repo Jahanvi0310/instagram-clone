@@ -6,17 +6,19 @@ import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { selectName, selectPhoto, setLogout } from '../reducers/userSlice';
 import { auth } from '../firebase/firebase';
+import { useNavigate } from 'react-router-dom';
 const Contactstuff=()=>{
    const name=useSelector(selectName);
    const photo=useSelector(selectPhoto);
-   
+   const Navigate=useNavigate();
    const dispatch=useDispatch();
    const logout=()=>{
     signOut(auth).then((result)=>{
         dispatch(setLogout({name : null, photo : null,email : null,uid : null}))
         console.log("button clicked");
+        Navigate('/signIn');
     });
-    
+  
    }
     return(
         <>
