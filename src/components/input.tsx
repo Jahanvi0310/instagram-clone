@@ -3,6 +3,7 @@ import Button from './button';
 import './input.css'
 
 const Input:FC= () => {
+    const [inputfield,setinput]=useState<any>();
     const [password,setpassword]=useState<any>();
     const [passInput,setPassInput]=useState<any>();
     const [passwordType,setPasswordType]=useState("password");
@@ -19,6 +20,9 @@ const Input:FC= () => {
     // const handleclickpass=(e)=>{
     //     setPassInput(e.target.value);
     // }
+    const input:(event:ChangeEvent)=>void=(event)=>{
+        setinput((event.target as HTMLInputElement).value);
+    }
     const togglePassword =(e)=>{
         e.preventDefault();
         if(passwordType==="password")
@@ -34,7 +38,7 @@ const Input:FC= () => {
         <div className="heading h1"></div>
         <form className="login-form">
             <div className="field">
-                <input id="username" type="name" placeholder="Phone number, username, or email" />
+                <input id="username" type="name" placeholder="Phone number, username, or email" onChange={input}/>
                 <label htmlFor="username">Phone number, username, or email address</label>
             </div>
             <div className="field">

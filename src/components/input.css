@@ -112,7 +112,7 @@ body {
     border-radius: 3px;
     border: 1px solid lightgray;
   }
-input:focus,.passdiv{
+input:focus,.passdiv:focus{
   border:1px solid gray;
 }
   
