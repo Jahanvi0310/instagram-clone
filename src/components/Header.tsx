@@ -2,7 +2,7 @@ import React from 'react';
 import styled from "styled-components"
 import { AddCircleOutline, FavoriteBorderRounded, HomeRounded, SendRounded } from '@mui/icons-material';
 import { Avatar } from '@mui/material';
-import { useDispatch,useSelector } from 'react-redux';
+import {useSelector } from 'react-redux';
 import './Header.css';
 
 import { selectName, selectPhoto } from '../reducers/userSlice';
@@ -11,7 +11,7 @@ const Header=()=>{
     
     const username = useSelector(selectName);
     const photo=useSelector(selectPhoto);
-    const dispatch=useDispatch();
+    
     
 
     return(
