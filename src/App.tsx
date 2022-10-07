@@ -17,8 +17,7 @@ if(user){
     name:user.displayName,
     email:user.email,
     uid:user.uid,
-    
-  }))
+    }))
 }
 }
   )},[]);
@@ -44,7 +43,4 @@ if(user){
 }
 export default App;
 const Container=styled.div`
-
-
-
 `;

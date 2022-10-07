@@ -1,4 +1,4 @@
-.HeaderLogo{
+.headerLogo{
     display: flex;
     align-items: center;
 }
@@ -6,7 +6,7 @@ img{
     object-fit: contain;
     width: 100%;
 }
-.HeaderRight{
+.headerRight{
     display: flex;
     align-items: center;
 }
