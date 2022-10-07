@@ -13,7 +13,8 @@ const Home=()=>{
             <Section>
 {/* <Postlist/> */}
 
-              <Contactstuff/>
+              {/* <Contactstuff/> */}
+              
             </Section>
         </Container>    
         </>

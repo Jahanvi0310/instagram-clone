@@ -19,7 +19,7 @@ const Contactstuff=()=>{
         Navigate('/signIn');
     });
   
-   }
+  }
     return(
         <>
         <Container>
@@ -27,17 +27,14 @@ const Contactstuff=()=>{
 <User>
     <Avatar src={photo}/>
 <span>Welcome {name}</span>
-    
-</User>
+    </User>
 <button onClick={logout}>LogOut</button>
-
-            </Wrapper>
+</Wrapper>
         </Container>
         </>
     )
 }
 export default Contactstuff;
-
 const Container=styled.div`
 width:400px;
 border-radius:20px;
@@ -46,14 +43,12 @@ height:500px;
 position:fixed;
 top:4rem;
 right:10px;
-
 `;
 const Wrapper=styled.div`
 button{
     font-weight:bold;
     color:blue;
-    
-}
+    }
 display:flex;
 align-items:center;
 justify-content:space-between;
