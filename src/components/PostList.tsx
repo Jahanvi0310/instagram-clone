@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { FavoriteBorder, MoreHorizOutlined, SendOutlined, Share } from '@mui/icons-material';
 import Avatar from '@mui/material/Avatar';
 import styled from 'styled-components';
-
-
 function Postlist() {
     const[shorten,setshorten]=useState(false) ;
     const p = 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo, dolor. Reprehenderit repellendus incidunt, animi quidem rerum in alias officiis blanditiis praesentium, repudiandae aut, fugiat possimus labore dolorum fugit dicta natus!'
@@ -59,7 +57,6 @@ function Postlist() {
     </div>
   )
 }
-
 export default Postlist
 
 const Container = styled.div`
@@ -73,7 +70,6 @@ const Container = styled.div`
     border : 1px soli rgba(219,219,219,1);
     box-shadow:0 1px 2px 0 rgba( 0 0 0 /0.05);
 `;
-
 const PostHeader =styled.div`
     display:flex;
     align-items:center;
@@ -105,7 +101,6 @@ svg{
     cursor:pointer;
 }
 .plane{
-
 }
 `;
 const Caption=styled.div`
