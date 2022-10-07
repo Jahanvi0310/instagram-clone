@@ -13,21 +13,21 @@ const Header=()=>{
     const username = useSelector(selectName);
     const photo=useSelector(selectPhoto);
     const dispatch=useDispatch();
-    const login=()=>{
-        signInWithPopup(auth,provider)
-        .then((result)=>{
-const user=result.user;
-dispatch(
-    setLogIn({
-        name:user.displayName,
-        email:user.email,
-        uid:user.uid,
-        photo:user.photoURL,
-    })
-);
-        })
-        .catch((error)=>console.error(error.message));
-    }
+//     const login=()=>{
+//         signInWithPopup(auth,provider)
+//         .then((result)=>{
+// const user=result.user;
+// dispatch(
+//     setLogIn({
+//         name:user.displayName,
+//         email:user.email,
+//         uid:user.uid,
+//         photo:user.photoURL,
+//     })
+// );
+//         })
+//         .catch((error)=>console.error(error.message));
+//     }
 
     return(
         <div className="Container">
@@ -41,7 +41,7 @@ dispatch(
     </div>
 </SearchContainer>
 <div className="HeaderRight">
-{username?(
+{/* {username?( */}
     <>
     <div className="List">
         <SendRounded className="rotate"/>
@@ -57,13 +57,13 @@ dispatch(
             <FavoriteBorderRounded/>
         </List>
         <List>
-            <Avatar src={photo} />
+            <Avatar  src={photo}/>
         </List>
     </Down>
     </>
-):(
+{/* ):(
     <Buttons onClick={login}>SignIn</Buttons>
-)}
+)} */}
     
 </div>
 </Wrapper>
