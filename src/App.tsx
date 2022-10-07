@@ -16,8 +16,7 @@ if(user){
     name:user.displayName,
     email:user.email,
     uid:user.uid,
-    
-  }))
+    }))
 }
 }
   )},[]);
@@ -28,18 +27,11 @@ if(user){
      <Header/>
         <Routes>
             <Route path="/" element={<Home/>}/>
-              
-         
-        </Routes>
-      
-     
-    </Router>
+              </Routes>
+     </Router>
     </Container>
   )
 }
 export default App;
 const Container=styled.div`
-
-
-
 `;
