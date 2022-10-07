@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body {
   font-family: sans-serif;
   
@@ -20,8 +21,19 @@ body {
   font-size: 14px;
   cursor: pointer;
   
+=======
+*{
+    margin: 0;
+    padding: 0;
+>>>>>>> 41609cf5b85e48d27274054bc10fee75874b4ba6
 }
+.App{
+    background-color: #fafafa;
+    height: 100vh;
+}
+.app_header{
 
+<<<<<<< HEAD
 .separator {
   display: flex;
   justify-content: space-between;
@@ -70,4 +82,24 @@ body {
 }
 input::placeholder {
   visibility: hidden;
+=======
+object-fit: contain;
+background-color: white;
+padding: 20px;
+border-bottom: 1px solid lightgrey;
+display: flex;
+justify-content:space-between
+
+}
+.app_headerImage{
+    width: 15%;
+    object-fit: contain;
+    
+>>>>>>> 41609cf5b85e48d27274054bc10fee75874b4ba6
+}
+.search_bar{
+    border: 1px solid black;
+    width: 14%;
+    border-radius: 10px;
+    height: 20px;
 }

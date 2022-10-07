@@ -1,21 +1,19 @@
 import React from 'react';
+import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import Button from './components/button';
 
 function App() {
   return (
     <Router>
-     
-   <Button
- className='login-button'
- children="logIn"
- onClick={()=>console.log("you clicked")}
-
- 
-   />
+      <h1>Done with setup</h1>
     </Router>
   );
 }
 
 export default App;
+const Container=styled.div`
+
+
+
+`;
