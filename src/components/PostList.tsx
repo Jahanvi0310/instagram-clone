@@ -3,7 +3,7 @@ import { FavoriteBorder, MoreHorizOutlined, SendOutlined, Share } from '@mui/ico
 import Avatar from '@mui/material/Avatar';
 import styled from 'styled-components';
 function Postlist() {
-    const[shorten,setshorten]=useState(false) ;
+    const[shorten,setShorten]=useState(false) ;
     const p = 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo, dolor. Reprehenderit repellendus incidunt, animi quidem rerum in alias officiis blanditiis praesentium, repudiandae aut, fugiat possimus labore dolorum fugit dicta natus!'
     const pars= !shorten ?  p.slice(100): p ;
     return (
@@ -36,11 +36,11 @@ function Postlist() {
                         {pars}
                         {!shorten?(
                             <>
-                            <Button onClick={()=>setshorten(true)}>Read more</Button>
+                            <Button onClick={()=>setShorten(true)}>Read more</Button>
                             </>
                         ):(
                             <>
-                            <Button onClick={()=>setshorten(false)}>Read less </Button>
+                            <Button onClick={()=>setShorten(false)}>Read less </Button>
                             </>
                         )}
                         </p>
@@ -88,7 +88,7 @@ const PostContainer=styled.div`
     width:100%;
     img{
         width:100%;
-        object-width:contain;
+        object-fit:contain;
     }
     `;
 const Social=styled.div`
@@ -101,6 +101,10 @@ svg{
     cursor:pointer;
 }
 .plane{
+<<<<<<< HEAD
+transform:rotate(-45deg);
+=======
+>>>>>>> dda526ab937b82729c4c4673d59d5d49c0d05a04
 }
 `;
 const Caption=styled.div`

@@ -34,8 +34,12 @@ const contactStuff=()=>{
         </>
     )
 }
+<<<<<<< HEAD
 export default contactStuff;
 
+=======
+export default Contactstuff;
+>>>>>>> dda526ab937b82729c4c4673d59d5d49c0d05a04
 const Container=styled.div`
 width:400px;
 border-radius:20px;
