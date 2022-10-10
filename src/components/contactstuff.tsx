@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import { selectName, selectPhoto, setLogout } from '../reducers/userSlice';
 import { auth } from '../firebase/firebase';
 import { useNavigate } from 'react-router-dom';
-const Contactstuff=()=>{
+const contactStuff=()=>{
    const name=useSelector(selectName);
    const photo=useSelector(selectPhoto);
    const Navigate=useNavigate();
@@ -36,7 +36,7 @@ const Contactstuff=()=>{
         </>
     )
 }
-export default Contactstuff;
+export default contactStuff;
 
 const Container=styled.div`
 width:400px;

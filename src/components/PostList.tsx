@@ -2,10 +2,8 @@ import React, { useState } from 'react';
 import { FavoriteBorder, MoreHorizOutlined, SendOutlined, Share } from '@mui/icons-material';
 import Avatar from '@mui/material/Avatar';
 import styled from 'styled-components';
-
-
 function Postlist() {
-    const[shorten,setshorten]=useState(false) ;
+    const[shorten,setShorten]=useState(false) ;
     const p = 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo, dolor. Reprehenderit repellendus incidunt, animi quidem rerum in alias officiis blanditiis praesentium, repudiandae aut, fugiat possimus labore dolorum fugit dicta natus!'
     const pars= !shorten ?  p.slice(100): p ;
     return (
@@ -38,11 +36,11 @@ function Postlist() {
                         {pars}
                         {!shorten?(
                             <>
-                            <Button onClick={()=>setshorten(true)}>Read more</Button>
+                            <Button onClick={()=>setShorten(true)}>Read more</Button>
                             </>
                         ):(
                             <>
-                            <Button onClick={()=>setshorten(false)}>Read less </Button>
+                            <Button onClick={()=>setShorten(false)}>Read less </Button>
                             </>
                         )}
                         </p>
@@ -59,7 +57,6 @@ function Postlist() {
     </div>
   )
 }
-
 export default Postlist
 
 const Container = styled.div`
@@ -73,7 +70,6 @@ const Container = styled.div`
     border : 1px soli rgba(219,219,219,1);
     box-shadow:0 1px 2px 0 rgba( 0 0 0 /0.05);
 `;
-
 const PostHeader =styled.div`
     display:flex;
     align-items:center;
@@ -92,7 +88,7 @@ const PostContainer=styled.div`
     width:100%;
     img{
         width:100%;
-        object-width:contain;
+        object-fit:contain;
     }
     `;
 const Social=styled.div`
@@ -105,7 +101,7 @@ svg{
     cursor:pointer;
 }
 .plane{
-
+transform:rotate(-45deg);
 }
 `;
 const Caption=styled.div`

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Contactstuff from '../components/contactstuff';
-// import Postlist from '../components/PostList';
+import Postlist from '../components/PostList';
 import Header from '../components/Header';
 
 const Home=()=>{
