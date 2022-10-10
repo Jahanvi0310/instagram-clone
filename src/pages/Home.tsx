@@ -1,13 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
+<<<<<<< HEAD
+import Contactstuff from '../components/contactstuff';
+import Postlist from '../components/PostList';
+import Header from '../components/Header';
+=======
 
 // // import Postlist from '../components/PostList';
 // import Header from '../components/Header';
+>>>>>>> dda526ab937b82729c4c4673d59d5d49c0d05a04
 
 const Home=()=>{
     return(
 <>        
-
+<Header/>
         <Container>
             
             <Section>
