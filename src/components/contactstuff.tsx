@@ -27,17 +27,19 @@ const contactStuff=()=>{
 <User>
     <Avatar src={photo}/>
 <span>Welcome {name}</span>
-    
-</User>
+    </User>
 <button onClick={logout}>LogOut</button>
-
-            </Wrapper>
+ </Wrapper>
         </Container>
         </>
     )
 }
+<<<<<<< HEAD
 export default contactStuff;
 
+=======
+export default Contactstuff;
+>>>>>>> dda526ab937b82729c4c4673d59d5d49c0d05a04
 const Container=styled.div`
 width:400px;
 border-radius:20px;
@@ -46,14 +48,12 @@ height:500px;
 position:fixed;
 top:4rem;
 right:10px;
-
 `;
 const Wrapper=styled.div`
 button{
     font-weight:bold;
     color:blue;
-    
-}
+    }
 display:flex;
 align-items:center;
 justify-content:space-between;

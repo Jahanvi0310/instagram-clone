@@ -101,7 +101,10 @@ svg{
     cursor:pointer;
 }
 .plane{
+<<<<<<< HEAD
 transform:rotate(-45deg);
+=======
+>>>>>>> dda526ab937b82729c4c4673d59d5d49c0d05a04
 }
 `;
 const Caption=styled.div`

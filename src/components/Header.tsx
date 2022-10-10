@@ -17,7 +17,7 @@ const Header=()=>{
     return(
         <div className="Container">
 <Wrapper>
-<div className="HeaderLogo">
+<div className="headerLogo">
     <img src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png" alt="Instagram original logo" />
 </div>
 <SearchContainer>
@@ -25,8 +25,8 @@ const Header=()=>{
         <input type="search" placeholder='search' />
     </div>
 </SearchContainer>
-<div className="HeaderRight">
-{username?(
+<div className="headerRight">
+{/* {username?( */}
     <>
     <div className="List">
         <SendRounded className="rotate"/>
@@ -42,7 +42,7 @@ const Header=()=>{
             <FavoriteBorderRounded/>
         </List>
         <List>
-            <Avatar src={photo} />
+            <Avatar  src={photo}/>
         </List>
     </Down>
     </>
