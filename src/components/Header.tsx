@@ -2,32 +2,17 @@ import React from 'react';
 import styled from "styled-components"
 import { AddCircleOutline, FavoriteBorderRounded, HomeRounded, SendRounded } from '@mui/icons-material';
 import { Avatar } from '@mui/material';
-import { useDispatch,useSelector } from 'react-redux';
+import {useSelector } from 'react-redux';
 import './Header.css';
-import {signInWithPopup} from "firebase/auth";
-import {auth,provider} from '../firebase/firebase';
-import { selectName, selectPhoto, setLogIn } from '../reducers/userSlice';
+
+import { selectName, selectPhoto } from '../reducers/userSlice';
 
 const Header=()=>{
     
     const username = useSelector(selectName);
     const photo=useSelector(selectPhoto);
-    const dispatch=useDispatch();
-//     const login=()=>{
-//         signInWithPopup(auth,provider)
-//         .then((result)=>{
-// const user=result.user;
-// dispatch(
-//     setLogIn({
-//         name:user.displayName,
-//         email:user.email,
-//         uid:user.uid,
-//         photo:user.photoURL,
-//     })
-// );
-//         })
-//         .catch((error)=>console.error(error.message));
-//     }
+    
+    
 
     return(
         <div className="Container">
@@ -61,9 +46,13 @@ const Header=()=>{
         </List>
     </Down>
     </>
-{/* ):(
-    <Buttons onClick={login}>SignIn</Buttons>
-)} */}
+{
+     null
+}
+  
+
+
+
     
 </div>
 </Wrapper>
