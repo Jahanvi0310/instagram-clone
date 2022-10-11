@@ -26,7 +26,7 @@ const category = [
         'iconName':'fitness_center' 
     },
     {
-        'name':'Entertainment',
+        'name':'Entertain',
         'iconName':'live_tv' 
     }
     
