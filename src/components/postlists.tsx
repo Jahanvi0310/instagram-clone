@@ -8,9 +8,9 @@ import SendOutlined from "@material-ui/icons/Comment";
 
 function Postlist() {
   const [shorten, setShorten] = useState(false);
-  const p =
+  const caption =
     "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo, dolor. Reprehenderit repellendus incidunt, animi quidem rerum in alias officiis blanditiis praesentium, repudiandae aut, fugiat possimus labore dolorum fugit dicta natus!";
-  const pars = !shorten ? p.slice(100) : p;
+  const pars = !shorten ? caption.slice(100) : caption;
   return (
     <div>
       <Container>
