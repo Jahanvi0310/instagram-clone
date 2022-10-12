@@ -1,6 +1,5 @@
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import category from "../datasource/category";
 import Stories from "react-insta-stories";
 import Storydata from "../datasource/storydata";
 function StoriesComponent() {
