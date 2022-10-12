@@ -1,35 +1,66 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams,useNavigate } from "react-router-dom";
 import category from "../datasource/category";
 import Stories from "react-insta-stories";
 import Storydata from "../datasource/storydata";
 function StoriesComponent() {
   const match = useParams();
-  console.log(match);
-  function renderstories(){
-    const CategoryType=match.CategoryType;
-  // console.log(CategoryType);
-    const story = Storydata[CategoryType].map((storyItem)=>{
-      return  {
+  const navigate=useNavigate();
+  // console.log(match);
+  function renderstories() {
+    const CategoryType = match.CategoryType;
+    // console.log(CategoryType);
+    const story = Storydata[CategoryType].map((storyItem) => {
+      if(storyItem.type==='imgCaption'){
+      return {
         content: ({ action, isPaused }) => {
           return (
             <div
-              className="story w-full h-full bg-no-repeat border-8 bg-center"
-              style={{ backgroundImage: `url(${storyItem.background})` }}
-            >
-              <div className="border">
-                <span>{storyItem.caption}</span>
+              className="w-screen h-screen flex justify-center items-center">
+          
+              <div className="w-full h-full max-w-screen-md bg-no-repeat   bg-center  flex justify-center items-center flex-col"  style={{ backgroundImage: `url(${storyItem.background})` }}>
+
+                <div className="font-bold mt-0" style={{color:storyItem.textColor}}>
+                  <span>{storyItem.caption}</span>
+                </div>
               </div>
             </div>
           );
         },
-      }
+      };
+    }else if(storyItem.type==='typeImagePost'){
+      return {
+        content: ({ action, isPaused }) => {
+          return (
+            <div
+              className="w-full h-full bg-no-repeat border-8 bg-center flex justify-center items-center"
+              style={{ backgroundColor: storyItem.backgroundColor}}
+            >
+              <div className="max-w-screen-md flex-col ">
+                <div className="flex justify-center items-center font-bold"style={{color: storyItem.textColor}}>
+                  <span>{storyItem.title }</span>
+                </div>
+                <div>
+                  <img src={storyItem.postImage}/>
+                </div>
+                <div className="text-left font-bold ml-1">
+                  <span>{storyItem.text}</span>
+                </div>
+              </div>
+            </div>
+          );
+        },
+      }; 
+    }
     });
     return story;
   }
+  function gobackToHomePage(){
+     navigate('/');
+  }
   return (
-    <div>
-      <Stories stories={renderstories()} />
+    <div className="flex justify-center items-center">
+      <Stories stories={renderstories()} width={"100vw"} height={"100vh"} onAllStoriesEnd={()=>gobackToHomePage()}/>
     </div>
   );
 }

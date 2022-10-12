@@ -11,7 +11,7 @@ function Home() {
     return category.map((category) => {
       return (
         <div className="flex justify-center">
-        <div className="mt-2 ml-1 border" key={category.iconName} onClick={()=>redirectTostory(category)}>
+        <div className="mt-2 ml-1 cursor-pointer" key={category.iconName} onClick={()=>redirectTostory(category)}>
           <div className="category-outer-circle flex justify-center items-center col-span-2">
             <div className="category-inner-circle flex justify-center items-center col-span-2">
               <i className="material-icons text-3xl ">{category.iconName}</i>
@@ -26,7 +26,7 @@ function Home() {
   }
   return (
     <div>
-      <div className="grid grid-cols-12">{renderCategoryitem()}</div>
+      <div className="grid grid-flow-col auto-cols-max ml-1">{renderCategoryitem()}</div>
     </div>
   );
 }
