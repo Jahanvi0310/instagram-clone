@@ -1,11 +1,36 @@
 import { CollectionsOutlined } from "@mui/icons-material";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { ref } from "firebase/storage";
 import React, { useRef, useState } from "react";
+import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import styled from 'styled-components';
+import db from "../firebase/firebase";
+import { selectEmail, selectName, selectPhoto } from "../reducers/userSlice";
 const Post=()=>{
     const dispatch=useDispatch();
     const selectedImage:React.MutableRefObject<any>=useRef(null);
-    const [selectImage,setSelectImage]=useState(null);
+    const [selectImage,setSelectImage]=useState<any>(null);
+    const[input,setInput]=useState<any>(null);
+    const[loading,setLoading]=useState<any>(false);
+    const name=useSelector(selectName);
+    const img=useSelector(selectPhoto);
+    const email=useSelector(selectEmail);
+    const Submit=async(e:any)=>{
+       e.preventDefault();
+       if(input.length>1){
+        if(loading)return;
+        setLoading(true);
+        const file=await addDoc(collection(db,'insta'),{
+            name:name,
+            img:img,
+            email:email,
+            caption:input,
+            timestamp:serverTimestamp(),
+        });
+        const images=ref(storage,`insta/${file.id}/img`)
+       } ;
+    }
     const ImageStuff=(e:any)=>{
         const reader=new FileReader();
         if(e.target.files[0]){
@@ -32,9 +57,12 @@ setSelectImage(Event.target.result);
                 </TopSection>
                 <BottomSection>
                     <InputContainer>
-                    <input type="text" placeholder="caption" />
+                    <input type="text" placeholder="caption"
+                    disabled={!selectImage} 
+                    value={selectImage} 
+                    onChange={(e:any)=>setInput(e.target.value)}/>
                     </InputContainer>
-                    <button>Post</button>
+                    <button disabled={loading} onClick={Submit}>Post</button>
                 </BottomSection>
             </Wrapper>
         </Container>
