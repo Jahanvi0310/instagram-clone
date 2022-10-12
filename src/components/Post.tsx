@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import styled from 'styled-components';
 const Post=()=>{
     const dispatch=useDispatch();
-    const selectedImage=useRef(null);
+    const selectedImage:React.MutableRefObject<any>=useRef(null);
     const [selectImage,setSelectImage]=useState(null);
     const ImageStuff=(e:any)=>{
         const reader=new FileReader();
@@ -25,7 +25,7 @@ setSelectImage(Event.target.result);
                             <img src={selectImage} alt="post" />
                         </ImageContainer>
                     ):(
-                        <CollectionsOutlined onClick={()=>selectedImage.current .click()}/>
+                        <CollectionsOutlined onClick={()=>{selectedImage.current.click()}}/>
                     )}
                   
                     <input type="file" hidden ref={selectedImage} onChange={ImageStuff} />
