@@ -1,7 +1,13 @@
 import React from "react";
+import './Button.css'
+import {useDispatch} from 'react-redux';
+import {signInWithPopup} from "firebase/auth";
+import {auth,provider} from '../firebase/firebase';
+import {  setLogIn } from '../reducers/userSlice';
+import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFacebookSquare } from "@fortawesome/free-brands-svg-icons";
-
+import {faEnvelopeSquare } from '@fortawesome/free-solid-svg-icons'
+// import { faFacebookSquare,} from "@fortawesome/free-brands-svg-icons";
 interface Props {
   className: string;
   children?: React.ReactNode;
@@ -14,6 +20,24 @@ const Button: React.FC<Props> = ({
   className,
   Password,
 }) => {
+  const Navigate=useNavigate();
+  const dispatch=useDispatch();
+  const login=()=>{
+      signInWithPopup(auth,provider)
+      .then((result)=>{
+const user=result.user;
+dispatch(
+  setLogIn({
+      name:user.displayName,
+      email:user.email,
+      uid:user.uid,
+      photo:user.photoURL,
+  })
+);
+Navigate('/home');
+      })
+      .catch((error)=>console.error(error.message));
+  }
   return (
     <div>
       <button
@@ -30,8 +54,8 @@ const Button: React.FC<Props> = ({
       </div>
       <div className="other">
         <button className="fb-login-btn" type="button">
-          <FontAwesomeIcon icon={faFacebookSquare} size="1x" />
-          <span className="otherlogin">Log in with Facebook</span>
+          <FontAwesomeIcon icon={faEnvelopeSquare} size="1x" />
+          <span className="otherlogin" onClick={login}>Log in with Email</span>
         </button>
         <a className="forgot-password" href="#">
           Forgotten your password?

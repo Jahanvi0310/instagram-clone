@@ -1,15 +1,45 @@
-import React from "react";
-import "./App.css";
-
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import styled from "styled-components";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
 import Input from "./components/input";
 
-function App() {
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "./firebase/firebase";
+import { useDispatch } from "react-redux";
+import { setLogIn } from "./reducers/userSlice";
+import Header from "./components/Header";
+import Button from "./components/button";
+const App = () => {
+  
+  const dispatch = useDispatch();
+  useEffect(() => {
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        dispatch(
+          setLogIn({
+            name: user.displayName,
+            email: user.email,
+            uid: user.uid,
+          })
+        );
+      }
+    });
+  }, []);
   return (
-    <Router>
-      <Input />
-    </Router>
+    <Container>
+      <Router>
+        <Routes>
+          <Route path="/home" element={<Home />} />
+          <Route
+            path="/logIn"
+            element={<Input/>
+            }
+          />
+        </Routes>
+      </Router>
+    </Container>
   );
-}
-
+};
 export default App;
+const Container = styled.div``;

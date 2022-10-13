@@ -1,0 +1,16 @@
+.headerLogo{
+    display: flex;
+    align-items: center;
+}
+img{
+    object-fit: contain;
+    width: 100%;
+}
+.headerRight{
+    display: flex;
+    align-items: center;
+}
+.Container{
+  height: 50px;
+    background-color:#ffffff;
+}
