@@ -1,6 +1,7 @@
 import { CollectionsOutlined } from "@mui/icons-material";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-import { ref } from "firebase/storage";
+import { upload } from "@testing-library/user-event/dist/upload";
+import { addDoc, collection, doc, Firestore, serverTimestamp, updateDoc } from "firebase/firestore";
+import { getDownloadURL, ref, uploadString } from "firebase/storage";
 import React, { useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
@@ -28,7 +29,13 @@ const Post=()=>{
             caption:input,
             timestamp:serverTimestamp(),
         });
-        const images=ref(storage,`insta/${file.id}/img`)
+        const images=ref(storage,`insta/${file.id}/img`);
+        await uploadString(images,selectImage,'data_url').then(async()=>{
+            const download=await getDownloadURL(images);
+            await updateDoc<any>(doc(db,"insta",file.id)),{
+                photo:download,
+            }  
+        })
        } ;
     }
     const ImageStuff=(e:any)=>{
