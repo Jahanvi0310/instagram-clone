@@ -1,14 +1,17 @@
 import React,{useEffect} from 'react';
-import styled from 'styled-components';
-import {BrowserRouter as Router,Routes,Route} from 'react-router-dom';
-import Home from './pages/Home'
 import { onAuthStateChanged } from 'firebase/auth';
 import {auth} from './firebase/firebase';
 import { useDispatch } from 'react-redux';
-import { setLogIn } from './reducers/userSlice';
 import Header from './components/Header';
 import Button from './components/button';
-const App=()=>{
+import { setLogIn } from './reducers/userSlice';
+import './App.css';
+// import Category from './datasource/category';
+import { BrowserRouter,Router,Routes, Route} from "react-router-dom";
+import Home from './components/home';
+import StoriesComponent from './components/storiesComponent'
+
+function App() {
   const dispatch=useDispatch();
   useEffect(()=>{
 onAuthStateChanged(auth,async (user)=>{
@@ -21,26 +24,25 @@ if(user){
 }
 }
   )},[]);
-  return(
-    <Container>
-     <Router>
-      
-     
-        <Routes>
-            <Route path="/home" element={<Home/>}/>
+  return (
+    <React.StrictMode>
+      <BrowserRouter>
+    {/* <Router> */}
+      <Routes>
+          <Route path="/story/:CategoryType"element={<StoriesComponent/>}/>
+          <Route path="/" element={<Home/>}/>
+          <Route path="/home" element={<Home/>}/>
               <Route path='/signIn' element={<Button
               className='login-button'
               children="logIn"
               onClick={()=>console.log("you clicked")
               }/>}/>
-         
-        </Routes>
-      
-     
-    </Router>
-    </Container>
-  )
+      </Routes>
+    {/* </Router> */}
+    </BrowserRouter>
+    </React.StrictMode>
+  );
 }
 export default App;
-const Container=styled.div`
-`;
+// const Container=styled.div`
+// `;
