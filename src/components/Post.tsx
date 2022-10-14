@@ -9,7 +9,7 @@ import db,{storage } from "../firebase/firebase";
 import { selectEmail, selectName, selectPhoto } from "../reducers/userSlice";
 const Post=()=>{
     const dispatch=useDispatch();
-    const selectedImage:React.MutableRefObject<any>=useRef(null);
+    const selectedImage:any=useRef(null);
     const [selectImage,setSelectImage]=useState<any>(null);
     const[input,setInput]=useState<any>(null);
     const[loading,setLoading]=useState<any>(false);
@@ -31,19 +31,19 @@ const Post=()=>{
        
         const images=ref(storage,`insta/${file.id}/img`);
         await uploadString(images,selectImage,'data_url').then(async()=>{
-            const download:string=await getDownloadURL(images);
+            const download=await getDownloadURL(images);
            await updateDoc(doc(db,'insta',file.id),{
             photo:download
            });
         });
-       } ;
-    }
+       } 
+    } ;
     const ImageStuff=(e:any)=>{
         const reader=new FileReader();
         if(e.target.files[0]){
 reader.readAsDataURL(e.target.files[0]);
-reader.onload=(Event:any)=>{
-setSelectImage(Event.target.result);
+reader.onload=(event:any)=>{
+setSelectImage(event.target.result);
 };
         }
     };
