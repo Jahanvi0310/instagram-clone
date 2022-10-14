@@ -1,12 +1,11 @@
 import { CollectionsOutlined } from "@mui/icons-material";
-import { upload } from "@testing-library/user-event/dist/upload";
-import { addDoc, collection, doc, Firestore, serverTimestamp, updateDoc } from "firebase/firestore";
+import { addDoc, collection, doc, serverTimestamp, updateDoc } from "firebase/firestore";
 import { getDownloadURL, ref, uploadString } from "firebase/storage";
 import React, { useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import styled from 'styled-components';
-import db from "../firebase/firebase";
+import db,{storage } from "../firebase/firebase";
 import { selectEmail, selectName, selectPhoto } from "../reducers/userSlice";
 const Post=()=>{
     const dispatch=useDispatch();
@@ -22,20 +21,21 @@ const Post=()=>{
        if(input.length>1){
         if(loading)return;
         setLoading(true);
-        const file=await addDoc(collection(db,'insta'),{
+        const file=await addDoc(collection(db,"insta"),{
             name:name,
             img:img,
             email:email,
             caption:input,
             timestamp:serverTimestamp(),
         });
+       
         const images=ref(storage,`insta/${file.id}/img`);
         await uploadString(images,selectImage,'data_url').then(async()=>{
-            const download=await getDownloadURL(images);
-            await updateDoc<any>(doc(db,"insta",file.id)),{
-                photo:download,
-            }  
-        })
+            const download:string=await getDownloadURL(images);
+           await updateDoc(doc(db,'insta',file.id),{
+            photo:download
+           });
+        });
        } ;
     }
     const ImageStuff=(e:any)=>{
@@ -44,9 +44,10 @@ const Post=()=>{
 reader.readAsDataURL(e.target.files[0]);
 reader.onload=(Event:any)=>{
 setSelectImage(Event.target.result);
-}
+};
         }
-    }
+    };
+    console.log(selectImage);
     return(
         <>
         <Container>
@@ -66,7 +67,7 @@ setSelectImage(Event.target.result);
                     <InputContainer>
                     <input type="text" placeholder="caption"
                     disabled={!selectImage} 
-                    value={selectImage} 
+                    value={input} 
                     onChange={(e:any)=>setInput(e.target.value)}/>
                     </InputContainer>
                     <button disabled={loading} onClick={Submit}>Post</button>
