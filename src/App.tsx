@@ -6,7 +6,6 @@ import { onAuthStateChanged } from 'firebase/auth';
 import {auth} from './firebase/firebase';
 import { useDispatch } from 'react-redux';
 import { setLogIn } from './reducers/userSlice';
-import Header from './components/Header';
 import Button from './components/button';
 import Post from './components/Post';
 const App=()=>{
@@ -36,8 +35,6 @@ if(user){
               }/>}/>
          
         </Routes>
-      
-     
     </Router>
     <Post/>
     </Container>

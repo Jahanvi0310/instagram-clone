@@ -8,8 +8,8 @@ import { selectName, selectPhoto, setLogout } from '../reducers/userSlice';
 import { auth } from '../firebase/firebase';
 import { useNavigate } from 'react-router-dom';
 const ContactStuff=()=>{
-   const name=useSelector(selectName);
-   const photo=useSelector(selectPhoto);
+   const name:any=useSelector(selectName);
+   const photo:any=useSelector(selectPhoto);
    const Navigate=useNavigate();
    const dispatch=useDispatch();
    const logout=()=>{
