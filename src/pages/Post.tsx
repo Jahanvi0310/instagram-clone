@@ -1,4 +1,4 @@
-import { CollectionsOutlined } from "@mui/icons-material";
+import { CloseRounded, CollectionsOutlined } from "@mui/icons-material";
 import { addDoc, collection, doc, serverTimestamp, updateDoc } from "firebase/firestore";
 import { getDownloadURL, ref, uploadString } from "firebase/storage";
 import React, { useRef, useState } from "react";
@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import styled from 'styled-components';
 import db,{storage } from "../firebase/firebase";
-import { selectBoolean } from "../reducers/boolSlice";
+import { selectBoolean, setBool } from "../reducers/boolSlice";
 import { selectEmail, selectName, selectPhoto } from "../reducers/userSlice";
 const Post=()=>{
     const dispatch=useDispatch();
@@ -17,7 +17,7 @@ const Post=()=>{
     const name:any=useSelector(selectName);
     const img:any=useSelector(selectPhoto);
     const email:any=useSelector(selectEmail);
-    const boolean=useSelector(selectBoolean);
+    const boolean:any=useSelector(selectBoolean);
     const Submit=async(e:any)=>{
        e.preventDefault();
        if(input.length>1){
@@ -39,6 +39,10 @@ const Post=()=>{
            });
         });
        } 
+       setInput('');
+       setSelectImage(null);
+       setLoading(false);
+       dispatch(setBool({boolean:false}));
     } ;
     const ImageStuff=(e:any)=>{
         const reader=new FileReader();
@@ -52,7 +56,10 @@ setSelectImage(event.target.result);
     console.log(selectImage);
     return(
         <>
-        <Container user={boolean}>
+        <Container >
+            <CloseContainer onClick={()=> dispatch(setBool({boolean:false}))}>
+<CloseRounded/>
+            </CloseContainer>
             <Wrapper>
                 <TopSection>
                     {selectImage ? (
@@ -92,7 +99,6 @@ background-color: rgba(0,0,0,0.7);
     justify-content: center;
     align-items:center;
     transition: 150ms ease-out;
-    
    `;
 const Wrapper=styled.div`max-height: 550px;
 height: 450px;
@@ -156,3 +162,16 @@ img{
     border-top-left-radius:20px;
     border-top-right-radius:20px;
 }`;
+const CloseContainer=styled.div`
+position:fixed;
+top:10px;
+right:10px;
+color:white;
+cursor:pointer;
+height:24px;
+transition:all 150ms ease-out;
+:hover{
+opacity:0.5;
+}
+
+`;

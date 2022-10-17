@@ -7,7 +7,7 @@ import {auth} from './firebase/firebase';
 import { useDispatch } from 'react-redux';
 import { setLogIn } from './reducers/userSlice';
 import Button from './components/button';
-import Post from './components/Post';
+import Post from './pages/Post';
 const App=()=>{
   const dispatch=useDispatch();
   useEffect(()=>{

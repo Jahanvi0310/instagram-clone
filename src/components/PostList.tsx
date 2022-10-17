@@ -4,7 +4,7 @@ import Avatar from '@mui/material/Avatar';
 import styled from 'styled-components';
 function Postlist() {
     const[shorten,setShorten]=useState(false) ;
-    const p = 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo, dolor. Reprehenderit repellendus incidunt, animi quidem rerum in alias officiis blanditiis praesentium, repudiandae aut, fugiat possimus labore dolorum fugit dicta natus!'
+    const p = 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo, dolor. Reprehenderit repellendus incidunt, animi quidem rerum in alias officiis blanditiis praesentium, repudiandae aut, fugiat possimus labore dolorum fugit dicta natus!';
     const pars= !shorten ?  p.slice(100): p ;
     return (
     <div>
