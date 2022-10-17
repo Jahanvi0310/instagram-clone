@@ -10,6 +10,7 @@ import { useDispatch } from "react-redux";
 import { setLogIn } from "./reducers/userSlice";
 import Header from "./components/Header";
 import Button from "./components/button";
+import StoriesComponent from "./components/storiesComponent";
 const App = () => {
   
   const dispatch = useDispatch();
@@ -30,11 +31,14 @@ const App = () => {
     <Container>
       <Router>
         <Routes>
+        <Route path="/story/:CategoryType"element={<StoriesComponent/>}/>
+          <Route path="/" element={<Home/>}/>
+          <Route path="/home" element={<Home/>}/>
+              <Route path='/signIn' element={<Input/>}/>
           <Route path="/home" element={<Home />} />
           <Route
             path="/logIn"
-            element={<Input/>
-            }
+            element={<Input/>}
           />
         </Routes>
       </Router>
