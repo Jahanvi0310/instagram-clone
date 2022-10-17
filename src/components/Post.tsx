@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import styled from 'styled-components';
 import db,{storage } from "../firebase/firebase";
+import { selectBoolean } from "../reducers/boolSlice";
 import { selectEmail, selectName, selectPhoto } from "../reducers/userSlice";
 const Post=()=>{
     const dispatch=useDispatch();
@@ -13,9 +14,10 @@ const Post=()=>{
     const [selectImage,setSelectImage]=useState<any>(null);
     const[input,setInput]=useState<any>(null);
     const[loading,setLoading]=useState<any>(false);
-    const name=useSelector(selectName);
-    const img=useSelector(selectPhoto);
-    const email=useSelector(selectEmail);
+    const name:any=useSelector(selectName);
+    const img:any=useSelector(selectPhoto);
+    const email:any=useSelector(selectEmail);
+    const boolean=useSelector(selectBoolean);
     const Submit=async(e:any)=>{
        e.preventDefault();
        if(input.length>1){
@@ -50,7 +52,7 @@ setSelectImage(event.target.result);
     console.log(selectImage);
     return(
         <>
-        <Container>
+        <Container user={boolean}>
             <Wrapper>
                 <TopSection>
                     {selectImage ? (
@@ -89,7 +91,9 @@ background-color: rgba(0,0,0,0.7);
     display:flex;
     justify-content: center;
     align-items:center;
-    transition: 150ms ease-out;`;
+    transition: 150ms ease-out;
+    
+   `;
 const Wrapper=styled.div`max-height: 550px;
 height: 450px;
 width: 400px;
