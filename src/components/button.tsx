@@ -3,7 +3,7 @@ import './Button.css'
 import {useDispatch} from 'react-redux';
 import {signInWithPopup} from "firebase/auth";
 import {auth,provider} from '../firebase/firebase';
-import {  setLogIn } from '../features/User/userSlice';
+import {  setLogIn } from '../reducers/userSlice';
 import { useNavigate } from "react-router-dom";
 interface Props{
 
