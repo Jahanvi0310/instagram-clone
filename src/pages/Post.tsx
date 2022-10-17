@@ -6,8 +6,8 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import styled from 'styled-components';
 import db,{storage } from "../firebase/firebase";
-import { selectBoolean, setBool } from "../reducers/boolSlice";
-import { selectEmail, selectName, selectPhoto } from "../reducers/userSlice";
+import { selectBoolean, setBool } from "../features/Bool/boolSlice";
+import { selectEmail, selectName, selectPhoto } from "../features/User/userSlice";
 const Post=()=>{
     const dispatch=useDispatch();
     const selectedImage:any=useRef(null);
@@ -54,10 +54,13 @@ setSelectImage(event.target.result);
         }
     };
     console.log(selectImage);
+    const close=()=>{
+      console.log( dispatch(setBool({boolean:false})));
+        }
     return(
         <>
-        <Container >
-            <CloseContainer onClick={()=> dispatch(setBool({boolean:false}))}>
+        <Container>
+            <CloseContainer onClick={close}>
 <CloseRounded/>
             </CloseContainer>
             <Wrapper>
@@ -99,6 +102,7 @@ background-color: rgba(0,0,0,0.7);
     justify-content: center;
     align-items:center;
     transition: 150ms ease-out;
+   
    `;
 const Wrapper=styled.div`max-height: 550px;
 height: 450px;

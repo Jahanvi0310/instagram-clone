@@ -4,7 +4,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { selectName, selectPhoto, setLogout } from '../reducers/userSlice';
+import { selectName, selectPhoto, setLogout } from '../features/User/userSlice';
 import { auth } from '../firebase/firebase';
 import { useNavigate } from 'react-router-dom';
 const ContactStuff=()=>{
