@@ -6,6 +6,7 @@ import Header from './components/Header';
 import Button from './components/button';
 import { setLogIn } from './reducers/userSlice';
 import './App.css';
+import StoryInput from './components/storyInput';
 // import Category from './datasource/category';
 import { BrowserRouter,Router,Routes, Route} from "react-router-dom";
 import Home from './components/home';
@@ -37,7 +38,9 @@ if(user){
               children="logIn"
               onClick={()=>console.log("you clicked")
               }/>}/>
+              <Route path="/storyInp" element={<StoryInput/>}/>
       </Routes>
+      
     {/* </Router> */}
     </BrowserRouter>
     </React.StrictMode>

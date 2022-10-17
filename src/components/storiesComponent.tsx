@@ -18,7 +18,7 @@ function StoriesComponent() {
               <div className="w-screen h-screen flex justify-center items-center">
                 <div
                   className="w-full h-full max-w-screen-md bg-no-repeat   bg-center  flex justify-center items-center flex-col"
-                  style={{ backgroundImage: `url(${storyItem.background})` }}
+                  style={{ backgroundImage: `url(${storyItem.postImage})` }}
                 >
                   <div
                     className="font-bold mt-0"
@@ -44,7 +44,7 @@ function StoriesComponent() {
                     className="flex justify-center items-center font-bold"
                     style={{ color: storyItem.textColor }}
                   >
-                    <span>{storyItem.title}</span>
+                    <span>{storyItem.caption}</span>
                   </div>
                   <div>
                     <img src={storyItem.postImage} />
