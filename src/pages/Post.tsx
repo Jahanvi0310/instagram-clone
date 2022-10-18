@@ -8,6 +8,9 @@ import styled from 'styled-components';
 import db,{storage } from "../firebase/firebase";
 import { selectBoolean, setBool } from "../features/Bool/boolSlice";
 import { selectEmail, selectName, selectPhoto } from "../features/User/userSlice";
+interface Props{
+    user:any;
+}
 const Post=()=>{
     const dispatch=useDispatch();
     const selectedImage:any=useRef(null);
@@ -59,7 +62,7 @@ setSelectImage(event.target.result);
         }
     return(
         <>
-        <Container>
+        <Container user={boolean}>
             <CloseContainer onClick={close}>
 <CloseRounded/>
             </CloseContainer>
@@ -90,7 +93,7 @@ setSelectImage(event.target.result);
     )
 }
 export default Post;
-const Container=styled.div`
+const Container=styled.div<Props>`
 background-color: rgba(0,0,0,0.7);
     position: fixed;
     top: 0;
@@ -102,7 +105,7 @@ background-color: rgba(0,0,0,0.7);
     justify-content: center;
     align-items:center;
     transition: 150ms ease-out;
-   
+   transform:${(props:any)=>(props.user ? `translateY(0)`: `translateY(-100%)`)};
    `;
 const Wrapper=styled.div`max-height: 550px;
 height: 450px;
