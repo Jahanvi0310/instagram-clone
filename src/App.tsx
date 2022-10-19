@@ -10,6 +10,7 @@ import { useDispatch } from "react-redux";
 import { setLogIn } from "./reducers/userSlice";
 import Header from "./components/Header";
 import Button from "./components/button";
+import Postlist from "./components/PostList";
 import StoriesComponent from "./components/storiesComponent";
 const App = () => {
   
@@ -39,7 +40,9 @@ const App = () => {
           <Route
             path="/logIn"
             element={<Input/>}
+            
           />
+          <Route path="/post"element={<Postlist />}/> 
         </Routes>
       </Router>
     </Container>
