@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, {  useState } from 'react';
 import { FavoriteBorder, MoreHorizOutlined, SendOutlined, Share } from '@mui/icons-material';
 import Avatar from '@mui/material/Avatar';
 import styled from 'styled-components';
-const Postlist=({avatar,img,email,id,p,name}:any)=> {
-    const[shorten,setShorten]=useState<any>(false) ;
-   const pars:any= !shorten ?  p.slice(100): p ;
+function Postlist({avatar,img,id,email,p,name}:any) {
+    const[shorten,setShorten]=useState(false) ;
+    
+    const pars= !shorten ?  p.slice(100): p ;
     return (
     <div>
     <Container>
@@ -35,8 +36,8 @@ const Postlist=({avatar,img,email,id,p,name}:any)=> {
 
                    
                         <p>
-                        {pars}
-                        {!shorten?(
+                         {pars}
+                         {!shorten?(
                             <>
                             <Button onClick={()=>setShorten(true)}>Read more</Button>
                             </>
@@ -106,10 +107,7 @@ svg{
     cursor:pointer;
 }
 .plane{
-<<<<<<< HEAD
 transform:rotate(-45deg);
-=======
->>>>>>> dda526ab937b82729c4c4673d59d5d49c0d05a04
 }
 `;
 const Caption=styled.div`

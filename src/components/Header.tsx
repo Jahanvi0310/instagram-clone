@@ -41,7 +41,7 @@ const Header=()=>{
             <FavoriteBorderRounded/>
         </List>
         <List>
-            <Avatar  src={photo}/>
+            <Avatar style={{cursor:'pointer'}} src={photo}/>
         </List>
     </Down>
     </>
