@@ -16,12 +16,13 @@ const Posts=()=> {
     <div>
         {selected.map((post:any)=>(
             <Postlist key={post?.id} 
-            p={post?.data().caption}
-            name={post.data().name}
-            avatar={post.data().img}
-            email={post.data().email}
-            id={post.id}
-            img={post.data().photo}
+          p={post?.data().caption}
+          name={post.data().name}
+          avatar={post.data().img}
+         email={post.data().email}
+        id={post.id}
+        img={post.data().photo}
+
             />
         ))}
       

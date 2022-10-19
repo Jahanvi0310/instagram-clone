@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { FavoriteBorder, MoreHorizOutlined, SendOutlined, Share } from '@mui/icons-material';
 import Avatar from '@mui/material/Avatar';
 import styled from 'styled-components';
-const Postlist=({avatar,img,email,id,photo,p,name}:any)=> {
-    const[shorten,setShorten]=useState(false) ;
-     const pars= !shorten ?  p.slice(" ","100"): p ;
+const Postlist=({avatar,img,email,id,p,name}:any)=> {
+    const[shorten,setShorten]=useState<any>(false) ;
+   const pars:any= !shorten ?  p.slice(100): p ;
     return (
-  
+    <div>
     <Container>
         <PostHeader>
             <User>
@@ -31,7 +31,9 @@ const Postlist=({avatar,img,email,id,photo,p,name}:any)=> {
             <div>
                 <span>
                     {name}
-                    {p.length>90 ? (
+                    {p.length>=90 ? (
+
+                   
                         <p>
                         {pars}
                         {!shorten?(
@@ -44,9 +46,9 @@ const Postlist=({avatar,img,email,id,photo,p,name}:any)=> {
                             </>
                         )}
                         </p>
-                        ):(
+                         ):(
                             <p>{p}</p>
-                        )}
+                         )}
                 </span>
             </div>
         </Caption>
@@ -57,7 +59,7 @@ const Postlist=({avatar,img,email,id,photo,p,name}:any)=> {
             <ButtonBase>Post</ButtonBase>
         </ComentSection>
     </Container>
-   
+    </div>
   )
 }
 export default Postlist
