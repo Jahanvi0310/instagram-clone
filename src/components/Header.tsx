@@ -4,8 +4,8 @@ import { AddCircleOutline, FavoriteBorderRounded, HomeRounded, SendRounded } fro
 import { Avatar } from '@mui/material';
 import {useSelector } from 'react-redux';
 import './Header.css';
-import {  selectPhoto } from '../features/User/userSlice';
-../reducer/userSlice
+import {  selectPhoto } from '../reducer/User/userSlice';
+
 const Header=()=>{
     
     
