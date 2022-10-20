@@ -6,8 +6,8 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import styled from 'styled-components';
 import db,{storage } from "../firebase/firebase";
-import { selectBoolean, setBool } from "../reducers/Bool/boolSlice";
-import { selectEmail, selectName, selectPhoto } from "../reducers/User/userSlice";
+import { selectBoolean, setBool } from "../reducers/boolSlice";
+import { selectEmail, selectName, selectPhoto } from "../reducers/userSlice";
 interface Props{
     user:any;
 }
