@@ -6,5 +6,7 @@ export const store=configureStore({
         user:userReducer,
         bool:boolReducer
 
-    },
-});
+    }
+  });
+  
+
