@@ -1,17 +1,17 @@
 import React from "react";
 import styled from "styled-components";
-import Contactstuff from "../components/contactstuff";
 import Header from "../components/Header";
 import Posts from "../components/Posts";
+
 const Home = () => {
   return (
     <>
       <Header />
       <Container>
         <Section>
-          <Posts />
-
-          <Contactstuff />
+        
+<Posts/>
+        
         </Section>
       </Container>
     </>

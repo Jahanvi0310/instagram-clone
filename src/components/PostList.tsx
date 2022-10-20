@@ -2,10 +2,36 @@ import React, {  useState } from 'react';
 import { FavoriteBorder, MoreHorizOutlined, SendOutlined, Share } from '@mui/icons-material';
 import Avatar from '@mui/material/Avatar';
 import styled from 'styled-components';
+import {useSelector} from 'react-redux';
+import {selectName, selectPhoto} from '../reducer/User/userSlice';
+import db from '../firebase/firebase';
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
+
 function Postlist({avatar,img,id,email,p,name}:any) {
-    const[shorten,setShorten]=useState(false) ;
-    
-    const pars= !shorten ?  p.slice(100): p ;
+    const[shorten,setShorten]=useState<any>(false) ;
+    const[loading,setLoading]=useState(false);
+    const [input,setInput]=useState(null);
+   const pars= !shorten ?  p.slice(100): p ;
+   const names=useSelector(selectName);
+  const rename=names?names.split(" "):names;
+   const photo=useSelector(selectPhoto);
+   const submit=async(e)=>{
+e.preventDefault();
+if(!names) return;
+if(input.length >1){
+  if(loading) return;
+  setLoading(true);
+  await addDoc(collection(db,'insta',id,'comment'),{
+    comment:input,
+    name:rename,
+photo:photo,
+timestamp:serverTimestamp(),
+
+  })
+} 
+setInput(" ");
+setLoading(false);
+   }
     return (
     <div>
       <Container>
@@ -52,13 +78,18 @@ function Postlist({avatar,img,id,email,p,name}:any) {
             </div>
         </Caption>
         <ComentDisplay></ComentDisplay>
-        <ComentSection>
+        <ComentSection onSubmit={submit}>
           <Avatar />
           <InputContainer>
             {" "}
-            <input type="text" />
+            <input type="text" 
+            value={input} 
+            disabled={!names} 
+            onChange={(e)=>setInput(e.target.value)}
+            />
           </InputContainer>
-          <ButtonBase>Post</ButtonBase>
+          <ButtonBase  
+          onClick={submit} disabled={loading}>{loading ? 'Posting' :'Post' }</ButtonBase>
         </ComentSection>
       </Container>
     </div>
@@ -140,11 +171,12 @@ const Caption = styled.div`
 //  const Share=styled.div``;
 
 const ComentDisplay = styled.div``;
-const ComentSection = styled.div`
+const ComentSection = styled.form` 
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin: 5px 0;
+  font-size:20px;
   div {
     margin: 0 5px;
   }
@@ -182,4 +214,8 @@ const InputContainer = styled.div`
     outline: none;
   }
 `;
-const ButtonBase = styled.div``;
+const ButtonBase = styled.div`
+background-color: rgba(59,130,246,1); 
+border-radius: 30px;
+cursor: pointer;
+color:white;`;

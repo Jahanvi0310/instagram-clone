@@ -50,7 +50,7 @@ const App = () => {
     </Router>
     
      
-
+<Posts/>
     </Container>
   );
 };
