@@ -5,7 +5,7 @@ import Home from './pages/Home'
 import { onAuthStateChanged } from 'firebase/auth';
 import {auth} from './firebase/firebase';
 import { useDispatch } from 'react-redux';
-import { setLogIn } from './features/User/userSlice';
+import { setLogIn } from './reducer/User/userSlice';
 import Button from './components/button';
 import Post from './pages/Post';
 const App=()=>{

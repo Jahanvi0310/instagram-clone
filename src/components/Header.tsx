@@ -5,7 +5,7 @@ import { Avatar } from '@mui/material';
 import {useSelector } from 'react-redux';
 import './Header.css';
 import {  selectPhoto } from '../features/User/userSlice';
-
+../reducer/userSlice
 const Header=()=>{
     
     
