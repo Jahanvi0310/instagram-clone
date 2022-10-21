@@ -1,12 +1,16 @@
-import React, {  useState } from 'react';
+import React, {  useEffect, useState } from 'react';
 import { FavoriteBorder, MoreHorizOutlined, SendOutlined, Share } from '@mui/icons-material';
 import Avatar from '@mui/material/Avatar';
 import styled from 'styled-components';
 import {useSelector} from 'react-redux';
 import {selectName, selectPhoto} from '../reducer/User/userSlice';
 import db from '../firebase/firebase';
-import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
-
+import { addDoc, collection, onSnapshot, orderBy, serverTimestamp,query } from 'firebase/firestore';
+import Comments from './Comments';
+interface Props{
+  disabled:boolean;
+  
+}
 function Postlist({avatar,img,id,email,p,name}:any) {
     const[shorten,setShorten]=useState<any>(false) ;
     const[loading,setLoading]=useState(false);
@@ -15,6 +19,7 @@ function Postlist({avatar,img,id,email,p,name}:any) {
    const names=useSelector(selectName);
   const rename=names?names.split(" "):names;
    const photo=useSelector(selectPhoto);
+   const[comment,setComment]=useState([]);
    const submit=async(e)=>{
 e.preventDefault();
 if(!names) return;
@@ -31,7 +36,19 @@ timestamp:serverTimestamp(),
 } 
 setInput(" ");
 setLoading(false);
-   }
+   };
+   useEffect(()=>{
+    return onSnapshot(
+      query(
+        collection(db,"insta",id,"comment"),
+        orderBy("timestamp","asc")
+      ),
+      (snapshot)=>{
+        setComment(snapshot.docs);
+      }
+    );
+   },[id]);
+   
     return (
     <div>
       <Container>
@@ -77,7 +94,17 @@ setLoading(false);
                 </span>
             </div>
         </Caption>
-        <ComentDisplay></ComentDisplay>
+        <ComentDisplay>
+          {comment.map((post)=>(
+            <Comments
+             key={post.id}
+              caption={post.data().comment}
+               name={post.data().name} 
+               avatar={post.data().photo} 
+               id={post.id}/>
+          ))}
+         
+        </ComentDisplay>
         <ComentSection onSubmit={submit}>
           <Avatar />
           <InputContainer>
@@ -214,7 +241,7 @@ const InputContainer = styled.div`
     outline: none;
   }
 `;
-const ButtonBase = styled.div`
+const ButtonBase = styled.div<Props>`
 background-color: rgba(59,130,246,1); 
 border-radius: 30px;
 cursor: pointer;

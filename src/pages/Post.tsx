@@ -17,10 +17,10 @@ const Post=()=>{
     const [selectImage,setSelectImage]=useState<any>(null);
     const[input,setInput]=useState<any>(null);
     const[loading,setLoading]=useState<any>(false);
-    const name:any=useSelector(selectName);
-    const img:any=useSelector(selectPhoto);
-    const email:any=useSelector(selectEmail);
-    const boolean:any=useSelector(selectBoolean);
+    const name=useSelector(selectName);
+    const img=useSelector(selectPhoto);
+    const email=useSelector(selectEmail);
+    const boolean=useSelector(selectBoolean);
     const Submit=async(e:any)=>{
        e.preventDefault();
        if(input.length>1){
