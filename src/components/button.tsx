@@ -3,7 +3,7 @@ import './Button.css'
 import {useDispatch} from 'react-redux';
 import {signInWithPopup} from "firebase/auth";
 import {auth,provider} from '../firebase/firebase';
-import {  setLogIn } from '../reducers/userSlice';
+import { setLogIn } from '../reducer/User/userSlice';
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faEnvelopeSquare } from '@fortawesome/free-solid-svg-icons'

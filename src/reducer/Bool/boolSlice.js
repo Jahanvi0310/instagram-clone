@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState={
-    bool:false,
+    bools:true,
 };
 const boolSlice=createSlice({
     name:'bool',

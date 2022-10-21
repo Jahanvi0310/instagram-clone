@@ -4,12 +4,11 @@ import { AddCircleOutline, FavoriteBorderRounded, HomeRounded, SendRounded } fro
 import { Avatar } from '@mui/material';
 import {useSelector } from 'react-redux';
 import './Header.css';
-
-import { selectName, selectPhoto } from '../reducers/userSlice';
+import {  selectPhoto } from '../reducer/User/userSlice';
 
 const Header=()=>{
     
-    const username = useSelector(selectName);
+    
     const photo=useSelector(selectPhoto);
     
     
@@ -42,7 +41,7 @@ const Header=()=>{
             <FavoriteBorderRounded/>
         </List>
         <List>
-            <Avatar  src={photo}/>
+            <Avatar style={{cursor:'pointer'}} src={photo}/>
         </List>
     </Down>
     </>
@@ -128,14 +127,4 @@ display: flex;
     align-items: center;
     justify-content:space-around;
     `;
-    const Buttons=styled.button`
-    padding:10px 20px;
-    border-radius:20px;
-    border:none;
-    font-weight:600;
-    color:white;
-    cursor:pointer;
-    background-color:rgba(59,130,246,1);
-    
-    `;
-
+   

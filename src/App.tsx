@@ -6,11 +6,12 @@ import Input from "./components/input";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase/firebase";
 import { useDispatch } from "react-redux";
-import { setLogIn } from "./reducers/userSlice";
+import { setLogIn } from "./reducer/User/userSlice";
 import Header from "./components/Header";
 import Button from "./components/button";
 import Postlist from "./components/PostList";
 import StoriesComponent from "./components/storiesComponent";
+import Posts from "./components/Posts";
 const App = () => {
   
   const dispatch = useDispatch();
@@ -28,6 +29,7 @@ const App = () => {
     });
   }, []);
   return (
+
     <Container>
       <Router>
         <Routes>
@@ -42,8 +44,13 @@ const App = () => {
             
           />
           <Route path="/post"element={<Postlist />}/> 
+          <Route path='/posts' element={<Posts/>}/>
         </Routes>
-      </Router>
+
+    </Router>
+    
+     
+
     </Container>
   );
 };
