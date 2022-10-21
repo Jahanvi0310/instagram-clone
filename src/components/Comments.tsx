@@ -15,12 +15,12 @@ const Comments=({name,avatar,id,caption}:any)=>{
                     {comment ? (
                         <>
                         {commentInput}
-                        <Button>Read More</Button>
+                        <Button onClick={()=>setComment(true)}>Read More</Button>
                         </>
                     ):(
                         <>
                         {commentInput}
-                        <Button>Read Less </Button>
+                        <Button onClick={()=>setComment(false)}>Read Less </Button>
                         </>
                     )}
                     </>
@@ -34,5 +34,34 @@ const Comments=({name,avatar,id,caption}:any)=>{
 }
 export default Comments;
 const Wrapper=styled.div``;
-const UserStuff=styled.div``;
-const Button=styled.div``;
+const UserStuff=styled.div`
+display:flex;
+align-items:flex-start;
+height:100%;
+position:relative;
+span{
+    margin-left:15px;
+    font-weight:bold;
+    font-size:15px;
+    display:flex;
+    padding:20px 0px;
+   p{
+    margin-left:15px;
+    font-weight:500;
+    font-size:14px;
+    line-height:18px;
+    max-width:400px;
+    flex-wrap:wrap;
+    color:rgba(75,85,99,1);
+
+
+   } 
+}
+div{
+    position:realtive;
+    top:10px;
+    left:2px;
+}`;
+const Button=styled.div`
+color: rgba(37, 99, 235, 1);
+cursor: pointer;`;

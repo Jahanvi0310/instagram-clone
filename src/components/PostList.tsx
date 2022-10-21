@@ -181,6 +181,7 @@ const Caption = styled.div`
       disply: flex;
       margin-left: 5px;
       color: black;
+      font-size:40px;
     }
     p {
       display: flex;
@@ -197,7 +198,11 @@ const Caption = styled.div`
 //  const Avatar=styled.div``;
 //  const Share=styled.div``;
 
-const ComentDisplay = styled.div``;
+const ComentDisplay = styled.div`
+max-height:110px;
+margin:20px 0px;
+overflow-y:auto;
+`;
 const ComentSection = styled.form` 
   display: flex;
   align-items: center;
@@ -232,17 +237,16 @@ const InputContainer = styled.div`
   flex: 1;
   display: flex;
   align-items: center;
+ 
   input {
     width: 100%;
     border: none;
     border-bottom: 1px solid rgba(107, 114, 128, 1);
+    font-size:20px;
   }
   :focus {
     outline: none;
   }
 `;
 const ButtonBase = styled.div<Props>`
-background-color: rgba(59,130,246,1); 
-border-radius: 30px;
-cursor: pointer;
-color:white;`;
+cursor:pointer;`;

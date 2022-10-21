@@ -12,7 +12,6 @@ import Button from "./components/button";
 import Postlist from "./components/PostList";
 import StoriesComponent from "./components/storiesComponent";
 import Posts from "./components/Posts";
-import Post from './pages/Post';
 const App = () => {
   
   const dispatch = useDispatch();
@@ -52,7 +51,7 @@ const App = () => {
     
      
 <Posts/>
-<Post/>
+
     </Container>
   );
 };
