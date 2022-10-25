@@ -1,16 +1,15 @@
 import React, {  useEffect, useState } from 'react';
-import { FavoriteBorder, MoreHorizOutlined, SendOutlined, Share } from '@mui/icons-material';
+import { Favorite, FavoriteBorder, MoreHorizOutlined, SendOutlined, Share } from '@mui/icons-material';
 import Avatar from '@mui/material/Avatar';
 import styled from 'styled-components';
 import {useSelector} from 'react-redux';
-import {selectName, selectPhoto} from '../reducer/User/userSlice';
+import {selectName, selectPhoto, selectUid} from '../reducer/User/userSlice';
 import db from '../firebase/firebase';
-import { addDoc, collection, onSnapshot, orderBy, serverTimestamp,query } from 'firebase/firestore';
+import { addDoc, collection, onSnapshot, orderBy, serverTimestamp,query, deleteDoc,doc, setDoc } from 'firebase/firestore';
 import Comments from './Comments';
 interface Props{
   disabled:boolean;
-  
-}
+  }
 function Postlist({avatar,img,id,email,p,name}:any) {
     const[shorten,setShorten]=useState<any>(false) ;
     const[loading,setLoading]=useState(false);
@@ -20,6 +19,9 @@ function Postlist({avatar,img,id,email,p,name}:any) {
   const rename=names?names.split(" "):names;
    const photo=useSelector(selectPhoto);
    const[comment,setComment]=useState([]);
+   const [liked,setLiked]=useState(false);
+   const userId=useSelector(selectUid);
+   const [likes,setLikes]=useState([]);
    const submit=async(e)=>{
 e.preventDefault();
 if(!names) return;
@@ -48,7 +50,25 @@ setLoading(false);
       }
     );
    },[id]);
-   
+   useEffect(()=>{
+    return onSnapshot(collection(db,'insta',id,'likes'),(snapshot)=>{
+setLikes(snapshot.docs);
+    })
+   },[id]);
+   useEffect(()=>{
+    setLiked(likes.findIndex((likes)=>likes.id===userId)!==-1);
+   },[userId,likes]);
+   const Post=async ()=>{
+    if(liked){
+await deleteDoc(doc(db,'insta',id,'likes',userId));
+    }
+    else{
+      await setDoc(doc(db,'insta',id,'likes',userId),{
+        name:names,
+      });
+    }
+   };
+
     return (
     <div>
       <Container>
@@ -64,6 +84,9 @@ setLoading(false);
         </PostContainer>
 
         <Social>
+          {!liked ? (<FavoriteBorder onClick={Post}/>):(
+            <Favorite style={{color:'red'}} onClick={Post}/>
+          )}
           <FavoriteBorder />
           <SendOutlined className="plane" />
           <Share />
