@@ -39,7 +39,7 @@ const ContactStuff=()=>{
 export default ContactStuff;
 
 const Container=styled.div`
-width:400px;
+width:300px;
 border-radius:20px;
 background-color:#ffffff;
 height:500px;

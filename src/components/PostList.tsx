@@ -22,7 +22,7 @@ function Postlist({avatar,img,id,email,p,name}:any) {
    const [liked,setLiked]=useState(false);
    const userId=useSelector(selectUid);
    const [likes,setLikes]=useState([]);
-   const submit=async(e)=>{
+   const submit=async(e:any)=>{
 e.preventDefault();
 if(!names) return;
 if(input.length >1){
@@ -84,10 +84,12 @@ await deleteDoc(doc(db,'insta',id,'likes',userId));
         </PostContainer>
 
         <Social>
-          {!liked ? (<FavoriteBorder onClick={Post}/>):(
+          {!liked ? (
+          <FavoriteBorder onClick={Post}/>
+          ):(
             <Favorite style={{color:'red'}} onClick={Post}/>
           )}
-          <FavoriteBorder />
+         <Absoloute>{likes.length>0 && <p>{likes.length} like</p>}</Absoloute>
           <SendOutlined className="plane" />
           <Share />
         </Social>
@@ -148,7 +150,7 @@ await deleteDoc(doc(db,'insta',id,'likes',userId));
 export default Postlist;
 
 const Container = styled.div`
-  max-width: 600px;
+  max-width: 400px;
   margin: 0 auto;
   background-color: #ffffff;
   padding: 10px 0;
@@ -157,6 +159,7 @@ const Container = styled.div`
   justify-content: center;
   border: 1px soli rgba(219, 219, 219, 1);
   box-shadow: 0 1px 2px 0 rgba(0 0 0 /0.05);
+  margin-top:2rem;
 `;
 const PostHeader = styled.div`
   display: flex;
@@ -184,6 +187,7 @@ const Social = styled.div`
 display:flex;
 margin-left:5px;
 align-items:center;
+position:relative;
 svg{
     margin:0 10px;
     font-size:25px; 
@@ -273,3 +277,13 @@ const InputContainer = styled.div`
 `;
 const ButtonBase = styled.div<Props>`
 cursor:pointer;`;
+const Absoloute=styled.div`
+position:absolute;
+top:20px;
+left:0px;
+right:0px;
+width:20vh;
+p{
+  margin-left:10px;
+  font-size:small;
+}`;
