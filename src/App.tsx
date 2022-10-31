@@ -44,13 +44,13 @@ const App = () => {
             
           />
           <Route path="/post"element={<Postlist />}/> 
-          
+          <Route path="/posts" element={<Post/>}/>
         </Routes>
 
     </Router>
     
      
-<Post/>
+
 
     </Container>
   );
