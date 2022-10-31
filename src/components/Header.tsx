@@ -6,14 +6,25 @@ import {useSelector } from 'react-redux';
 import './Header.css';
 import {  selectPhoto } from '../reducer/User/userSlice';
 import ContactStuff from './contactstuff';
+
+import { useNavigate } from 'react-router-dom';
 const Header=()=>{
     
     const [isShown,setShown]=useState<any>(false);
+   const Navigate=useNavigate();
     const photo=useSelector(selectPhoto);
     
     const handleClick=()=>{
         setShown(current=>!current)
+       
     }
+    const handleclick=()=>{
+     Navigate('/posts');
+    }
+    
+        
+        
+    
 
     return(
         <div className="Container">
@@ -37,10 +48,11 @@ const Header=()=>{
             <HomeRounded/>
         </List>
         <List>
-            <AddCircleOutline/>
+            <AddCircleOutline onClick={handleclick}/>
+          
         </List>
         <List>
-            <FavoriteBorderRounded/>
+            <FavoriteBorderRounded />
         </List>
         <List>
         <Avatar style={{cursor:"pointer"}}  onClick={handleClick} src={photo}/>

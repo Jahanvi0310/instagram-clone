@@ -68,6 +68,7 @@ await deleteDoc(doc(db,'insta',id,'likes',userId));
       });
     }
    };
+   
 
     return (
     <div>
@@ -77,7 +78,7 @@ await deleteDoc(doc(db,'insta',id,'likes',userId));
                 <Avatar src={avatar}/>
                 <span>{name}</span>
             </User>
-            <MoreHorizOutlined/>
+            <MoreHorizOutlined onClick={()=>{deleteDoc(doc(db,'insta',id))}} style={{cursor:'pointer'}}/>
         </PostHeader>
         <PostContainer>
             <img loading='lazy' src={img} alt='post'/>

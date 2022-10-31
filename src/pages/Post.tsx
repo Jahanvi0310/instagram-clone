@@ -8,6 +8,8 @@ import styled from 'styled-components';
 import db,{storage } from "../firebase/firebase";
 import { selectBoolean, setBool } from "../reducer/Bool/boolSlice";
 import { selectEmail, selectName, selectPhoto } from "../reducer/User/userSlice";
+import {useNavigate} from 'react-router-dom';
+
 interface Props{
     user:any;
 }
@@ -21,6 +23,7 @@ const Post=()=>{
     const img=useSelector(selectPhoto);
     const email=useSelector(selectEmail);
     const boolean=useSelector(selectBoolean);
+    const Navigate=useNavigate();
     const Submit=async(e:any)=>{
        e.preventDefault();
        if(input.length>1){
@@ -58,7 +61,8 @@ setSelectImage(event.target.result);
     };
     console.log(selectImage);
     const close=()=>{
-      console.log( dispatch(setBool({boolean:false})));
+     dispatch(setBool({boolean:false}));
+      Navigate('/Home');
         }
     return(
         <>
