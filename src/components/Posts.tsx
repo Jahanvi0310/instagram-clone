@@ -1,6 +1,6 @@
 import { collection, onSnapshot, orderBy,query } from 'firebase/firestore';
 import React,{useEffect, useState} from 'react'
-import Postlist from './PostList'
+import Postlist from './PostList';
 import db from '../firebase/firebase';
 
 const Posts=()=> {

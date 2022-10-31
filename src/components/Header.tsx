@@ -1,17 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from "styled-components"
 import { AddCircleOutline, FavoriteBorderRounded, HomeRounded, SendRounded } from '@mui/icons-material';
 import { Avatar } from '@mui/material';
 import {useSelector } from 'react-redux';
 import './Header.css';
 import {  selectPhoto } from '../reducer/User/userSlice';
-
+import ContactStuff from './contactstuff';
 const Header=()=>{
     
-    
+    const [isShown,setShown]=useState<any>(false);
     const photo=useSelector(selectPhoto);
     
-    
+    const handleClick=()=>{
+        setShown(current=>!current)
+    }
 
     return(
         <div className="Container">
@@ -41,7 +43,8 @@ const Header=()=>{
             <FavoriteBorderRounded/>
         </List>
         <List>
-            <Avatar style={{cursor:'pointer'}} src={photo}/>
+        <Avatar style={{cursor:"pointer"}}  onClick={handleClick} src={photo}/>
+            {isShown && <ContactStuff/>}
         </List>
     </Down>
     </>

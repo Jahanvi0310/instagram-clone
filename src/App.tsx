@@ -2,16 +2,16 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import Input from "./components/input";
+import Input from "./Components/input";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase/firebase";
 import { useDispatch } from "react-redux";
 import { setLogIn } from "./reducer/User/userSlice";
-import Header from "./components/Header";
-import Button from "./components/button";
-import Postlist from "./components/PostList";
-import StoriesComponent from "./components/storiesComponent";
-import Posts from "./components/Posts";
+import Header from "./Components/Header";
+import Button from "./Components/button";
+import Postlist from "./Components/PostList";
+import StoriesComponent from "./Components/storiesComponent";
+import Post from "./pages/Post";
 const App = () => {
   
   const dispatch = useDispatch();
@@ -44,12 +44,13 @@ const App = () => {
             
           />
           <Route path="/post"element={<Postlist />}/> 
-          <Route path='/posts' element={<Posts/>}/>
+          
         </Routes>
 
     </Router>
     
      
+<Post/>
 
     </Container>
   );
