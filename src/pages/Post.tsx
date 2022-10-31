@@ -61,7 +61,7 @@ setSelectImage(event.target.result);
     };
     console.log(selectImage);
     const close=()=>{
-      console.log( dispatch(setBool({boolean:false})));
+     dispatch(setBool({boolean:false}));
       Navigate('/Home');
         }
     return(
