@@ -1,5 +1,5 @@
 import React, {  useEffect, useState } from 'react';
-import { Favorite, FavoriteBorder, MoreHorizOutlined, SendOutlined, Share } from '@mui/icons-material';
+import { CloseRounded, Favorite, FavoriteBorder, MoreHorizOutlined, SendOutlined, Share } from '@mui/icons-material';
 import Avatar from '@mui/material/Avatar';
 import styled from 'styled-components';
 import {useSelector} from 'react-redux';
@@ -78,7 +78,7 @@ await deleteDoc(doc(db,'insta',id,'likes',userId));
                 <Avatar src={avatar}/>
                 <span>{name}</span>
             </User>
-            <MoreHorizOutlined onClick={()=>{deleteDoc(doc(db,'insta',id))}} style={{cursor:'pointer'}}/>
+            <CloseRounded onClick={()=>{deleteDoc(doc(db,'insta',id))}} style={{cursor:'pointer'}}/>
         </PostHeader>
         <PostContainer>
             <img loading='lazy' src={img} alt='post'/>
@@ -98,7 +98,7 @@ await deleteDoc(doc(db,'insta',id,'likes',userId));
         <Caption>
             <div>
                 <span>
-                    {name}
+                    posted by::{name}
                     {p.length>=90 ? (
 
                    
@@ -115,7 +115,7 @@ await deleteDoc(doc(db,'insta',id,'likes',userId));
                         )}
                         </p>
                          ):(
-                            <p>{p}</p>
+                            <p>Caption:{p}</p>
                          )}
                 </span>
             </div>
@@ -209,7 +209,7 @@ const Caption = styled.div`
       disply: flex;
       margin-left: 5px;
       color: black;
-      font-size:40px;
+      
     }
     p {
       display: flex;
@@ -220,6 +220,7 @@ const Caption = styled.div`
       max-width: 490px;
       margin-left: 8px;
       color: rgba(75, 85, 99, 1);
+      
     }
   }
 `;

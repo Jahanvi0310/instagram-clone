@@ -41,19 +41,15 @@ const Header=()=>{
 {/* {username?( */}
     <>
     <div className="List">
-        <SendRounded className="rotate"/>
+        
     </div>
     <Down>
-        <List>
-            <HomeRounded/>
-        </List>
+        
         <List>
             <AddCircleOutline onClick={handleclick}/>
           
         </List>
-        <List>
-            <FavoriteBorderRounded />
-        </List>
+        
         <List>
         <Avatar style={{cursor:"pointer"}}  onClick={handleClick} src={photo}/>
             {isShown && <ContactStuff/>}
