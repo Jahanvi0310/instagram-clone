@@ -2,7 +2,7 @@ import React from 'react'
 // import fs from 'fs';
 
 const storyInput = () => {
-    const fs = require('fs');
+    // const fs = require('fs');
   return (
     
 <div  className='flex justify-center items-center'>

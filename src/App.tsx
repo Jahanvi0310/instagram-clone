@@ -3,15 +3,17 @@ import { onAuthStateChanged } from 'firebase/auth';
 import {auth} from './firebase/firebase';
 import { useDispatch } from 'react-redux';
 import Header from './components/Header';
+import Homee from './pages/homee';
 import Button from './components/button';
 import { setLogIn } from './reducers/userSlice';
 import './App.css';
 import StoryInput from './components/storyInput';
 // import Category from './datasource/category';
 import { BrowserRouter,Router,Routes, Route} from "react-router-dom";
+// import { useNavigate,Link} from "react-router-dom";
 import Home from './components/home';
 import StoriesComponent from './components/storiesComponent'
-
+import AddEditUser from './pages/addEditUser';
 function App() {
   const dispatch=useDispatch();
   useEffect(()=>{
@@ -25,12 +27,14 @@ if(user){
 }
 }
   )},[]);
+  // const navigate=useNavigate();
   return (
     <React.StrictMode>
       <BrowserRouter>
     {/* <Router> */}
       <Routes>
-          <Route path="/story/:CategoryType"element={<StoriesComponent/>}/>
+          <Route path="/story/:Caption"element={<StoriesComponent/>}/>
+          {/* <Route path="/homee" element={<Homee/>}/> */}
           <Route path="/" element={<Home/>}/>
           <Route path="/home" element={<Home/>}/>
               <Route path='/signIn' element={<Button
@@ -39,6 +43,9 @@ if(user){
               onClick={()=>console.log("you clicked")
               }/>}/>
               <Route path="/storyInp" element={<StoryInput/>}/>
+            <Route path='/add' element={<AddEditUser/>}/>
+            <Route path='/update/:id' element={<AddEditUser/>}/> 
+            {/* <Route path="/any" element={<Home/>}/> */}
       </Routes>
       
     {/* </Router> */}

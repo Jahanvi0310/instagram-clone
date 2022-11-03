@@ -1,29 +1,20 @@
-// Import the functions you need from the SDKs you need
 import { getApp, initializeApp,getApps } from "firebase/app";
 import {getFirestore} from 'firebase/firestore';
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import {getStorage} from 'firebase/storage';
-// import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyATKhF3PhSH9lknBUbDHU2rGoJpkb4tUrE",
-  authDomain: "instagram-redux-b4fa0.firebaseapp.com",
-  projectId: "instagram-redux-b4fa0",
-  storageBucket: "instagram-redux-b4fa0.appspot.com",
-  messagingSenderId: "94190654596",
-  appId: "1:94190654596:web:5b4258175a3ab24d9f5ed1",
-  measurementId: "G-V8G48V0HK7"
+  apiKey: "AIzaSyBIsKZ4gZgNIV_RcTaaeUxUS3NhSOTZRFo",
+  authDomain: "crud-story-4eb3a.firebaseapp.com",
+  projectId: "crud-story-4eb3a",
+  storageBucket: "crud-story-4eb3a.appspot.com",
+  messagingSenderId: "2782281551",
+  appId: "1:2782281551:web:f87893db1ef6a3b46c8f3a"
 };
 
-// Initialize Firebase
 !getApps().length ? initializeApp(firebaseConfig):getApp();
-const db=getFirestore();
-const storage=getStorage();
+const app=initializeApp(firebaseConfig);
+export const db=getFirestore(app);
+const storage=getStorage(app);
 const auth=getAuth();
 const provider=new GoogleAuthProvider();
-export default db;
 export {storage,auth,provider};
