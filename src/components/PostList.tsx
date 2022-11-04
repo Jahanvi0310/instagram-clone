@@ -150,7 +150,7 @@ await deleteDoc(doc(db,'insta',id,'likes',userId));
 export default Postlist;
 
 const Container = styled.div`
-  max-width: 400px;
+  max-width: 500px;
   margin: 0 auto;
   background-color: #ffffff;
   padding: 10px 0;
@@ -159,7 +159,8 @@ const Container = styled.div`
   justify-content: center;
   border: 1px soli rgba(219, 219, 219, 1);
   box-shadow: 0 1px 2px 0 rgba(0 0 0 /0.05);
-  margin-top:2rem;
+  margin-top:10px;
+  
 `;
 const PostHeader = styled.div`
   display: flex;

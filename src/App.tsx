@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
@@ -12,11 +12,9 @@ import Button from "./Components/button";
 import Postlist from "./Components/PostList";
 import StoriesComponent from "./Components/storiesComponent";
 import Post from "./pages/Post";
-import { createContext } from 'react';
 
-export const ThemeContext:React.Context<any>=createContext(null);
 const App = () => {
-  const[theme,setTheme]=useState('dark');
+  
   const dispatch = useDispatch();
   useEffect(() => {
     onAuthStateChanged(auth, async (user) => {
@@ -31,13 +29,11 @@ const App = () => {
       }
     });
   }, []);
-  const toogleTheme=()=>{
-    setTheme((curr)=>(curr ==="light"?"dark":"light"));
-   } 
+ 
   return (
    
-<ThemeContext.Provider value={{theme,toogleTheme}}>
-<Container  id={theme}>
+
+<Container >
       <Router>
         <Routes>
         <Route path="/story/:CategoryType"element={<StoriesComponent/>}/>
@@ -60,7 +56,7 @@ const App = () => {
 
 
     </Container>
-    </ThemeContext.Provider>
+    
    
   );
 };
