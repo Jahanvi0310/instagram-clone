@@ -6,7 +6,7 @@ import { createContext } from 'react';
 
 export const ThemeContext:React.Context<any>=createContext(null);
 const Home = () => {
-  const[theme,setTheme]=useState('dark');
+  const[theme,setTheme]=useState('');
   const toogleTheme=()=>{
     setTheme((curr)=>(curr ==="light"?"dark":"light"));
    } 

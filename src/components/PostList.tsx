@@ -1,5 +1,5 @@
 import React, {  useEffect, useState } from 'react';
-import { CloseRounded, Favorite, FavoriteBorder} from '@mui/icons-material';
+import {  Favorite, FavoriteBorder} from '@mui/icons-material';
 import Avatar from '@mui/material/Avatar';
 import styled from 'styled-components';
 import {useSelector} from 'react-redux';
@@ -7,6 +7,8 @@ import {selectName, selectPhoto, selectUid} from '../reducer/User/userSlice';
 import db from '../firebase/firebase';
 import { addDoc, collection, onSnapshot, orderBy, serverTimestamp,query, deleteDoc,doc, setDoc } from 'firebase/firestore';
 import Comments from './Comments';
+import { MoreHorizOutlined } from '@material-ui/icons';
+import './Postlist.css';
 interface Props{
   disabled:boolean;
   }
@@ -22,6 +24,7 @@ function Postlist({avatar,img,id,email,p,name}:any) {
    const [liked,setLiked]=useState(false);
    const userId=useSelector(selectUid);
    const [likes,setLikes]=useState([]);
+   const[open,setOpen]=useState(false);
    const submit=async(e:any)=>{
 e.preventDefault();
 if(!names) return;
@@ -68,7 +71,9 @@ await deleteDoc(doc(db,'insta',id,'likes',userId));
       });
     }
    };
-   
+   const handleOpen=()=>{
+    setOpen(!open);
+   }
 
     return (
     <div>
@@ -78,7 +83,16 @@ await deleteDoc(doc(db,'insta',id,'likes',userId));
                 <Avatar src={avatar}/>
                 <span>{name}</span>
             </User>
-            <CloseRounded onClick={()=>{deleteDoc(doc(db,'insta',id))}} style={{cursor:'pointer'}}/>
+            <MoreHorizOutlined onClick={handleOpen}/>
+            {open ? (
+        <ul >
+          <li >
+            <a onClick={()=>{deleteDoc(doc(db,'insta',id))}} style={{cursor:'pointer'}}>Delete Post</a>
+          </li>
+         
+        </ul>
+      ) : null}
+      
         </PostHeader>
         <PostContainer>
             <img loading='lazy' src={img} alt='post'/>
@@ -131,7 +145,7 @@ await deleteDoc(doc(db,'insta',id,'likes',userId));
          
         </ComentDisplay>
         <ComentSection onSubmit={submit}>
-          <Avatar src={avatar}/>
+          <Avatar src={photo}/>
           <InputContainer>
             {" "}
             <input type="text" 
@@ -157,8 +171,8 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border: 1px soli rgba(219, 219, 219, 1);
-  box-shadow: 0 1px 2px 0 rgba(0 0 0 /0.05);
+  border: 1px solid rgba(219, 219, 219, 1);
+  box-shadow: 3px 1px 2px 0 rgba(0 0 0 /0.05);
   margin-top:10px;
   
 `;
@@ -289,3 +303,4 @@ p{
   margin-left:10px;
   font-size:small;
 }`;
+const DropDown=styled.div``;

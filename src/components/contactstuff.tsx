@@ -46,6 +46,8 @@ height:500px;
 position:fixed;
 top:4rem;
 right:10px;
+border: 1px solid rgba(219, 219, 219, 1);
+  box-shadow: 3px 1px 2px 0 rgba(0 0 0 /0.05);
 `;
 const Wrapper=styled.div`
 button{

@@ -6,8 +6,10 @@ import React, {
 } from "react";
 import Button from "./button";
 import "./input.css";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 const Input: FC = () => {
+  const auth = getAuth();
   const [inputfield, setInput] = useState<string>();
   const [password, setpassword] = useState<boolean>();
   const [passInput, setPassInput] = useState<string>();
@@ -31,6 +33,23 @@ const Input: FC = () => {
     }
     setPasswordType("password");
   };
+  const logIn=()=>{
+    
+
+
+signInWithEmailAndPassword(auth, inputfield, passInput)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    // ...
+    console.log(user);
+    alert("submited");
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    alert(errorCode)
+  });
+  }
   return (
     <div className="container c1">
       <div className="box upper">
@@ -69,7 +88,7 @@ const Input: FC = () => {
             Password={password}
             className="login-button"
             children="log In"
-            onClick={() => console.log("you clicked")}
+            onClick={logIn}
           />
         </form>
       </div>
