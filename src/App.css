@@ -95,3 +95,9 @@ justify-content:space-between
     border-radius: 10px;
     height: 20px;
 }
+#light{
+  background-color: #f3ebf6;
+}
+#dark{
+  background-color: black;
+}

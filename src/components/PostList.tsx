@@ -1,5 +1,5 @@
 import React, {  useEffect, useState } from 'react';
-import { CloseRounded, Favorite, FavoriteBorder, MoreHorizOutlined, SendOutlined, Share } from '@mui/icons-material';
+import { CloseRounded, Favorite, FavoriteBorder} from '@mui/icons-material';
 import Avatar from '@mui/material/Avatar';
 import styled from 'styled-components';
 import {useSelector} from 'react-redux';
@@ -91,8 +91,7 @@ await deleteDoc(doc(db,'insta',id,'likes',userId));
             <Favorite style={{color:'red'}} onClick={Post}/>
           )}
          <Absoloute>{likes.length>0 && <p>{likes.length} like</p>}</Absoloute>
-          <SendOutlined className="plane" />
-          <Share />
+       
         </Social>
 
         <Caption>
@@ -132,7 +131,7 @@ await deleteDoc(doc(db,'insta',id,'likes',userId));
          
         </ComentDisplay>
         <ComentSection onSubmit={submit}>
-          <Avatar />
+          <Avatar src={avatar}/>
           <InputContainer>
             {" "}
             <input type="text" 
