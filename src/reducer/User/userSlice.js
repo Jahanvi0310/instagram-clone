@@ -22,10 +22,16 @@ const userSlice=createSlice({
             state.uid=null;
 
         },
+        saveUser:(state,action)=>{
+            state.name=action.payload.name;
+            state.photo=action.payload.photo;
+            state.email=action.payload.email;
+            state.uid=action.payload.uid;
+        }
     },
 
 });
-export const{setLogIn,setLogout}=userSlice.actions;
+export const{setLogIn,setLogout,saveUser}=userSlice.actions;
 export const selectName=(state)=>state.user.name;
 export const selectEmail=(state)=>state.user.email;
 export const selectPhoto=(state)=>state.user.photo;

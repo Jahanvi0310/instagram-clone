@@ -6,13 +6,13 @@ import { createContext } from 'react';
 
 export const ThemeContext:React.Context<any>=createContext(null);
 const Home = () => {
-  const[theme,setTheme]=useState('');
+  const[theme,setTheme]=useState<any>('');
   const toogleTheme=()=>{
     setTheme((curr)=>(curr ==="light"?"dark":"light"));
    } 
   return (
     <>
-      <Header />
+      <Header/>
       <ThemeContext.Provider value={{theme,toogleTheme}}>
       <Container  id={theme}>
      

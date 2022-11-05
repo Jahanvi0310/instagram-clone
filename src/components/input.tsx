@@ -33,33 +33,29 @@ const Input: FC = () => {
     }
     setPasswordType("password");
   };
-  const logIn=()=>{
-    
-
-
-signInWithEmailAndPassword(auth, inputfield, passInput)
-  .then((userCredential) => {
-    // Signed in 
-    const user = userCredential.user;
-    // ...
-    console.log(user);
-    alert("submited");
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    alert(errorCode)
-  });
-  }
+  const logIn = () => {
+    signInWithEmailAndPassword(auth,inputfield, passInput)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log("Singed in user: ", user);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log("An error occured: ", errorCode, errorMessage);
+      });
+  };
   return (
     <div className="container c1">
       <div className="box upper">
         <div className="heading h1"></div>
-        <form className="login-form">
+        <form className="login-form" >
           <div className="field">
             <input
               id="username"
               type="name"
               placeholder="Phone number, username, or email"
+              
               onChange={input}
             />
             <label htmlFor="username">

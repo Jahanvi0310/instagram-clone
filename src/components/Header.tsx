@@ -15,23 +15,21 @@ const Header=()=>{
    const Navigate=useNavigate();
     const photo=useSelector(selectPhoto);
     
-    const handleClick=()=>{
-        setShown(current=>!current)
-       
-    }
-    const handleclick=()=>{
-     Navigate('/posts');
-    }
-    
-
   
+const handleClick=()=>{
+    setShown(current=>!current)
+   
+}
+const handleclick=()=>{
+ Navigate('/posts');
+}
     
 
     return(
         
        
         <div className="Container">
-             
+      
 <Wrapper >
 <div className="headerLogo">
     <img src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png" alt="Instagram original logo" />
@@ -70,6 +68,7 @@ const Header=()=>{
     
 </div>
 </Wrapper>
+
 
         </div>
        

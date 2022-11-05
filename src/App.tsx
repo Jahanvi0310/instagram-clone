@@ -12,8 +12,11 @@ import Button from "./Components/button";
 import Postlist from "./Components/PostList";
 import StoriesComponent from "./Components/storiesComponent";
 import Post from "./pages/Post";
+import { saveUser } from "./reducer/User/userSlice";
+import { useSelector } from "react-redux";
 
 const App = () => {
+  
   
   const dispatch = useDispatch();
   useEffect(() => {
@@ -29,7 +32,23 @@ const App = () => {
       }
     });
   }, []);
- 
+  
+  
+  
+  useEffect(() => {
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        dispatch(
+          saveUser({
+            name: user.displayName,
+            email: user.email,
+            uid: user.uid,
+          })
+        );
+      }
+     
+    });
+  }, []);
   return (
    
 
