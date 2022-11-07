@@ -33,7 +33,7 @@ if(user){
       <BrowserRouter>
     {/* <Router> */}
       <Routes>
-          <Route path="/story/:Caption"element={<StoriesComponent/>}/>
+          <Route path="/story/:id"element={<StoriesComponent/>}/>
           {/* <Route path="/homee" element={<Homee/>}/> */}
           <Route path="/" element={<Home/>}/>
           <Route path="/home" element={<Home/>}/>

@@ -6,7 +6,7 @@ import { objectTraps } from "immer/dist/internal";
 import { bgcolor } from "@mui/system";
 import { ReorderSharp } from "@mui/icons-material";
 import { getDownloadURL, uploadBytesResumable, ref } from "firebase/storage";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { addDoc, collection, getDoc, serverTimestamp ,doc} from "firebase/firestore";
 import e from "express";
 
 const initialState = {
@@ -23,8 +23,18 @@ const AddEditUser = () => {
   const [progress, setProgress] = useState(null);
   const [errors, setErrors] = useState<any>({});
   const [isSubmit, setIsSubmit] = useState(false);
+  const {id}= useParams(); 
   const navigate = useNavigate();
-
+    useEffect(()=>{
+        id && getSingleUser();
+    },[id])
+    const getSingleUser=async()=>{
+        const docRef=doc(db,"users",id);
+        const snapshot=await getDoc(docRef);
+        if(snapshot.exists()) {
+            setData({ ...data});
+        }
+    }
   useEffect(() => {
     const uploadFile = () => {
       const name = new Date().getTime() + file.name;
@@ -74,7 +84,7 @@ const AddEditUser = () => {
     if (!type) {
       errors.type = "type is required";
     }
-    console.log(errors.bgColor);
+    // console.log(errors.bgColor);
     return errors;
   };
 
