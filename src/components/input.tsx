@@ -38,29 +38,11 @@ const Input: FC = () => {
     setPasswordType("password");
   };
   const logIn = (e:any) => {
+    Navigate('/signup');
     e.preventDefault();
     console.log("clicked");
     
-    createUserWithEmailAndPassword(auth,inputfield, passInput)
-      .then((userCredential) => {
-       
-        const user = userCredential.user;
-        dispatch(
-          saveUser({
-              name:user.displayName,
-              email:user.email,
-              uid:user.uid,
-              photo:user.photoURL,
-          })
-        )
-       
-      })
-      
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log("An error occured: ", errorCode, errorMessage);
-      });
+    
   };
   
 
@@ -78,7 +60,7 @@ const Input: FC = () => {
               photo:user.photoURL,
           })
         )
-       
+       Navigate('/home');
       })
       .catch((error) => {
         const errorCode = error.code;

@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from 'react'
+import React,{useEffect} from 'react'
 import Home from "./pages/Home";
 import Input from "./Components/input";
 import Postlist from "./Components/PostList";
@@ -11,7 +11,7 @@ import { useDispatch } from "react-redux";
 import { selectuser, setLogIn } from "./reducer/User/userSlice";
 import { saveUser } from "./reducer/User/userSlice";
 import { useSelector } from 'react-redux';
-
+import SignUp from './Components/signUp';
 const Router=()=> {
   const dispatch = useDispatch();
   const user=useSelector(selectuser);
@@ -34,20 +34,20 @@ const Router=()=> {
      
     });
   }, []);
-  useEffect(() => {
-    onAuthStateChanged(auth, async (user) => {
-      if (user) {
-        dispatch(
-          saveUser({
-            name: user.displayName,
-            email: user.email,
-            uid: user.uid,
-          })
-        );
-      }
+  // useEffect(() => {
+  //   onAuthStateChanged(auth, async (user) => {
+  //     if (user) {
+  //       dispatch(
+  //         saveUser({
+  //           name: user.displayName,
+  //           email: user.email,
+  //           uid: user.uid,
+  //         })
+  //       );
+  //     }
      
-     });
-  }, []);
+  //    });
+  // }, []);
   return (
     <>
      <BrowserRouter>
@@ -64,7 +64,7 @@ const Router=()=> {
           />
           <Route path="/post"element={<Postlist />}/> 
           <Route path="/posts" element={<Post/>}/>
-          
+          <Route path="/signup" element={<SignUp/>}/>
         </Routes>
 
     </BrowserRouter>

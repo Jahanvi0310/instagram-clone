@@ -15,7 +15,7 @@ interface Props{
 function Postlist({avatar,img,id,email,p,name}:any) {
     const[shorten,setShorten]=useState<any>(false) ;
     const[loading,setLoading]=useState(false);
-    const [input,setInput]=useState(null);
+    const [input,setInput]=useState("");
    const pars= !shorten ?  p.slice(100): p ;
    const names=useSelector(selectName);
   const rename=names?names.split(" "):names;
@@ -150,7 +150,7 @@ await deleteDoc(doc(db,'insta',id,'likes',userId));
             {" "}
             <input type="text" 
             value={input} 
-            disabled={!names} 
+            // disabled={!names} 
             onChange={(e)=>setInput(e.target.value)}
             />
           </InputContainer>
