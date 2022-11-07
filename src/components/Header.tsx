@@ -20,7 +20,8 @@ const handleClick=()=>{
     setShown(current=>!current)
    
 }
-const handleclick=()=>{
+const handleclick=(e:any)=>{
+    e.preventDefault();
  Navigate('/posts');
 }
     

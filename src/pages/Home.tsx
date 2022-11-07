@@ -3,7 +3,6 @@ import styled from "styled-components";
 import Header from "../Components/Header";
 import Posts from "../Components/Posts";
 import { createContext } from 'react';
-
 export const ThemeContext:React.Context<any>=createContext(null);
 const Home = () => {
   const[theme,setTheme]=useState<any>('');
@@ -15,15 +14,12 @@ const Home = () => {
       <Header/>
       <ThemeContext.Provider value={{theme,toogleTheme}}>
       <Container  id={theme}>
-     
-<div className="icon">
+     <div className="icon">
   <label>{theme==="light"?"Dark Mode":"Light Mode"}</label>
 <input type="checkBox" onChange={toogleTheme} checked={theme==='dark'}/>
   </div>        
   <Section>
-        
-<Posts/>
-        
+        <Posts/>
         </Section>
       </Container>
       </ThemeContext.Provider>

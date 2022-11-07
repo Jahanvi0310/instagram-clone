@@ -6,9 +6,13 @@ import React, {
 } from "react";
 import Button from "./button";
 import "./input.css";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-
+import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { saveUser } from "../reducer/User/userSlice";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 const Input: FC = () => {
+  const dispatch=useDispatch();
+  const Navigate=useNavigate();
   const auth = getAuth();
   const [inputfield, setInput] = useState<string>();
   const [password, setpassword] = useState<boolean>();
@@ -33,23 +37,61 @@ const Input: FC = () => {
     }
     setPasswordType("password");
   };
-  const logIn = () => {
-    signInWithEmailAndPassword(auth,inputfield, passInput)
+  const logIn = (e:any) => {
+    e.preventDefault();
+    console.log("clicked");
+    
+    createUserWithEmailAndPassword(auth,inputfield, passInput)
       .then((userCredential) => {
+       
         const user = userCredential.user;
-        console.log("Singed in user: ", user);
+        dispatch(
+          saveUser({
+              name:user.displayName,
+              email:user.email,
+              uid:user.uid,
+              photo:user.photoURL,
+          })
+        )
+       
       })
+      
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log("An error occured: ", errorCode, errorMessage);
       });
   };
+  
+
+  const signIn=(e:any)=>{
+    e.preventDefault();
+    signInWithEmailAndPassword(auth,inputfield, passInput)
+      .then((userCredential) => {
+       
+        const user = userCredential.user;
+        dispatch(
+          saveUser({
+              name:user.displayName,
+              email:user.email,
+              uid:user.uid,
+              photo:user.photoURL,
+          })
+        )
+       
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log("An error occured: ", errorCode, errorMessage);
+      });
+  
+    }
   return (
     <div className="container c1">
       <div className="box upper">
         <div className="heading h1"></div>
-        <form className="login-form" >
+        <form className="login-form" onSubmit={signIn}>
           <div className="field">
             <input
               id="username"
@@ -84,14 +126,14 @@ const Input: FC = () => {
             Password={password}
             className="login-button"
             children="log In"
-            onClick={logIn}
+            onClick={()=>console.log("you clicked")}
           />
         </form>
       </div>
       <div className="box b1">
         <p>
           Don't have an account?{" "}
-          <a className="signup" href="#">
+          <a className="signup" href="#" onClick={logIn}>
             Sign Up
           </a>
         </p>

@@ -32,6 +32,7 @@ const ContactStuff=()=>{
 <button onClick={logout}>LogOut</button>
  </Wrapper>
         </Container>
+        
         </>
     )
 }

@@ -4,7 +4,8 @@ const initialState={
     photo:null,
     email:null,
     uid:null,
-};
+    user:null,
+    };
 const userSlice=createSlice({
     name:"user",
     initialState,
@@ -22,11 +23,12 @@ const userSlice=createSlice({
             state.uid=null;
 
         },
-        saveUser:(state,action)=>{
+        saveUser:(state=initialState,action)=>{
             state.name=action.payload.name;
             state.photo=action.payload.photo;
             state.email=action.payload.email;
             state.uid=action.payload.uid;
+            
         }
     },
 
@@ -36,5 +38,5 @@ export const selectName=(state)=>state.user.name;
 export const selectEmail=(state)=>state.user.email;
 export const selectPhoto=(state)=>state.user.photo;
 export const selectUid=(state)=>state.user.uid;
-
+export const selectuser=(state)=>state.user.user;
 export default userSlice.reducer;
