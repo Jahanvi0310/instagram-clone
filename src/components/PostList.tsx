@@ -14,17 +14,17 @@ interface Props{
   }
 function Postlist({avatar,img,id,email,p,name}:any) {
     const[shorten,setShorten]=useState<any>(false) ;
-    const[loading,setLoading]=useState(false);
-    const [input,setInput]=useState("");
+    const[loading,setLoading]=useState<any>(false);
+    const [input,setInput]=useState<any>("");
    const pars= !shorten ?  p.slice(100): p ;
    const names=useSelector(selectName);
   const rename=names?names.split(" "):names;
    const photo=useSelector(selectPhoto);
-   const[comment,setComment]=useState([]);
-   const [liked,setLiked]=useState(false);
+   const[comment,setComment]=useState<any>([]);
+   const [liked,setLiked]=useState<any>(false);
    const userId=useSelector(selectUid);
-   const [likes,setLikes]=useState([]);
-   const[open,setOpen]=useState(false);
+   const [likes,setLikes]=useState<any>([]);
+   const[open,setOpen]=useState<any>(false);
    const submit=async(e:any)=>{
 e.preventDefault();
 if(!names) return;
@@ -104,7 +104,7 @@ await deleteDoc(doc(db,'insta',id,'likes',userId));
           ):(
             <Favorite style={{color:'red'}} onClick={Post}/>
           )}
-         <Absoloute>{likes.length>0 && <p>{likes.length} like</p>}</Absoloute>
+         <Absoloute>{likes.length>0 && <p>{likes.length} like </p>}</Absoloute>
        
         </Social>
 

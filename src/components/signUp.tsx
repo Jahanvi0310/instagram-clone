@@ -36,7 +36,7 @@ const SignUp = () => {
           })
         )
        console.log(userCredential);
-       Navigate('/home');
+       Navigate('/signin');
       })
       
       .catch((error) => {
