@@ -62,10 +62,18 @@ const Input: FC = () => {
         )
        Navigate('/home');
       })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log("An error occured: ", errorCode, errorMessage);
+      .catch((error:any) => {
+
+        if (error.code === 'auth/email-already-in-use') {
+          return 'The email address is already in use!';
+        }
+        if (error.code === 'auth/invalid-email') {
+          return 'That email address is invalid!';
+        }
+        if (error.code === 'auth/weak-password') {
+          return 'The given password is weak';
+        }
+    
       });
   
     }

@@ -5,6 +5,9 @@ import {
   faFacebookSquare,
 } from "@fortawesome/free-brands-svg-icons";
 import { createUserWithEmailAndPassword,getAuth } from "firebase/auth";
+import { addDoc, collection, doc, serverTimestamp, updateDoc } from "firebase/firestore";
+
+import db from "../firebase/firebase";
 import { useDispatch } from "react-redux";
 import "./signup.css";
 import { useNavigate } from "react-router-dom";
@@ -29,14 +32,21 @@ const SignUp = () => {
         const user = userCredential.user;
         dispatch(
           saveUser({
-              name:user.displayName,
-              email:user.email,
-              uid:user.uid,
-              photo:user.photoURL,
+              name:name,
+              email:email,
+              uid:username,
+              
           })
         )
        console.log(userCredential);
-       Navigate('/signin');
+//        addDoc(collection(db,"users"),{
+// name:name,
+// email:email,
+// username:username,
+
+//        })
+        
+       Navigate('/signIn');
       })
       
       .catch((error) => {

@@ -25,6 +25,10 @@ const Post=()=>{
     const boolean=useSelector(selectBoolean);
     const Navigate=useNavigate();
     const Submit=async(e:any)=>{
+        if(selectImage==null){
+            alert("please choose the file!");
+            return;
+        }
        e.preventDefault();
        if(input.length>1){
         if(loading)return;
