@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { onSnapshot,collection, deleteDoc ,doc} from "firebase/firestore";
-import {
-  useParams,
-  useNavigate,
-  useLocation,
-} from "react-router-dom";
+import { onSnapshot, collection, deleteDoc, doc } from "firebase/firestore";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 // import { Button, Form, Grid, Loader ,Modal} from "semantic-ui-react";
 // import { storage, db } from "../firebase/firebase";
 import Stories from "react-insta-stories";
 import { Observable } from "@firebase/util";
+import { ca } from "date-fns/locale";
 // import 'rxjs/Rx';
 // import { map } from 'rxjs/operators';
 // import 'rxjs/add/operator/map'
@@ -16,12 +13,12 @@ import { Observable } from "@firebase/util";
 // import category from "../datasource/category";
 function StoriesComponent() {
   const params = useParams();
-  const {state} = useLocation();
+  const { state } = useLocation();
   // console.log(state);
-  const { category , id } = state ;
+  const { category, id } = state;
   // console.log(id);
 
-//  console.log(users);
+  //  console.log(users);
   function gobackToHomePage() {
     navigate("/");
   }
@@ -34,28 +31,29 @@ function StoriesComponent() {
     // console.log(CategoryType);
     // users: {JSON.stringify(Navigation.getParam('users'))}
     // console.log(category);
-    const story = Object.keys(state).map( (Item)=>{
+    const story = Object.keys(state).map((Item) => {
       // console.log(category.id);
       if (state.id === id) {
         return {
           content: ({ action, isPaused }: any) => {
             return (
-              <div>
-                <div className="w-screen h-screen flex justify-center items-center">
+              <div className="snap-x">
+                {/* <div className="w-screen h-screen flex justify-center items-center "> */}
                   <div
-                    className="w-full max-w-screen-lg bg-no-repeat h-4/5  bg-center  flex justify-center items-center flex-col"
-                    style={{ backgroundImage: `url(${category.img})` }}
+                    className="w-full snap-center h-full bg-no-repeat md:max-h-auto sm:max-h-auto  bg-center flex justify-center items-center flex-col"
                   >
-                    <div
-                      className="font-bold  text-5xl"
-                      style={{ color: category.textColor }}
-                    >
-                    <span>{category.caption}</span>
-                    </div>
+                    <img src={category.img}></img>
                   </div>
-                 
-                </div>
-               
+                  
+                {/* </div> */}
+                <div className="ml-[50%] mt-4">
+                <span
+                    className=" font-bold center text-5xl border"
+                    style={{ color: category.textColor, backgroundColor:category.backgroundColor}}
+                  >
+                    {category.caption}
+                  </span>
+                  </div>
               </div>
             );
           },

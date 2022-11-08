@@ -6,10 +6,10 @@ import { useParams, useNavigate } from "react-router-dom";
 // import { bgcolor } from "@mui/system";
 // import { ReorderSharp } from "@mui/icons-material";
 import { getDownloadURL, uploadBytesResumable, ref } from "firebase/storage";
-import { addDoc, collection, getDoc, serverTimestamp ,doc} from "firebase/firestore";
+import { addDoc, collection, getDoc, serverTimestamp ,doc,updateDoc} from "firebase/firestore";
 // import e from "express";
 
-const initialState = {
+const initialState:any = {
   caption: "",
   bgColor: "",
   info: "",
@@ -32,7 +32,7 @@ const AddEditUser = () => {
         const docRef=doc(db,"users",id);
         const snapshot=await getDoc(docRef);
         if(snapshot.exists()) {
-            setData({ ...data});
+            setData({...snapshot.data()});
         }
     }
   useEffect(() => {
@@ -93,10 +93,26 @@ const AddEditUser = () => {
     let errors: any = validate();
     if (Object.keys(errors).length) return setErrors(errors);
     setIsSubmit(true);
-   await addDoc(collection(db, "users"), {
-      ...data,
-      timestamp: serverTimestamp(),
-    });
+    if(!id){
+     try{
+      await addDoc(collection(db, "users"), {
+        ...data,
+        timestamp: serverTimestamp(),
+      }); 
+     } catch(error){
+      console.log(error);
+     }
+    }else{
+      try{
+        await updateDoc(doc(db, "users",id), {
+          ...data,
+          timestamp: serverTimestamp(),
+        }); 
+       } catch(error){
+        console.log(error);
+       }
+    }
+  
     navigate("/home",{state:{data:data}});
   };
   const handleChange = (e) => {
@@ -118,7 +134,7 @@ const AddEditUser = () => {
                 <Loader active inline="centered" size="huge" />
               ) : (
                 <>
-                  <h2>add story</h2>
+                  <b>{id? "update story":"add story"}</b>
                   <Form onSubmit={handleSubmit}>
                     <Form.Input
                       label="caption"

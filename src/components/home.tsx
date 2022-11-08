@@ -73,11 +73,10 @@ function Home() {
         //   // console.log(category.id);
         // }
         return (
-          <div>
-          <div className="flex justify-center">
+          <div key={category.id}>
+          <div className="flex justify-center" >
             <div
-              className="mt-2 ml-1 cursor-pointer"
-              key={category.id}
+              className="mt-4 ml-1 cursor-pointer"
               onClick={ ()=>{
                 // console.log(category.id);
                 navigate(`/story/${category.id}`,{
@@ -97,7 +96,8 @@ function Home() {
             </div>
              {/* <Button color="green" onClick={()=>console.log("cancel")} >C</Button> */}
           </div>
-          <Button color="red" icon="checkmark" className="aligned rounded"  onClick={()=>handleDelete(category.id)}>D</Button>
+         <div className="ml-2"> <Button  icon="checkmark" className="ui basic"  onClick={()=>handleDelete(category.id)}>❌</Button>
+         <Button   className="ui basic" onClick={()=>navigate(`/update/${category.id}`)}>✏️</Button></div>
           </div>
         );
       })
