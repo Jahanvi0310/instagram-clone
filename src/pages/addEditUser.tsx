@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Button, Form, Grid, Loader } from "semantic-ui-react";
-import { storage, db } from "../firebase/firebase";
+import {db,storage} from "../firebase/firebase";
 import { useParams, useNavigate } from "react-router-dom";
-import { objectTraps } from "immer/dist/internal";
-import { bgcolor } from "@mui/system";
-import { ReorderSharp } from "@mui/icons-material";
+// import { objectTraps } from "immer/dist/internal";
+// import { bgcolor } from "@mui/system";
+// import { ReorderSharp } from "@mui/icons-material";
 import { getDownloadURL, uploadBytesResumable, ref } from "firebase/storage";
 import { addDoc, collection, getDoc, serverTimestamp ,doc} from "firebase/firestore";
-import e from "express";
+// import e from "express";
 
 const initialState = {
   caption: "",

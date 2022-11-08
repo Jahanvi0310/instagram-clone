@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import {
   Button,
-  Form,
-  Grid,
-  Loader,
-  Container,
-  Card,
+  // Form,
+  // Grid,
+  // Loader,
+  // Container,
+  // Card,
   Image,
-  Modal,
+  // Modal,
 } from "semantic-ui-react";
-import { storage, db } from "../firebase/firebase";
+import {db} from "../firebase/firebase";
 import { useParams, useNavigate } from "react-router-dom";
 import { onSnapshot, collection, deleteDoc, doc } from "firebase/firestore";
 import { borderRadius } from "@mui/system";

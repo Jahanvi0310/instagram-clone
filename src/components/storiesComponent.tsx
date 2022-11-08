@@ -5,8 +5,8 @@ import {
   useNavigate,
   useLocation,
 } from "react-router-dom";
-import { Button, Form, Grid, Loader ,Modal} from "semantic-ui-react";
-import { storage, db } from "../firebase/firebase";
+// import { Button, Form, Grid, Loader ,Modal} from "semantic-ui-react";
+// import { storage, db } from "../firebase/firebase";
 import Stories from "react-insta-stories";
 import { Observable } from "@firebase/util";
 // import 'rxjs/Rx';
