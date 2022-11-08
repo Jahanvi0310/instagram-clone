@@ -14,7 +14,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { onSnapshot, collection, deleteDoc, doc } from "firebase/firestore";
 import { borderRadius } from "@mui/system";
 import "./home.css";
-import StoriesComponent from "./storiesComponent";
+// import StoriesComponent from "./storiesComponent";
 // import category from "../datasource/category";
 function Home() {
   const [users, setUsers] = useState([]);
@@ -76,7 +76,7 @@ function Home() {
           <div key={category.id}>
           <div className="flex justify-center" >
             <div
-              className="mt-4 ml-1 cursor-pointer"
+              className="mt-2 ml-1 cursor-pointer"
               onClick={ ()=>{
                 // console.log(category.id);
                 navigate(`/story/${category.id}`,{
