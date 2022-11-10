@@ -1,14 +1,19 @@
 import React, {
   useState,
-  useEffect,
-  ReactElement,
+ 
   ChangeEvent,
   FC,
 } from "react";
 import Button from "./button";
 import "./input.css";
-
+import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { saveUser } from "../reducer/User/userSlice";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 const Input: FC = () => {
+  const dispatch=useDispatch();
+  const Navigate=useNavigate();
+  const auth = getAuth();
   const [inputfield, setInput] = useState<string>();
   const [password, setpassword] = useState<boolean>();
   const [passInput, setPassInput] = useState<string>();
@@ -32,16 +37,58 @@ const Input: FC = () => {
     }
     setPasswordType("password");
   };
+  const logIn = (e:any) => {
+    Navigate('/signup');
+    e.preventDefault();
+   
+    
+    
+  };
+  
+
+  const signIn=(e:any)=>{
+    e.preventDefault();
+    
+    signInWithEmailAndPassword(auth,inputfield, passInput)
+      .then((userCredential) => {
+       
+        const user = userCredential.user;
+        dispatch(
+          saveUser({
+              name:user.displayName,
+              email:user.email,
+              uid:user.uid,
+              photo:user.photoURL,
+          })
+        )
+       Navigate('/home');
+      })
+      .catch((error:any) => {
+
+        if (error.code === 'auth/email-already-in-use') {
+          return 'The email address is already in use!';
+        }
+        if (error.code === 'auth/invalid-email') {
+          return 'That email address is invalid!';
+        }
+        if (error.code === 'auth/weak-password') {
+          return 'The given password is weak';
+        }
+    
+      });
+  
+    }
   return (
     <div className="container c1">
       <div className="box upper">
         <div className="heading h1"></div>
-        <form className="login-form">
+        <form className="login-form" onSubmit={signIn}>
           <div className="field">
             <input
               id="username"
               type="name"
               placeholder="Phone number, username, or email"
+              
               onChange={input}
             />
             <label htmlFor="username">
@@ -70,14 +117,14 @@ const Input: FC = () => {
             Password={password}
             className="login-button"
             children="log In"
-            onClick={() => console.log("you clicked")}
+            onClick={()=>console.log("you clicked")}
           />
         </form>
       </div>
       <div className="box b1">
         <p>
           Don't have an account?{" "}
-          <a className="signup" href="#">
+          <a className="signup" href="#" onClick={logIn}>
             Sign Up
           </a>
         </p>

@@ -3,7 +3,7 @@ import React,{useEffect, useState} from 'react'
 import Postlist from './PostList';
 import db from '../firebase/firebase';
 
-const Posts=()=> {
+const Posts=(id:any)=> {
     const [selected,setSelected]=useState<any>([]);
     useEffect(()=>{
         return onSnapshot(
