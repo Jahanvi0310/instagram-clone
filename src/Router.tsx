@@ -9,7 +9,6 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase/firebase";
 import { useDispatch } from "react-redux";
 import { selectuser, setLogIn } from "./reducer/User/userSlice";
-import { saveUser } from "./reducer/User/userSlice";
 import { useSelector } from 'react-redux';
 import SignUp from './Components/signUp';
 const Router=()=> {
@@ -19,8 +18,7 @@ const Router=()=> {
   useEffect(() => {
     onAuthStateChanged(auth, async (user) => {
       if (user) {
-       
-        dispatch(
+       dispatch(
           setLogIn({
             name: user.displayName,
             email: user.email,
@@ -28,26 +26,8 @@ const Router=()=> {
           })
         );
       }
-      else{
-      console.log("hello");
-      }
-     
-    });
+     });
   }, []);
-  // useEffect(() => {
-  //   onAuthStateChanged(auth, async (user) => {
-  //     if (user) {
-  //       dispatch(
-  //         saveUser({
-  //           name: user.displayName,
-  //           email: user.email,
-  //           uid: user.uid,
-  //         })
-  //       );
-  //     }
-     
-  //    });
-  // }, []);
   return (
     <>
      <BrowserRouter>

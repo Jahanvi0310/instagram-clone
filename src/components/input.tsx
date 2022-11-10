@@ -48,6 +48,7 @@ const Input: FC = () => {
 
   const signIn=(e:any)=>{
     e.preventDefault();
+    
     signInWithEmailAndPassword(auth,inputfield, passInput)
       .then((userCredential) => {
        

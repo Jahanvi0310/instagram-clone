@@ -5,8 +5,6 @@ import {
   faFacebookSquare,
 } from "@fortawesome/free-brands-svg-icons";
 import { createUserWithEmailAndPassword,getAuth } from "firebase/auth";
-import { addDoc, collection, doc, serverTimestamp, updateDoc } from "firebase/firestore";
-
 import db from "../firebase/firebase";
 import { useDispatch } from "react-redux";
 import "./signup.css";
@@ -26,9 +24,9 @@ const SignUp = () => {
     }
     const SignUp=(e:any)=>{
       e.preventDefault();  
+     
       createUserWithEmailAndPassword(auth,email, password)
       .then((userCredential) => {
-       console.log("helle");
         const user = userCredential.user;
         dispatch(
           saveUser({
@@ -37,16 +35,12 @@ const SignUp = () => {
               uid:username,
               
           })
+          
         )
-       console.log(userCredential);
-//        addDoc(collection(db,"users"),{
-// name:name,
-// email:email,
-// username:username,
+        alert("Account created Successfully");
 
-//        })
         
-       Navigate('/signIn');
+       Navigate('/home');
       })
       
       .catch((error) => {
