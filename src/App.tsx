@@ -1,14 +1,12 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-
-function App() {
+import React from "react";
+import styled from "styled-components";
+import Router from "./Router";
+const App = () => {
   return (
-    <Router>
-      <h1>Done with setup</h1>
-    </Router>
-  );
-}
-
+   <Container >
+     <Router/>
+</Container>
+    );
+};
 export default App;
+const Container = styled.div``;

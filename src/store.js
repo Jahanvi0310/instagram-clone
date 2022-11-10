@@ -1,4 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
-export const store= configureStore({
-reducer:{}
-})
+import userReducer from "./reducer/User/userSlice";
+import boolReducer from "./reducer/Bool/boolSlice";
+export const store=configureStore({
+    reducer:{
+        user:userReducer,
+        bool:boolReducer
+
+    }
+  });
+  
+
