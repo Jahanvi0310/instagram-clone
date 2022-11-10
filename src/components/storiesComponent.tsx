@@ -38,22 +38,22 @@ function StoriesComponent() {
           content: ({ action, isPaused }: any) => {
             return (
               <div className="snap-x">
-                {/* <div className="w-screen h-screen flex justify-center items-center "> */}
+                <div className="w-screen  flex justify-center items-center ">
                   <div
-                    className=" ml-[10%] w-4/5 snap-center h-full bg-no-repeat md:max-h-auto sm:max-h-auto  bg-center flex justify-center items-center flex-col"
+                    className="w-4/5 snap-center h-full bg-no-repeat md:max-h-auto sm:max-h-auto  bg-center flex justify-center items-center flex-col"
                   >
                     <img src={category.img}></img>
                   </div>
-                  
-                {/* </div> */}
-                <div className="ml-[50%]">
+                  {/* <div className=""> */}
+                  {/* </div> */}
+                </div>
                 <span
-                    className=" font-bold center text-5xl border"
+                    className=" font-bold center text-5xl  ml-[45%] mt-[20%]"
                     style={{ color: category.textColor, backgroundColor:category.backgroundColor}}
                   >
                     {category.caption}
                   </span>
-                  </div>
+               
               </div>
             );
           },
