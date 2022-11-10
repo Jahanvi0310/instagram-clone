@@ -40,7 +40,7 @@ const Input: FC = () => {
   const logIn = (e:any) => {
     Navigate('/signup');
     e.preventDefault();
-    console.log("clicked");
+   
     
     
   };
