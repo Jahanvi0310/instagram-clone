@@ -2,17 +2,17 @@ import React,{useEffect} from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
 import {auth} from './firebase/firebase';
 import { useDispatch } from 'react-redux';
-import Header from './components/Header';
+import Header from './Components/Header';
 import Homee from './pages/homee';
-import Button from './components/button';
-import { setLogIn } from './reducers/userSlice';
+import Button from './Components/button';
+import { setLogIn } from './reducers/User/userSlice';
 import './App.css';
-import StoryInput from './components/storyInput';
+import StoryInput from './Components/storyInput';
 // import Category from './datasource/category';
 import { BrowserRouter,Router,Routes, Route} from "react-router-dom";
 // import { useNavigate,Link} from "react-router-dom";
-import Home from './components/home';
-import StoriesComponent from './components/storiesComponent'
+import Home from './Components/home';
+import StoriesComponent from './Components/storiesComponent'
 import AddEditUser from './pages/addEditUser';
 function App() {
   const dispatch=useDispatch();

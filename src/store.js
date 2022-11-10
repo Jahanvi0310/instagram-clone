@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
-import userReducer from "./reducers/userSlice";
-import boolReducer from "./reducers/boolSlice";
+import userReducer from "./reducers/User/userSlice";
+import boolReducer from "./reducers/Bool/boolSlice";
 export const store=configureStore({
     reducer:{
         user:userReducer,

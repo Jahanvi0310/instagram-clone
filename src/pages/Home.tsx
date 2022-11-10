@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import Contactstuff from '../components/contactstuff';
+import Contactstuff from '../Components/contactstuff';
 
-import Header from '../components/Header';
+import Header from '../Components/Header';
 
 
 const Home=()=>{

@@ -40,13 +40,13 @@ function StoriesComponent() {
               <div className="snap-x">
                 {/* <div className="w-screen h-screen flex justify-center items-center "> */}
                   <div
-                    className="w-full snap-center h-full bg-no-repeat md:max-h-auto sm:max-h-auto  bg-center flex justify-center items-center flex-col"
+                    className=" ml-[10%] w-4/5 snap-center h-full bg-no-repeat md:max-h-auto sm:max-h-auto  bg-center flex justify-center items-center flex-col"
                   >
                     <img src={category.img}></img>
                   </div>
                   
                 {/* </div> */}
-                <div className="ml-[50%] mt-4">
+                <div className="ml-[50%]">
                 <span
                     className=" font-bold center text-5xl border"
                     style={{ color: category.textColor, backgroundColor:category.backgroundColor}}
