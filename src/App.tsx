@@ -7,11 +7,12 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase/firebase";
 import { useDispatch } from "react-redux";
 import { setLogIn } from "./reducer/User/userSlice";
-import Header from "./Components/Header";
+import Header from "./Components/header";
 import Button from "./Components/button";
-import Postlist from "./Components/PostList";
+import Postlist from "./Components/postList";
 import StoriesComponent from "./Components/storiesComponent";
 import Post from "./pages/Post";
+import Profile from "./Components/profile";
 const App = () => {
   
   const dispatch = useDispatch();
@@ -45,6 +46,7 @@ const App = () => {
           />
           <Route path="/post"element={<Postlist />}/> 
           <Route path="/posts" element={<Post/>}/>
+          <Route path="/proP" element={<Profile/>}/>
         </Routes>
 
     </Router>

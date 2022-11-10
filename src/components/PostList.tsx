@@ -6,7 +6,9 @@ import {useSelector} from 'react-redux';
 import {selectName, selectPhoto, selectUid} from '../reducer/User/userSlice';
 import db from '../firebase/firebase';
 import { addDoc, collection, onSnapshot, orderBy, serverTimestamp,query, deleteDoc,doc, setDoc } from 'firebase/firestore';
-import Comments from './Comments';
+import Comments from './comments';
+// import { Avatar } from "@mui/material";
+// import { selectName, selectPhoto, setLogout } from '../reducer/User/userSlice';
 interface Props{
   disabled:boolean;
   }
@@ -22,6 +24,7 @@ function Postlist({avatar,img,id,email,p,name}:any) {
    const [liked,setLiked]=useState(false);
    const userId=useSelector(selectUid);
    const [likes,setLikes]=useState([]);
+   
    const submit=async(e:any)=>{
 e.preventDefault();
 if(!names) return;
@@ -132,7 +135,7 @@ await deleteDoc(doc(db,'insta',id,'likes',userId));
          
         </ComentDisplay>
         <ComentSection onSubmit={submit}>
-          <Avatar />
+          <Avatar src={photo}/>
           <InputContainer>
             {" "}
             <input type="text" 

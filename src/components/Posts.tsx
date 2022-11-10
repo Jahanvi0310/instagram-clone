@@ -1,10 +1,11 @@
 import { collection, onSnapshot, orderBy,query } from 'firebase/firestore';
 import React,{useEffect, useState} from 'react'
-import Postlist from './PostList';
+import Postlist from './postList';
 import db from '../firebase/firebase';
 
-const Posts=()=> {
+const Posts=(props)=> {
     const [selected,setSelected]=useState<any>([]);
+    const { authorId, postCategory, isGrid } = props;
     useEffect(()=>{
         return onSnapshot(
             query(collection(db,'insta'),orderBy('timestamp','desc')),
