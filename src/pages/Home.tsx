@@ -1,7 +1,7 @@
 import React,{useState} from "react";
 import styled from "styled-components";
-import Header from "../Components/Header";
-import Posts from "../Components/Posts";
+import Header from "../components/Header";
+import Posts from "../components/Posts";
 import { createContext } from 'react';
 export const ThemeContext:React.Context<any>=createContext(null);
 const Home = () => {

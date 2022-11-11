@@ -1,8 +1,8 @@
 import React,{useEffect} from 'react'
 import Home from "./pages/Home";
-import Input from "./Components/input";
-import Postlist from "./Components/PostList";
-import StoriesComponent from "./Components/storiesComponent";
+import Input from "./components/input";
+import Postlist from "./components/PostList";
+import StoriesComponent from "./components/storiesComponent";
 import Post from "./pages/Post";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
@@ -10,7 +10,7 @@ import { auth } from "./firebase/firebase";
 import { useDispatch } from "react-redux";
 import { selectuser, setLogIn } from "./reducer/User/userSlice";
 import { useSelector } from 'react-redux';
-import SignUp from './Components/signUp';
+import SignUp from './components/signUp';
 const Router=()=> {
   const dispatch = useDispatch();
   const user=useSelector(selectuser);
