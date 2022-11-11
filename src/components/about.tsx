@@ -34,13 +34,13 @@ function About(props) {
   return (
     <AboutWrapper>
       <ProfileName>{props.name}</ProfileName>
-      <ProfileCategory>Education</ProfileCategory>
+      {/* <ProfileCategory>Education</ProfileCategory>
       <BioText>🌐All About FrontEnd Web-Development</BioText>
       <BioText>📒Resources/tips/tricks/tutorials</BioText>
       <BioText>👨‍💻Free source codes</BioText>
       <BioText>💲Dm For Paid Promotions</BioText>
       <BioText>⬇️Join Our Telegram Channel</BioText>
-      <BioLink href="https://t.me/sparshcodes">t.me/sparshcodes</BioLink>
+      <BioLink href="https://t.me/sparshcodes">t.me/sparshcodes</BioLink> */}
     </AboutWrapper>
   );
 }

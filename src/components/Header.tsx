@@ -5,7 +5,7 @@ import { Avatar } from '@mui/material';
 import {useSelector } from 'react-redux';
 import './Header.css';
 import {  selectPhoto,selectName } from '../reducer/User/userSlice';
-import ContactStuff from './contactStuff';
+import ContactStuff from './contactstuff';
 // import { selectName, selectPhoto, setLogout } from '../reducer/User/userSlice';
 
 import { useNavigate } from 'react-router-dom';

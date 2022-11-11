@@ -5,7 +5,6 @@ import TopNav from "./topNav";
 import ViewDashboard from "./viewDashboard";
 import ProfileDetails from "./profileDetails";
 import About from "./about";
-import ProfileButtons from "./profileButtons";
 import Highlights from "./highlights";
 import Tabs from "./tabs";
 import PostGrid from "./postGrid";
@@ -13,9 +12,10 @@ import PostGrid from "./postGrid";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-import { selectName, selectPhoto, setLogout } from "../reducer/User/userSlice";
+import { selectEmail, selectName, selectPhoto, setLogout } from "../reducer/User/userSlice";
 import { auth } from "../firebase/firebase";
 import { useNavigate } from "react-router-dom";
+import { Devices } from "@mui/icons-material";
 const ProfileWrapper = styled.div`
   background-color: white;
   max-width: 600px;
@@ -30,49 +30,37 @@ const ProfileWrapper = styled.div`
 const ContactStuff = () => {
   const name: any = useSelector(selectName);
   const photo: any = useSelector(selectPhoto);
+  const email:any=useSelector(selectEmail);
   const Navigate = useNavigate();
   const dispatch = useDispatch();
   const logout = () => {
     signOut(auth).then((result) => {
       dispatch(setLogout({ name: null, photo: null, email: null, uid: null }));
       console.log("button clicked");
-      Navigate("/signIn");
+      Navigate("/");
     });
   };
-//   const theme = {
-//     ...
-//     breakpoints: {
-//       xs: '0',
-//       sm: '600px',
-//       md: '960px',
-//       lg: '1280px',
-//       xl: '1920px',
-//     },
-//   }
-
   return (
     <>
       <Container
-        // fontSize={{ xs: "small", sm: "medium", md: "large" }}
-        // width={{ xs: 200, sm: 400, md: 600, lg: 1000 }}
       >
         <ProfileWrapper>
           <TopNav name={name} logout={logout} />
           {/* <ViewDashboard /> */}
           <ProfileDetails />
           <About name={name}/>
-          <ProfileButtons />
+          {/* <ProfileButtons /> */}
           <Highlights />
           <Tabs />
-          <PostGrid />
+          <PostGrid email={email} />
         </ProfileWrapper>
-        <Wrapper>
-          <User>
+        {/* <Wrapper> */}
+          {/* <User> */}
             {/* <Avatar src={photo}/> */}
            
-          </User>
+          {/* </User> */}
           
-        </Wrapper>
+        {/* </Wrapper> */}
       </Container>
     </>
   );
@@ -80,11 +68,13 @@ const ContactStuff = () => {
 
 export default ContactStuff;
 
+
 const Container = styled.div`
-  width: 50%;
+  width: 20%;
+  height: 100vh;
   border-radius: 20px;
   background-color: #ffffff;
-  height: 500px;
+
   position: fixed;
   top: 4rem;
   right: 10px;

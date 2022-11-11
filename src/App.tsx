@@ -7,12 +7,12 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase/firebase";
 import { useDispatch } from "react-redux";
 import { setLogIn } from "./reducer/User/userSlice";
-import Header from "./Components/header";
+import Header from "./Components/Header";
 import Button from "./Components/button";
-import Postlist from "./Components/postList";
+import Postlist from "./Components/PostList";
 import StoriesComponent from "./Components/storiesComponent";
 import Post from "./pages/Post";
-import Profile from "./Components/profile";
+// import Profile from "./Components/profile";
 const App = () => {
   
   const dispatch = useDispatch();
@@ -35,10 +35,10 @@ const App = () => {
       <Router>
         <Routes>
         <Route path="/story/:CategoryType"element={<StoriesComponent/>}/>
-          <Route path="/" element={<Home/>}/>
+          {/* <Route path="/" element={<Home/>}/> */}
           <Route path="/home" element={<Home/>}/>
-              <Route path='/signIn' element={<Input/>}/>
-          <Route path="/home" element={<Home />} />
+          <Route path='/' element={<Input/>}/>
+          {/* <Route path="/home" element={<Home />} /> */}
           <Route
             path="/logIn"
             element={<Input/>}
@@ -46,7 +46,7 @@ const App = () => {
           />
           <Route path="/post"element={<Postlist />}/> 
           <Route path="/posts" element={<Post/>}/>
-          <Route path="/proP" element={<Profile/>}/>
+          {/* <Route path="/proP" element={<Profile/>}/> */}
         </Routes>
 
     </Router>

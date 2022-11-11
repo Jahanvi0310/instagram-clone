@@ -1,29 +1,33 @@
-import React from "react";
+import React, { useEffect ,useState} from "react";
 import styled from "styled-components";
-// import post1 from "../assets/post1.png";
-// import post2 from "../assets/post2.png";
-// import post3 from "../assets/post3.png";
-// import post4 from "../assets/post4.png";
-// import post5 from "../assets/post5.png";
-// import post6 from "../assets/post6.png";
-// import post7 from "../assets/post7.png";
-// import post8 from "../assets/post8.png";
-// import post9 from "../assets/post9.png";
+import db,{storage} from '../firebase/firebase';
+import { onSnapshot, collection,orderBy,query  } from "firebase/firestore";
 
-const postImages = [
-//   post1,
-//   post2,
-//   post3,
-//   post4,
-//   post5,
-//   post6,
-//   post7,
-//   post8,
-//   post9,
-];
-
+// useEffect(()=>{
+//   const sub=onSnapshot(collection(db,"insta"),
+//   (querySnapshot) => {
+//     // Loop through the data and store
+//     // it in array to display
+//     querySnapshot.forEach(element => {
+//         var data = element.data();
+//         let postImages  = [];
+//         querySnapshot.docs.forEach((doc) => {
+//           // console.log(doc.id);
+//           postImages.push({ id: doc.id, ...doc.data() });
+//         // setInfo(arr => [...arr , data]);
+         
+//     });
+//   },
+//   (error)=>{
+//     console.log(error);
+//   }
+//   );
+//   return () => {
+//     sub();
+//   };
+// },[]);
 const GridWrapper = styled.div`
-  margin-top: 3px;
+  margin-top: 5px;
   display: grid;
   grid-gap: 3px;
   grid-template-columns: repeat(3, 1fr);
@@ -32,10 +36,19 @@ const GridWrapper = styled.div`
   }
 `;
 
-function PostGrid() {
+function PostGrid(props) {
+  const [selected,setSelected]=useState<any>([]);
+    useEffect(()=>{
+        return onSnapshot(
+            query(collection(db,'insta'),orderBy('timestamp','desc')),
+            (snapshot)=>{
+            setSelected(snapshot.docs);
+        })
+    },[]);
   return (
     <GridWrapper>
-      {postImages.map((postImage) => (
+      {selected.map((postImage) => (
+        // if(props.email===)
         <img src={postImage} alt="" />
       ))}
     </GridWrapper>

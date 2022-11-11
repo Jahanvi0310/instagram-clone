@@ -6,7 +6,7 @@ import {useSelector} from 'react-redux';
 import {selectName, selectPhoto, selectUid} from '../reducer/User/userSlice';
 import db from '../firebase/firebase';
 import { addDoc, collection, onSnapshot, orderBy, serverTimestamp,query, deleteDoc,doc, setDoc } from 'firebase/firestore';
-import Comments from './comments';
+import Comments from './Comments';
 // import { Avatar } from "@mui/material";
 // import { selectName, selectPhoto, setLogout } from '../reducer/User/userSlice';
 interface Props{
