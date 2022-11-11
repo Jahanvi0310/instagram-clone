@@ -1,59 +1,12 @@
-import React,{useEffect} from 'react';
-import { onAuthStateChanged } from 'firebase/auth';
-import {auth} from './firebase/firebase';
-import { useDispatch } from 'react-redux';
-import Header from './Components/Header';
-import Homee from './pages/homee';
-import Button from './Components/Button';
-import { setLogIn } from './reducers/User/userSlice';
-import './App.css';
-import StoryInput from './Components/storyInput';
-// import Category from './datasource/category';
-import { BrowserRouter,Router,Routes, Route} from "react-router-dom";
-// import { useNavigate,Link} from "react-router-dom";
-import Home from './Components/home';
-import StoriesComponent from './Components/storiesComponent'
-import AddEditUser from './pages/addEditUser';
-function App() {
-  const dispatch=useDispatch();
-  useEffect(()=>{
-onAuthStateChanged(auth,async (user)=>{
-if(user){
-  dispatch(setLogIn({
-    name:user.displayName,
-    email:user.email,
-    uid:user.uid,
-    }))
-}
-}
-  )},[]);
-  // const navigate=useNavigate();
+import React from "react";
+import styled from "styled-components";
+import Router from "./Router";
+const App = () => {
   return (
-    <React.StrictMode>
-      <BrowserRouter>
-    {/* <Router> */}
-      <Routes>
-          <Route path="/story/:id"element={<StoriesComponent/>}/>
-          
-          {/* <Route path="/homee" element={<Homee/>}/> */}
-          <Route path="/" element={<Home/>}/>
-          <Route path="/home" element={<Home/>}/>
-              <Route path='/signIn' element={<Button
-              className='login-button'
-              children="logIn"
-              onClick={()=>console.log("you clicked")
-              }/>}/>
-              <Route path="/storyInp" element={<StoryInput/>}/>
-            <Route path='/add' element={<AddEditUser/>}/>
-            <Route path='/update/:id' element={<AddEditUser/>}/> 
-            {/* <Route path="/any" element={<Home/>}/> */}
-      </Routes>
-      
-    {/* </Router> */}
-    </BrowserRouter>
-    </React.StrictMode>
-  );
-}
+   <Container >
+     <Router/>
+</Container>
+    );
+};
 export default App;
-// const Container=styled.div`
-// `;
+const Container = styled.div``;

@@ -28,8 +28,6 @@ body {
     background-color: #fafafa;
     height: 100vh;
 }
-/* .app_header{ */
-
 .separator {
   display: flex;
   justify-content: space-between;

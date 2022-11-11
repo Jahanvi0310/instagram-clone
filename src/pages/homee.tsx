@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Button, Form, Grid, Loader ,Container,Card,Image} from "semantic-ui-react";
-import { storage, db } from "../firebase/firebase";
+import db,{ storage } from "../firebase/firebase";
 import { useParams, useNavigate } from "react-router-dom";
 import { onSnapshot,collection } from "firebase/firestore";
 import { borderRadius } from "@mui/system";

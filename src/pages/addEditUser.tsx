@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Button, Form, Grid, Loader } from "semantic-ui-react";
-import {db,storage} from "../firebase/firebase";
+import db,{storage} from "../firebase/firebase";
 import { useParams, useNavigate } from "react-router-dom";
 // import { objectTraps } from "immer/dist/internal";
 // import { bgcolor } from "@mui/system";

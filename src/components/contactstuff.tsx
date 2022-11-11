@@ -4,12 +4,12 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { selectName, selectPhoto, setLogout } from '../reducers/User/userSlice';
+import { selectName, selectPhoto, setLogout } from '../reducer/User/userSlice';
 import { auth } from '../firebase/firebase';
 import { useNavigate } from 'react-router-dom';
 const ContactStuff=()=>{
-   const name=useSelector(selectName);
-   const photo=useSelector(selectPhoto);
+   const name:any=useSelector(selectName);
+   const photo:any=useSelector(selectPhoto);
    const Navigate=useNavigate();
    const dispatch=useDispatch();
    const logout=()=>{
@@ -30,8 +30,10 @@ const ContactStuff=()=>{
 <span>Welcome {name}</span>
     </User>
 <button onClick={logout}>LogOut</button>
+
  </Wrapper>
         </Container>
+        
         </>
     )
 }
@@ -39,13 +41,15 @@ const ContactStuff=()=>{
 export default ContactStuff;
 
 const Container=styled.div`
-width:400px;
+width:300px;
 border-radius:20px;
 background-color:#ffffff;
 height:500px;
 position:fixed;
 top:4rem;
 right:10px;
+border: 1px solid rgba(219, 219, 219, 1);
+  box-shadow: 3px 1px 2px 0 rgba(0 0 0 /0.05);
 `;
 const Wrapper=styled.div`
 button{
