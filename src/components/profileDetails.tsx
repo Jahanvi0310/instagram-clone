@@ -1,10 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { useSelector } from 'react-redux';
 import { Avatar } from "@mui/material";
-import { FiPlus } from "react-icons/fi";
-import { selectName, selectPhoto, setLogout } from '../reducer/User/userSlice';
-// import scLogo from "../assets/scLogo.jpg";
 
 const ProfileDetailsWrapper = styled.div`
   display: flex;
@@ -45,28 +41,14 @@ const StatsLabel = styled.span`
   font-size: 14px;
 `;
 
-function ProfileDetails() {
-  const name:any=useSelector(selectName);
-  const photo:any=useSelector(selectPhoto);
+function ProfileDetails(props) {
   return (
     <ProfileDetailsWrapper>
-      {/* <ProfileImage> */}
-      <Avatar src={photo}/>
-      {/* </ProfileImage> */}
-      
+      <Avatar src={props.photo}/>
       <ProfileStats>
         <StatsBlock>
           <StatsNumber></StatsNumber>
-          {/* <FiPlusSquare /> */}
           <StatsLabel>posts</StatsLabel>
-        </StatsBlock>
-        <StatsBlock>
-          <StatsNumber><FiPlus/></StatsNumber>
-          <StatsLabel>followers</StatsLabel>
-        </StatsBlock>
-        <StatsBlock>
-          <StatsNumber><FiPlus/></StatsNumber>
-          <StatsLabel>following</StatsLabel>
         </StatsBlock>
       </ProfileStats>
     </ProfileDetailsWrapper>

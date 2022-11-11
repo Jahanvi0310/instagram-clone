@@ -2,7 +2,7 @@ import { Avatar } from "@mui/material";
 import { signOut } from "firebase/auth";
 import React from "react";
 import TopNav from "./topNav";
-import ViewDashboard from "./viewDashboard";
+// import ViewDashboard from "./viewDashboard";
 import ProfileDetails from "./profileDetails";
 import About from "./about";
 import Highlights from "./highlights";
@@ -12,10 +12,12 @@ import PostGrid from "./postGrid";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-import { selectEmail, selectName, selectPhoto, setLogout } from "../reducer/User/userSlice";
+import {
+  setLogout,
+} from "../reducer/User/userSlice";
 import { auth } from "../firebase/firebase";
 import { useNavigate } from "react-router-dom";
-import { Devices } from "@mui/icons-material";
+// import { Devices } from "@mui/icons-material";
 const ProfileWrapper = styled.div`
   background-color: white;
   max-width: 600px;
@@ -27,10 +29,8 @@ const ProfileWrapper = styled.div`
     display: none;
   }
 `;
-const ContactStuff = () => {
-  const name: any = useSelector(selectName);
-  const photo: any = useSelector(selectPhoto);
-  const email:any=useSelector(selectEmail);
+const ContactStuff = (props) => {
+
   const Navigate = useNavigate();
   const dispatch = useDispatch();
   const logout = () => {
@@ -42,24 +42,21 @@ const ContactStuff = () => {
   };
   return (
     <>
-      <Container
-      >
-        <ProfileWrapper>
-          <TopNav name={name} logout={logout} />
-          {/* <ViewDashboard /> */}
-          <ProfileDetails />
-          <About name={name}/>
-          {/* <ProfileButtons /> */}
+      <Container>
+        {/* <ProfileWrapper> */}
+          <TopNav name={props.name} logout={logout} />
+          <ProfileDetails photo={props.photo} />
+          <About name={props.name} />
           <Highlights />
           <Tabs />
-          <PostGrid email={email} />
-        </ProfileWrapper>
+          <PostGrid name={props.name} />
+        {/* </ProfileWrapper> */}
         {/* <Wrapper> */}
-          {/* <User> */}
-            {/* <Avatar src={photo}/> */}
-           
-          {/* </User> */}
-          
+        {/* <User> */}
+        {/* <Avatar src={photo}/> */}
+
+        {/* </User> */}
+
         {/* </Wrapper> */}
       </Container>
     </>
@@ -68,17 +65,21 @@ const ContactStuff = () => {
 
 export default ContactStuff;
 
-
 const Container = styled.div`
-  width: 20%;
-  height: 100vh;
-  border-radius: 20px;
-  background-color: #ffffff;
-
   position: fixed;
   top: 4rem;
   right: 10px;
+  width: 300px;
+  border-radius: 20px;
+  background-color: #ffffff;
+  height: 500px;
+  position: fixed;
+  top: 4rem;
+  right: 20px;
+  border: 1px solid rgba(219, 219, 219, 1);
+  box-shadow: 3px 1px 2px 0 rgba(0 0 0 /0.05);
 `;
+
 const Wrapper = styled.div`
   button {
     font-weight: bold;

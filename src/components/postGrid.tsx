@@ -40,7 +40,7 @@ function PostGrid(props) {
   const [selected,setSelected]=useState<any>([]);
     useEffect(()=>{
         return onSnapshot(
-            query(collection(db,'insta'),orderBy('timestamp','desc')),
+            query(collection(db,'insta')),
             (snapshot)=>{
             setSelected(snapshot.docs);
         })
@@ -48,8 +48,7 @@ function PostGrid(props) {
   return (
     <GridWrapper>
       {selected.map((postImage) => (
-        // if(props.email===)
-        <img src={postImage} alt="" />
+        <img src={postImage.data().photo} alt="" />
       ))}
     </GridWrapper>
   );

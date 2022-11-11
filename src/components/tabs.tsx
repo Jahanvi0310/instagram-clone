@@ -1,11 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import Grid from "../assets/Grid";
-import Reels from "../assets/Reels";
-import IGTV from "../assets/IGTV.js";
-import Guides from "../assets/Guides";
-import Tags from "../assets/Tags";
-
 const TabsWrapper = styled.div`
   display: flex;
   justify-content: space-between;
@@ -28,18 +23,6 @@ function Tabs() {
       <Tab isActive>
         <Grid />
       </Tab>
-      {/* <Tab>
-        <Reels />
-      </Tab>
-      <Tab>
-        <IGTV />
-      </Tab>
-      <Tab>
-        <Guides />
-      </Tab>
-      <Tab>
-        <Tags />
-      </Tab> */}
     </TabsWrapper>
   );
 }

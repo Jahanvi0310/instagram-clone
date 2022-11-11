@@ -4,13 +4,13 @@ import { AddCircleOutline, FavoriteBorderRounded, HomeRounded, SendRounded } fro
 import { Avatar } from '@mui/material';
 import {useSelector } from 'react-redux';
 import './Header.css';
-import {  selectPhoto,selectName } from '../reducer/User/userSlice';
+import {  selectPhoto,selectName,selectEmail } from '../reducer/User/userSlice';
 import ContactStuff from './contactstuff';
 // import { selectName, selectPhoto, setLogout } from '../reducer/User/userSlice';
 
 import { useNavigate } from 'react-router-dom';
 const Header=()=>{
-    const name:any=useSelector(selectName);
+    const name:any=useSelector(selectName); 
     
     const [isShown,setShown]=useState<any>(false);
    const Navigate=useNavigate();
@@ -58,7 +58,7 @@ const Header=()=>{
         </List>
         <List>
         <Avatar style={{cursor:"pointer"}}  onClick={handleClick} src={photo}/>
-            {isShown && <ContactStuff/>}
+            {isShown && <ContactStuff name={name}  photo={photo}/>}
         </List>
     </Down>
     </>

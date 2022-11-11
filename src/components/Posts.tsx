@@ -29,5 +29,6 @@ const Posts=(props)=> {
     </div>
   )
 }
+
 export default Posts;
 
