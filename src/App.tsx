@@ -4,7 +4,7 @@ import {auth} from './firebase/firebase';
 import { useDispatch } from 'react-redux';
 import Header from './Components/Header';
 import Homee from './pages/homee';
-import Button from './Components/button';
+import Button from './Components/Button';
 import { setLogIn } from './reducers/User/userSlice';
 import './App.css';
 import StoryInput from './Components/storyInput';
