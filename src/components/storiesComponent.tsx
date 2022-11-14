@@ -1,15 +1,14 @@
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import category from "../datasource/category";
 import Stories from "react-insta-stories";
 import Storydata from "../datasource/storydata";
 function StoriesComponent() {
   const match = useParams();
   const navigate = useNavigate();
-  // console.log(match);
+
   function renderstories() {
     const CategoryType = match.CategoryType;
-    // console.log(CategoryType);
+
     const story = Storydata[CategoryType].map((storyItem) => {
       if (storyItem.type === "imgCaption") {
         return {

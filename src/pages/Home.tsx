@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import Header from "../Components/Header";
-import Posts from "../Components/Posts";
+import Header from "../components/Header";
+import Posts from "../components/Posts";
 
 const Home = () => {
   return (

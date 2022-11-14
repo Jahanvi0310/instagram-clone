@@ -9,14 +9,6 @@ const ProfileDetailsWrapper = styled.div`
   padding: 12px 20px;
 `;
 
-const ProfileImage = styled.img`
-  max-width: 130px;
-  border: 1px solid #919191;
-  border-radius: 50%;
-  padding: 4px;
-  flex-basis: 40%;
-`;
-
 const ProfileStats = styled.div`
   display: flex;
   justify-content: space-between;
@@ -29,26 +21,20 @@ const StatsBlock = styled.div`
   align-items: center;
 `;
 
-const StatsNumber = styled.span`
-  font-weight: 600;
-  font-size: 20px;
-`;
-
 const StatsLabel = styled.span`
   margin-top: 5px;
   text-transform: capitalize;
   letter-spacing: 1px;
-  font-size: 14px;
+  font-size: 18px;
 `;
 
 function ProfileDetails(props) {
   return (
     <ProfileDetailsWrapper>
-      <Avatar src={props.photo}/>
+      <Avatar src={props.photo} />
       <ProfileStats>
         <StatsBlock>
-          <StatsNumber></StatsNumber>
-          <StatsLabel>posts</StatsLabel>
+          <StatsLabel>Posts</StatsLabel>
         </StatsBlock>
       </ProfileStats>
     </ProfileDetailsWrapper>
