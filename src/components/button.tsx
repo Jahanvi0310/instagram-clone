@@ -38,6 +38,7 @@ Navigate('/home');
       })
       .catch((error)=>console.error(error.message));
   }
+  
   return (
     <div>
       <button
@@ -57,7 +58,7 @@ Navigate('/home');
           <FontAwesomeIcon icon={faEnvelopeSquare} size="1x" />
           <span className="otherlogin" onClick={login}>Log in with Email</span>
         </button>
-        <a className="forgot-password" href="#">
+        <a className="forgot-password" href="#" >
           Forgotten your password?
         </a>
       </div>

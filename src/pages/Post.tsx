@@ -25,6 +25,10 @@ const Post=()=>{
     const boolean=useSelector(selectBoolean);
     const Navigate=useNavigate();
     const Submit=async(e:any)=>{
+        if(selectImage==null){
+            alert("please choose the file!");
+            return;
+        }
        e.preventDefault();
        if(input.length>1){
         if(loading)return;
@@ -73,8 +77,8 @@ setSelectImage(event.target.result);
             <Wrapper>
                 <TopSection>
                     {selectImage ? (
-                        <ImageContainer>
-                            <img src={selectImage} alt="post" />
+                        <ImageContainer >
+                            <img src={selectImage} alt="post"/>
                         </ImageContainer>
                     ):(
                         <CollectionsOutlined onClick={()=>{selectedImage.current.click()}}/>
@@ -84,10 +88,11 @@ setSelectImage(event.target.result);
                 </TopSection>
                 <BottomSection>
                     <InputContainer>
-                    <input type="text" placeholder="caption"
+                    <input type="text"
                     disabled={!selectImage} 
                     value={input} 
                     onChange={(e:any)=>setInput(e.target.value)}/>
+                   <label>caption</label>
                     </InputContainer>
                     <button disabled={loading} onClick={Submit}>Post</button>
                 </BottomSection>
@@ -154,15 +159,33 @@ position: relative;
    }
 `;
 const InputContainer=styled.div`
-
+border:solid 1.5px #9e9e9e;
 width: 90%;
 border-bottom: 1px solid black;
 margin-left:5px;
+position:relative;
+
+transition:150ms cubic-bezier(0.4,0,0.2,1);
 input{
     width: 100%;
    border:none;
+   font-size:1rem;
+   border:radius:1rem;
+background:none;
+padding:1rem;
    :focus{
     outline: none;
+   
+   }
+   
+   label{
+    position:absolute;
+    left:16px;
+    color:black;
+    pointer-events:none;
+    transform:translateY(1rem);
+    transition:150ms cubic-bezier(0.4,0,0.2,1);
+
    }
 }`;
 const ImageContainer=styled.div`

@@ -1,19 +1,28 @@
-import React from "react";
+import React,{useState} from "react";
 import styled from "styled-components";
 import Header from "../components/Header";
 import Posts from "../components/Posts";
-
+import { createContext } from 'react';
+export const ThemeContext:React.Context<any>=createContext(null);
 const Home = () => {
+  const[theme,setTheme]=useState<any>('');
+  const toogleTheme=()=>{
+    setTheme((curr)=>(curr ==="light"?"dark":"light"));
+   } 
   return (
     <>
-      <Header />
-      <Container>
-        <Section>
-        
-<Posts/>
-        
+      <Header/>
+      <ThemeContext.Provider value={{theme,toogleTheme}}>
+      <Container  id={theme}>
+     <div className="icon">
+  <label>{theme==="light"?"Dark Mode":"Light Mode"}</label>
+<input type="checkBox" onChange={toogleTheme} checked={theme==='dark'}/>
+  </div>        
+  <Section>
+        <Posts/>
         </Section>
       </Container>
+      </ThemeContext.Provider>
     </>
   );
 };
