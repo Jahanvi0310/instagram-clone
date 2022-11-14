@@ -1,18 +1,13 @@
-import React, {
-  useState,
- 
-  ChangeEvent,
-  FC,
-} from "react";
-import Button from "./button";
+import React, { useState, ChangeEvent, FC } from "react";
+import Button from "./Button";
 import "./input.css";
-import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { saveUser } from "../reducer/User/userSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 const Input: FC = () => {
-  const dispatch=useDispatch();
-  const Navigate=useNavigate();
+  const dispatch = useDispatch();
+  const Navigate = useNavigate();
   const auth = getAuth();
   const [inputfield, setInput] = useState<string>();
   const [password, setpassword] = useState<boolean>();
@@ -37,47 +32,39 @@ const Input: FC = () => {
     }
     setPasswordType("password");
   };
-  const logIn = (e:any) => {
-    Navigate('/signup');
+  const logIn = (e: any) => {
+    Navigate("/signup");
     e.preventDefault();
-   
-    
-    
   };
-  
 
-  const signIn=(e:any)=>{
+  const signIn = (e: any) => {
     e.preventDefault();
-    
-    signInWithEmailAndPassword(auth,inputfield, passInput)
+
+    signInWithEmailAndPassword(auth, inputfield, passInput)
       .then((userCredential) => {
-       
         const user = userCredential.user;
         dispatch(
           saveUser({
-              name:user.displayName,
-              email:user.email,
-              uid:user.uid,
-              photo:user.photoURL,
+            name: user.displayName,
+            email: user.email,
+            uid: user.uid,
+            photo: user.photoURL,
           })
-        )
-       Navigate('/home');
+        );
+        Navigate("/home");
       })
-      .catch((error:any) => {
-
-        if (error.code === 'auth/email-already-in-use') {
-          return 'The email address is already in use!';
+      .catch((error: any) => {
+        if (error.code === "auth/email-already-in-use") {
+          return "The email address is already in use!";
         }
-        if (error.code === 'auth/invalid-email') {
-          return 'That email address is invalid!';
+        if (error.code === "auth/invalid-email") {
+          return "That email address is invalid!";
         }
-        if (error.code === 'auth/weak-password') {
-          return 'The given password is weak';
+        if (error.code === "auth/weak-password") {
+          return "The given password is weak";
         }
-    
       });
-  
-    }
+  };
   return (
     <div className="container c1">
       <div className="box upper">
@@ -88,7 +75,6 @@ const Input: FC = () => {
               id="username"
               type="name"
               placeholder="Phone number, username, or email"
-              
               onChange={input}
             />
             <label htmlFor="username">
@@ -114,10 +100,9 @@ const Input: FC = () => {
             </div>
           </div>
           <Button
-            Password={password}
             className="login-button"
             children="log In"
-            onClick={()=>console.log("you clicked")}
+            onClick={() => console.log("you clicked")}
           />
         </form>
       </div>

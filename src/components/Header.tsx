@@ -4,10 +4,9 @@ import { AddCircleOutline } from "@mui/icons-material";
 import { Avatar } from "@mui/material";
 import { useSelector } from "react-redux";
 import "./Header.css";
-import LightModeIcon from '@mui/icons-material/LightMode';
 import ContactStuff from "./contactstuff";
 
-import { selectName, selectPhoto } from "../reducers/User/userSlice";
+import { selectPhoto } from "../reducer/User/userSlice";
 import { useNavigate } from "react-router-dom";
 
 const Header = () => {
@@ -40,7 +39,6 @@ const Header = () => {
         </div>
 
         <div className="headerRight">
-          {/* {username?( */}
           <>
             <div className="List"></div>
             <Down>
@@ -49,14 +47,9 @@ const Header = () => {
                 {<p>Post</p>}
               </List>
               <List>
-              <AddCircleOutline onClick={handleclickStory} />
-              {<p>Story</p>}
+                <AddCircleOutline onClick={handleclickStory} />
+                {<p>Story</p>}
               </List>
-              {/* <List>
-              <LightModeIcon onChange={toogleTheme}/>
-              {<label>{theme==="light"?"Dark Mode":"Light Mode"}</label>}
-              </List> */}
-
               <List>
                 <Avatar
                   style={{ cursor: "pointer" }}

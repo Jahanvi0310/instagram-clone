@@ -13,27 +13,27 @@ function StoriesComponent() {
   }
   const navigate = useNavigate();
   function renderstories() {
-
     const story = Object.keys(state).map((Item) => {
       if (state.id === id) {
         return {
           content: ({ action, isPaused }: any) => {
             return (
-              <div className="snap-x">
-                <div className="w-screen  flex justify-center items-center ">
-                  <div
-                    className="w-4/5 snap-center h-full bg-no-repeat md:max-h-auto sm:max-h-auto  bg-center flex justify-center items-center flex-col"
-                  >
-                    <img src={category.img}></img>
-                  </div>
+              <div>
+                <div className="w-screen flex justify-center items-center ">
+                  <img
+                    src={category.img}
+                    className="p-[5%] bg-black border max-w-[40%] max-h-[30%] h-1/2 mt-2 rounded-md"
+                  />
                 </div>
                 <span
-                    className=" font-bold center text-5xl  ml-[45%] mt-[20%]"
-                    style={{ color: category.textColor, backgroundColor:category.backgroundColor}}
-                  >
-                    {category.caption}
-                  </span>
-               
+                  className=" font-bold center text-5xl  ml-[50%]"
+                  style={{
+                    color: category.textColor,
+                    backgroundColor: category.backgroundColor,
+                  }}
+                >
+                  {category.caption}
+                </span>
               </div>
             );
           },
