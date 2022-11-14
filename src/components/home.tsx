@@ -9,14 +9,14 @@ import {
   Image,
   // Modal,
 } from "semantic-ui-react";
-import {db} from "../firebase/firebase";
+import db from "../firebase/firebase";
 import { useParams, useNavigate } from "react-router-dom";
 import { onSnapshot, collection, deleteDoc, doc } from "firebase/firestore";
 import { borderRadius } from "@mui/system";
 import "./home.css";
 // import StoriesComponent from "./storiesComponent";
 // import category from "../datasource/category";
-function Home() {
+function HomeStory() {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
   // const[open,setOpen]=useState(false);
@@ -26,7 +26,7 @@ function Home() {
   useEffect(() => {
     setLoading(true);
     const unsub = onSnapshot(
-      collection(db, "users"),
+      collection(db, "story"),
       (snapshot) => {
         let list = [];
         snapshot.docs.forEach((doc) => {
@@ -50,7 +50,7 @@ function Home() {
     if (window.confirm("want to delete it?")) {
       try {
         // setOpen(false);
-        await deleteDoc(doc(db, "users", id));
+        await deleteDoc(doc(db, "story", id));
         setUsers(users.filter((user) => user.id !== id));
       } catch (err) {
         console.log(err);
@@ -112,5 +112,5 @@ function Home() {
   );
 }
 
-export default Home;
+export default HomeStory;
 

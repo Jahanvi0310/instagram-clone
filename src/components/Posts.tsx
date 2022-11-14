@@ -12,20 +12,21 @@ const Posts=(id:any)=> {
             setSelected(snapshot.docs);
         })
     },[]);
-  return<> (
+  return (
     <div>
         {selected.map((post:any)=>(
-          <Postlist key={post?.id} 
-          p={post?.data().caption}
+            <Postlist key={post?.id} 
+          p={post.data().caption}
           name={post.data().name}
           avatar={post.data().img}
          email={post.data().email}
         id={post.id}
-        img={post.data().photo}/>
+        img={post.data().photo}
+
+            />
         ))}
+      
     </div>
   )
-  </>
 }
 export default Posts;
-

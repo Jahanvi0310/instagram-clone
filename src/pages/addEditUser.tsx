@@ -2,11 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Button, Form, Grid, Loader } from "semantic-ui-react";
 import db,{storage} from "../firebase/firebase";
 import { useParams, useNavigate } from "react-router-dom";
-// import { objectTraps } from "immer/dist/internal";
-// import { bgcolor } from "@mui/system";
-// import { ReorderSharp } from "@mui/icons-material";
 import { getDownloadURL, uploadBytesResumable, ref } from "firebase/storage";
-import { addDoc, collection, getDoc, serverTimestamp ,doc,updateDoc} from "firebase/firestore";
+import { addDoc, collection, getDoc, serverTimestamp ,doc,updateDoc,setDoc} from "firebase/firestore";
 // import e from "express";
 
 const initialState:any = {
@@ -18,7 +15,7 @@ const initialState:any = {
 };
 const AddEditUser = () => {
   const [data, setData] = useState(initialState);
-  const { caption, bgColor, info, textColor, type } = data;
+  const { caption, bgColor, textColor, type } = data;
   const [file, setFile] = useState(null);
   const [progress, setProgress] = useState(null);
   const [errors, setErrors] = useState<any>({});
@@ -29,7 +26,7 @@ const AddEditUser = () => {
         id && getSingleUser();
     },[id])
     const getSingleUser=async()=>{
-        const docRef=doc(db,"users",id);
+        const docRef=doc(db,"story",id);
         const snapshot=await getDoc(docRef);
         if(snapshot.exists()) {
             setData({...snapshot.data()});
@@ -84,7 +81,6 @@ const AddEditUser = () => {
     if (!type) {
       errors.type = "type is required";
     }
-    // console.log(errors.bgColor);
     return errors;
   };
 
@@ -93,27 +89,33 @@ const AddEditUser = () => {
     let errors: any = validate();
     if (Object.keys(errors).length) return setErrors(errors);
     setIsSubmit(true);
-    if(!id){
-     try{
-      await addDoc(collection(db, "users"), {
+    // if(!id){
+    //  try{
+      console.log("hyy");
+
+    await addDoc(collection(db, "story"), {
         ...data,
         timestamp: serverTimestamp(),
-      }); 
-     } catch(error){
-      console.log(error);
-     }
-    }else{
-      try{
-        await updateDoc(doc(db, "users",id), {
-          ...data,
-          timestamp: serverTimestamp(),
-        }); 
-       } catch(error){
-        console.log(error);
-       }
-    }
+      }
+      ); 
+      navigate("/home",{state:{data:data}});
+
+
+    //  } catch(error){
+    //   console.log(error);
+    //  }
+    // }else{
+    //   try{
+    //     await updateDoc(doc(db, "story",id), {
+    //       ...data,
+    //       timestamp: serverTimestamp(),
+    //     }); 
+    //    } catch(error){
+    //     console.log(error);
+    //    }
+    // }
+ 
   
-    navigate("/home",{state:{data:data}});
   };
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
@@ -134,8 +136,8 @@ const AddEditUser = () => {
                 <Loader active inline="centered" size="huge" />
               ) : (
                 <>
-                  <b>{id? "update story":"add story"}</b>
-                  <Form onSubmit={handleSubmit}>
+                  {/* <b>{id? "update story":"add story"}</b> */}
+                  <Form  onSubmit={handleSubmit}>
                     <Form.Input
                       label="caption"
                       error={
@@ -157,7 +159,6 @@ const AddEditUser = () => {
                       name="bgColor"
                       onChange={handleChange}
                       value={bgColor}
-                    //   autoFocus
                     />
                     {/* <Form.Input
                       label="info"
@@ -177,14 +178,14 @@ const AddEditUser = () => {
                       onChange={handleChange}
                       value={textColor}
                     />
-                    <Form.Input
+                    {/* <Form.Input
                       label="type"
                       error={errors.type ? { content: errors.type } : null}
                       placeholder="imgCaption or typeImagePost"
                       name="type"
                       onChange={handleChange}
                       value={type}
-                    />
+                    /> */}
                     <Form.Input
                       label="upload"
                       type="file"

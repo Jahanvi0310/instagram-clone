@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Header from "../components/Header";
 import Posts from "../components/Posts";
 import { createContext } from 'react';
+import HomeStory from "../components/home";
 export const ThemeContext:React.Context<any>=createContext(null);
 const Home = () => {
   const[theme,setTheme]=useState<any>('');
@@ -11,7 +12,7 @@ const Home = () => {
    } 
   return (
     <>
-      <Header/>
+      <Header />
       <ThemeContext.Provider value={{theme,toogleTheme}}>
       <Container  id={theme}>
      <div className="icon">
@@ -19,6 +20,7 @@ const Home = () => {
 <input type="checkBox" onChange={toogleTheme} checked={theme==='dark'}/>
   </div>        
   <Section>
+        <HomeStory/>
         <Posts/>
         </Section>
       </Container>

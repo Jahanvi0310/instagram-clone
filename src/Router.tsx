@@ -10,8 +10,10 @@ import { auth } from "./firebase/firebase";
 import { useDispatch } from "react-redux";
 import { selectuser, setLogIn } from "./reducer/User/userSlice";
 import { useSelector } from 'react-redux';
-import AddEditUser from './pages/addEditUser';
+// import AddEditUser from './pages/addEditUser';
 import SignUp from './components/signUp';
+import AddEditUser from './pages/addEditUser';
+import HomeStory from './components/home';
 const Router=()=> {
   const dispatch = useDispatch();
   const user=useSelector(selectuser);
@@ -33,18 +35,18 @@ const Router=()=> {
     <>
      <BrowserRouter>
         <Routes>
-        <Route path="/story/:CategoryType"element={<StoriesComponent/>}/>
+        <Route path="/story/:id"element={<StoriesComponent/>}/>
           <Route path="/" element={user?<Home/>:<Input/>}/>
-          <Route path="/home" element={<Home/>}/>
+          {/* <Route path="/home" element={<Home/>}/> */}
               <Route path='/signIn' element={<Input/>}/>
           <Route path="/home" element={<Home />} />
-          <Route
+          <Route path='/inp' element={<AddEditUser/>}/>
+          {/* <Route
             path="/logIn"
             element={<Input/>}
-            
-          />
+          /> */}
           <Route path="/post"element={<Postlist />}/> 
-          <Route path="/posts" element={<Post/>}/>
+          <Route path="/home" element={<Post/>}/>
           <Route path="/signup" element={<SignUp/>}/>
           <Route path='/add' element={<AddEditUser/>}/>
           <Route path='/update/:id' element={<AddEditUser/>}/> 
