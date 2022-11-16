@@ -3,7 +3,7 @@ import { Favorite, FavoriteBorder } from "@mui/icons-material";
 import Avatar from "@mui/material/Avatar";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
-import { selectName, selectPhoto, selectUid } from "../reducer/User/userSlice";
+import { selectName, selectPhoto, selectUid } from "../reducer/User/UserSlice";
 import db from "../firebase/firebase";
 import {
   addDoc,
@@ -18,24 +18,24 @@ import {
 } from "firebase/firestore";
 import Comments from "./Comments";
 import { MoreHorizOutlined } from "@material-ui/icons";
-import "./Postlist.css";
+import "./PostList.css";
 interface Props {
   disabled: boolean;
 }
 function Postlist({ avatar, img, id, email, p, name }: any) {
-  const [shorten, setShorten] = useState<any>(false);
-  const [loading, setLoading] = useState<any>(false);
-  const [input, setInput] = useState<any>("");
+  const [shorten, setShorten] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [input, setInput] = useState<string>("");
   const pars = !shorten ? p.slice(100) : p;
   const names = useSelector(selectName);
   const rename = names ? names.split(" ") : names;
   const photo = useSelector(selectPhoto);
   const [comment, setComment] = useState<any>([]);
-  const [liked, setLiked] = useState<any>(false);
+  const [liked, setLiked] = useState<boolean>(false);
   const userId = useSelector(selectUid);
   const [likes, setLikes] = useState<any>([]);
-  const [open, setOpen] = useState<any>(false);
-  const submit = async (e: any) => {
+  const [open, setOpen] = useState<boolean>(false);
+  const submit = async (e) => {
     e.preventDefault();
     if (!names) return;
     if (input.length > 1) {

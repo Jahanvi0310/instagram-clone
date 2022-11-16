@@ -4,13 +4,13 @@ import { AddCircleOutline } from "@mui/icons-material";
 import { Avatar } from "@mui/material";
 import { useSelector } from "react-redux";
 import "./Header.css";
-import ContactStuff from "./contactstuff";
+import ContactStuff from "./ContactStuff";
 
-import { selectPhoto } from "../reducer/User/userSlice";
+import { selectPhoto } from "../reducer/User/UserSlice";
 import { useNavigate } from "react-router-dom";
 
 const Header = () => {
-  const [isShown, setShown] = useState<any>(false);
+  const [isShown, setShown] = useState<boolean>(false);
   const Navigate = useNavigate();
   const photo = useSelector(selectPhoto);
 
@@ -18,12 +18,12 @@ const Header = () => {
     setShown((current) => !current);
   };
 
-  const handleclickStory = (e: any) => {
+  const handleClickStory = (e) => {
     e.preventDefault();
-    Navigate("/inp");
+    Navigate("/inputStory");
   };
 
-  const handleclickPost = (e: any) => {
+  const handleClickPost = (e) => {
     e.preventDefault();
     Navigate("/posts");
   };
@@ -43,11 +43,11 @@ const Header = () => {
             <div className="List"></div>
             <Down>
               <List>
-                <AddCircleOutline onClick={handleclickPost} />
+                <AddCircleOutline onClick={handleClickPost} />
                 {<p>Post</p>}
               </List>
               <List>
-                <AddCircleOutline onClick={handleclickStory} />
+                <AddCircleOutline onClick={handleClickStory} />
                 {<p>Story</p>}
               </List>
               <List>

@@ -3,12 +3,12 @@ import styled from "styled-components";
 import Header from "../components/Header";
 import Posts from "../components/Posts";
 import { createContext } from "react";
-import HomeStory from "../components/home";
+import HomeStory from "../components/HomeStory";
 import LightModeIcon from "@mui/icons-material/LightMode";
-import { Button } from "semantic-ui-css";
+// import { Button } from "semantic-ui-css";
 export const ThemeContext: React.Context<any> = createContext(null);
 const Home = () => {
-  const [theme, setTheme] = useState<any>("light");
+  const [theme, setTheme] = useState<string>("light");
   const toogleTheme = () => {
     setTheme((curr) => (curr === "light" ? "dark" : "light"));
   };

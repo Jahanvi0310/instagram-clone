@@ -16,7 +16,7 @@ function StoriesComponent() {
     const story = Object.keys(state).map((Item) => {
       if (state.id === id) {
         return {
-          content: ({ action, isPaused }: any) => {
+          content: ({ action, isPaused }) => {
             return (
               <div>
                 <div className="w-screen flex justify-center items-center ">

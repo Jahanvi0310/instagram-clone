@@ -3,19 +3,15 @@ import "./Button.css";
 import { useDispatch } from "react-redux";
 import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../firebase/firebase";
-import { setLogIn } from "../reducer/User/userSlice";
+import { setLogIn } from "../reducer/User/UserSlice";
 import { useNavigate } from "react-router-dom";
+import EmailIcon from "@mui/icons-material/Email";
 interface Props {
   className: string;
   children?: React.ReactNode;
-  onClick: () => void;
+  password: boolean;
 }
-const Button: React.FC<Props> = ({
-  children,
-
-  onClick,
-  className,
-}) => {
+const Button: React.FC<Props> = ({ children, password, className }) => {
   const Navigate = useNavigate();
   const dispatch = useDispatch();
   const login = () => {
@@ -36,22 +32,21 @@ const Button: React.FC<Props> = ({
   };
   return (
     <div>
-      <button className={className}>{children}</button>
+      <button className={className} disabled={!password}>
+        {children}
+      </button>
       <div className="separator">
         <div className="line"></div>
-        <p>OR</p>
+        <p className="font-xl">OR</p>
         <div className="line"></div>
       </div>
       <div className="other">
-        <button className="fb-login-btn" type="button">
-          <i className="fa fa-facebook-official fb-icon"></i>
-          <span className="" onClick={login}>
+        <button className="icon-login-btn" type="button">
+          <EmailIcon fontSize="medium" />
+          <span onClick={login} className="log">
             Log in with email
           </span>
         </button>
-        <a className="forgot-password" href="#">
-          Forgot password?
-        </a>
       </div>
     </div>
   );

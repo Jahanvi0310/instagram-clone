@@ -4,18 +4,17 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-import { selectName, selectPhoto, setLogout } from "../reducer/User/userSlice";
+import { selectName, selectPhoto, setLogout } from "../reducer/User/UserSlice";
 import { auth } from "../firebase/firebase";
 import { useNavigate } from "react-router-dom";
 const ContactStuff = () => {
-  const name: any = useSelector(selectName);
-  const photo: any = useSelector(selectPhoto);
+  const name: string = useSelector(selectName);
+  const photo: string = useSelector(selectPhoto);
   const Navigate = useNavigate();
   const dispatch = useDispatch();
   const logout = () => {
     signOut(auth).then((result) => {
       dispatch(setLogout({ name: null, photo: null, email: null, uid: null }));
-      console.log("button clicked");
       Navigate("/signIn");
     });
   };

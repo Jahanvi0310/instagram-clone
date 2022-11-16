@@ -12,29 +12,29 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import db, { storage } from "../firebase/firebase";
-import { selectBoolean, setBool } from "../reducer/Bool/boolSlice";
+import { selectBoolean, setBool } from "../reducer/Bool/BoolSlice";
 import {
   selectEmail,
   selectName,
   selectPhoto,
-} from "../reducer/User/userSlice";
+} from "../reducer/User/UserSlice";
 import { useNavigate } from "react-router-dom";
 
 interface Props {
-  user: any;
+  user: string;
 }
 const Post = () => {
   const dispatch = useDispatch();
   const selectedImage: any = useRef(null);
   const [selectImage, setSelectImage] = useState<any>(null);
-  const [input, setInput] = useState<any>(null);
-  const [loading, setLoading] = useState<any>(false);
+  const [input, setInput] = useState<string>(null);
+  const [loading, setLoading] = useState<boolean>(false);
   const name = useSelector(selectName);
   const img = useSelector(selectPhoto);
   const email = useSelector(selectEmail);
   const boolean = useSelector(selectBoolean);
   const Navigate = useNavigate();
-  const Submit = async (e: any) => {
+  const Submit = async (e) => {
     if (selectImage == null) {
       alert("please choose the file!");
       return;
@@ -64,11 +64,11 @@ const Post = () => {
     setLoading(false);
     dispatch(setBool({ boolean: false }));
   };
-  const ImageStuff = (e: any) => {
+  const ImageStuff = (e) => {
     const reader = new FileReader();
     if (e.target.files[0]) {
       reader.readAsDataURL(e.target.files[0]);
-      reader.onload = (event: any) => {
+      reader.onload = (event) => {
         setSelectImage(event.target.result);
       };
     }
@@ -111,7 +111,7 @@ const Post = () => {
                 type="text"
                 disabled={!selectImage}
                 value={input}
-                onChange={(e: any) => setInput(e.target.value)}
+                onChange={(e) => setInput(e.target.value)}
               />
               <label>caption</label>
             </InputContainer>
@@ -137,7 +137,7 @@ const Container = styled.div<Props>`
   justify-content: center;
   align-items: center;
   transition: 150ms ease-out;
-  transform: ${(props: any) =>
+  transform: ${(props) =>
     props.user ? `translateY(0)` : `translateY(-100%)`};
 `;
 const Wrapper = styled.div`max-height: 550px;
