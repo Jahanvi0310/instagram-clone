@@ -3,7 +3,8 @@ import { Button, Image } from "semantic-ui-react";
 import db from "../firebase/firebase";
 import { selectName } from "../reducer/User/UserSlice";
 import { useNavigate } from "react-router-dom";
-import { onSnapshot, collection, deleteDoc, doc } from "firebase/firestore";
+import { onSnapshot, collection, deleteDoc, doc ,orderBy} from "firebase/firestore";
+import {listAll} from "firebase/storage";
 import "./Home.css";
 import { useSelector } from "react-redux";
 
@@ -57,13 +58,19 @@ function HomeStory(props) {
                 className="mt-2 ml-1 cursor-pointer"
                 onClick={() => {
                   navigate(`/story/${category.id}`, {
-                    state: { category: category, id: category.id },
+                    state: { category: category, id: category.id ,type:category.type},
                   });
                 }}
               >
                 <div className="category-outer-circle flex justify-center items-center col-span-2">
                   <div className="category-inner-circle flex justify-center items-center col-span-2">
-                    <Image src={category.img} className="rounded-2xl h-12" />
+                    {props.type==="video"? <><video>
+                      <source src={category.img} className="rounded-2xl h-12" />
+                      </video></>
+                      :
+                      <Image src={category.img} className="rounded-2xl h-12" />  
+                    }
+                    
                   </div>
                 </div>
                 <div className="flex justify-center ">

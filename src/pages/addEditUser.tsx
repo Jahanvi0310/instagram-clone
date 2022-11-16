@@ -9,24 +9,20 @@ import {
   getDoc,
   serverTimestamp,
   doc,
-  updateDoc,
-  setDoc,
+  updateDoc
 } from "firebase/firestore";
-// import e from "express";
 
 const initialState: any = {
   caption: "",
-  bgColor: "",
-  info: "",
   textColor: "",
-  type: "",
+  type:""
 };
 const AddEditUser = () => {
   const [data, setData] = useState(initialState);
   const { caption, bgColor, textColor, type } = data;
   const [file, setFile] = useState(null);
   const [progress, setProgress] = useState(null);
-  const [errors, setErrors] = useState<any>({});
+  const [errors, setErrors] = useState<object>({});
   const [isSubmit, setIsSubmit] = useState(false);
   const { id } = useParams();
   const navigate = useNavigate();
@@ -76,18 +72,18 @@ const AddEditUser = () => {
   }, [file]);
 
   const validate = () => {
-    let errors: any = {};
+    let errors: object = {};
     if (!caption) {
-      errors.caption = "caption is required";
+      errors[caption] = "caption is required";
     }
     if (!bgColor) {
-      errors.bgColor = "bgColor is required";
+      errors[bgColor] = "bgColor is required";
     }
     if (!textColor) {
-      errors.textColor = "textColor is required";
+      errors[textColor] = "textColor is required";
     }
     if (!type) {
-      errors.type = "type is required";
+      errors[type] = "type is required";
     }
     return errors;
   };
@@ -147,7 +143,7 @@ const AddEditUser = () => {
                     <Form.Input
                       label="caption"
                       error={
-                        errors.caption ? { content: errors.caption } : null
+                        errors[caption] ? { content: errors[caption] } : null
                       }
                       placeholder="enter caption"
                       name="caption"
@@ -158,12 +154,22 @@ const AddEditUser = () => {
                     <Form.Input
                       label="textColor"
                       error={
-                        errors.textColor ? { content: errors.textColor } : null
+                        errors[textColor] ? { content: errors[textColor] } : null
                       }
                       placeholder="enter textColor"
                       name="textColor"
                       onChange={handleChange}
                       value={textColor}
+                    />
+                    <Form.Input
+                      label="type"
+                      error={
+                        errors[type] ? { content: errors[type] } : null
+                      }
+                      placeholder="enter type(image/video)"
+                      name="type"
+                      onChange={handleChange}
+                      value={type}
                     />
                     <Form.Input
                       label="upload"

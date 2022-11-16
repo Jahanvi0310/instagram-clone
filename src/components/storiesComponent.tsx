@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { onSnapshot, collection, deleteDoc, doc } from "firebase/firestore";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
+
 import Stories from "react-insta-stories";
 function StoriesComponent() {
   const params = useParams();
@@ -13,17 +13,21 @@ function StoriesComponent() {
   }
   const navigate = useNavigate();
   function renderstories() {
-    const story = Object.keys(state).map((Item) => {
+    const story = Object.keys(state).map(() => {
       if (state.id === id) {
         return {
-          content: ({ action, isPaused }) => {
+          content: ({ story ,action, isPaused }) => {
             return (
               <div>
                 <div className="w-screen flex justify-center items-center ">
-                  <img
-                    src={category.img}
-                    className="p-[5%] bg-black border max-w-[40%] max-h-[30%] h-1/2 mt-2 rounded-md"
-                  />
+                  {category.type=='video'? 
+                     (<video width={1050} controls>
+                     <source src={category.img} className="rounded-2xl h-12" />
+               </video>):(<img
+                  src={category.img}
+                  className="p-[5%] bg-black border max-w-[40%] max-h-[30%] h-1/2 mt-2 rounded-md"
+                />)
+                }  
                 </div>
                 <span
                   className=" font-bold center text-5xl  ml-[50%]"
