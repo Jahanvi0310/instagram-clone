@@ -1,72 +1,73 @@
-import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faFacebook,
-  faFacebookSquare,
-} from "@fortawesome/free-brands-svg-icons";
-import { createUserWithEmailAndPassword,getAuth } from "firebase/auth";
+import React, { ChangeEvent, useState, FC } from "react";
+import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import db from "../firebase/firebase";
 import { useDispatch } from "react-redux";
-import "./signup.css";
-import { useNavigate } from "react-router-dom";
-import { saveUser } from "../reducer/User/userSlice";
-const SignUp = () => {
-    const auth=getAuth();
-    const dispatch=useDispatch();
-    const Navigate=useNavigate();
-    const[name,setName]=useState<any>("");
-    const[password,setpassword]=useState<any>("");
-    const[username,setUsername]=useState<any>("");
-    const[email,setEmail]=useState<any>("");
-    const signup=(e:any)=>{
-        e.preventDefault();
-        Navigate('/signin');
+import "./SignUp.css";
+import { useNavigate, useLocation } from "react-router-dom";
+import { saveUser } from "../reducer/User/UserSlice";
+const SignUp: FC = (props) => {
+  const auth = getAuth();
+  const dispatch = useDispatch();
+  const Navigate = useNavigate();
+  const [name, setName] = useState<string>("");
+  const [password, setpassword] = useState<boolean>();
+  const [passwordType, setPasswordType] = useState<string>("password");
+  const [username, setUsername] = useState<string>("");
+  const [passInput, setPassInput] = useState<string>();
+  const [email, setEmail] = useState<string>("");
+  const { state } = useLocation();
+  // const {togglePassword}  = state;
+
+  const changeText: (event: ChangeEvent) => void = (event) => {
+    setPassInput((event.target as HTMLInputElement).value);
+    if ((event.target as HTMLInputElement).value.length < 8) {
+      setpassword(false);
+    } else {
+      setpassword(true);
     }
-    const SignUp=(e:any)=>{
-      e.preventDefault();  
-     
-      createUserWithEmailAndPassword(auth,email, password)
+  };
+  const togglePassword = (e) => {
+    e.preventDefault();
+    if (passwordType === "password") {
+      setPasswordType("text");
+      return;
+    }
+    setPasswordType("password");
+  };
+  const signup = (e) => {
+    e.preventDefault();
+    Navigate("/signin");
+  };
+  const SignUp = (e) => {
+    e.preventDefault();
+
+    createUserWithEmailAndPassword(auth, email, passInput)
       .then((userCredential) => {
         const user = userCredential.user;
         dispatch(
           saveUser({
-              name:name,
-              email:email,
-              uid:username,
-              
+            name: name,
+            email: email,
+            uid: username,
           })
-          
-        )
+        );
         alert("Account created Successfully");
 
-        
-       Navigate('/home');
+        Navigate("/home");
       })
-      
+
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        
       });
-    }
+  };
   return (
     <div>
-      <div className="container  c2">
-        <div className="box upperr">
-          <div className="heading h2"></div>
+      <div className="container c2">
+        <div className="box upper">
+          <div className="heading"></div>
           <div className="head">
             Sign up to see photos and videos from your friends.
-          </div>
-          <div>
-            <button className="fblogin">
-              <FontAwesomeIcon icon={faFacebookSquare} size="1x" />
-              <span className="otherlogin">Log in with Facebook</span>
-            </button>
-          </div>
-          <div className="separator">
-            <div className="line"></div>
-            <p>OR</p>
-            <div className="line"></div>
           </div>
           <form className="login-form" onSubmit={SignUp}>
             <div className="field">
@@ -75,51 +76,81 @@ const SignUp = () => {
                 type="name"
                 placeholder="Mobile number or email address"
                 value={email}
-                onChange={(e:any)=>setEmail(e.target.value)}
+                onChange={(e) => setEmail(e.target.value)}
               />
-              <label htmlFor="email">Mobile number or email address</label>
+              <label className="labell" htmlFor="email">
+                Mobile number or email address
+              </label>
             </div>
             <div className="field">
-              <input id="fullname" type="fullname" placeholder="Full Name" 
-              value={name}
-              onChange={(e:any)=>setName(e.target.value)}/>
-              <label htmlFor="fullname">Full Name</label>
+              <input
+                id="fullname"
+                type="fullname"
+                placeholder="Full Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+              <label className="labell" htmlFor="fullname">
+                Full Name
+              </label>
             </div>
             <div className="field">
-              <input id="username" type="username" placeholder="User Name" 
-              value={username}
-              onChange={(e:any)=>setUsername(e.target.value)}/>
-              <label htmlFor="username">Username</label>
+              <input
+                id="username"
+                type="username"
+                placeholder="User Name"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+              <label className="labell" htmlFor="username">
+                Username
+              </label>
             </div>
             <div className="field">
-              <input id="password" type="password" placeholder="password"
-              value={password}
-              onChange={(e:any)=>setpassword(e.target.value)} />
-              <label htmlFor="password">Password</label>
-            </div>
-              <div className="btm">
-                People who use our service may have uploaded your contact
-                information to Instagram.{" "}
-                <a href="" className="alink">
-                  Learn more
-                </a>
+              <div className="passdiv">
+                <input
+                  id="password"
+                  type={passwordType}
+                  placeholder="password"
+                  onChange={changeText}
+                  value={passInput}
+                />
+                <label className="labell" htmlFor="password">
+                  Password
+                </label>
+                <button id="hide" onClick={togglePassword}>
+                  {passwordType === "password" ? (
+                    <p className="para">Show</p>
+                  ) : (
+                    <p className="para">Hide</p>
+                  )}
+                </button>
               </div>
-              <div className="btm">
-                By signing up, you agree to our{" "}
-                <a href="" className="alink">
-                  Terms
-                </a>
-                ,
-                <a href="" className="alink">
-                  Privacy Policy
-                </a>{" "}
-                and{" "}
-                <a href="" className="alink">
-                  Cookies Policy
-                </a>
-                .
-              </div>
-            <button className="login-button" title="login">
+            </div>
+
+            <div className="btm">
+              People who use our service may have uploaded your contact
+              information to Instagram.{" "}
+              <a href="" className="alink">
+                Learn more
+              </a>
+            </div>
+            <div className="btm">
+              By signing up, you agree to our{" "}
+              <a href="" className="alink">
+                Terms
+              </a>
+              ,
+              <a href="" className="alink">
+                Privacy Policy
+              </a>{" "}
+              and{" "}
+              <a href="" className="alink">
+                Cookies Policy
+              </a>
+              .
+            </div>
+            <button className="login-button" title="login" disabled={!password}>
               Sign Up
             </button>
           </form>
@@ -127,7 +158,7 @@ const SignUp = () => {
         <div className="box b1">
           <p>
             Have an account?{" "}
-            <a className="signup" href="#"  onClick={signup}>
+            <a className="signup" href="#" onClick={signup}>
               Log in
             </a>
           </p>
@@ -148,5 +179,3 @@ const SignUp = () => {
 };
 
 export default SignUp;
-
-

@@ -1,58 +1,43 @@
-import React from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import category from "../datasource/category";
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
+
 import Stories from "react-insta-stories";
-import Storydata from "../datasource/storydata";
 function StoriesComponent() {
-  const match = useParams();
+  const params = useParams();
+  const { state } = useLocation();
+
+  const { category, id } = state;
+
+  function gobackToHomePage() {
+    navigate("/home");
+  }
   const navigate = useNavigate();
-  // console.log(match);
   function renderstories() {
-    const CategoryType = match.CategoryType;
-    // console.log(CategoryType);
-    const story = Storydata[CategoryType].map((storyItem) => {
-      if (storyItem.type === "imgCaption") {
+    const story = Object.keys(state).map(() => {
+      if (state.id === id) {
         return {
-          content: ({ action, isPaused }) => {
+          content: ({ story ,action, isPaused }) => {
             return (
-              <div className="w-screen h-screen flex justify-center items-center">
-                <div
-                  className="w-full h-full max-w-screen-md bg-no-repeat   bg-center  flex justify-center items-center flex-col"
-                  style={{ backgroundImage: `url(${storyItem.background})` }}
+              <div>
+                <div className="w-screen flex justify-center items-center ">
+                  {category.type=='video'? 
+                     (<video width={1050} controls>
+                     <source src={category.img} className="rounded-2xl h-12" />
+               </video>):(<img
+                  src={category.img}
+                  className="p-[5%] bg-black border max-w-[40%] max-h-[30%] h-1/2 mt-2 rounded-md"
+                />)
+                }  
+                </div>
+                <span
+                  className=" font-bold center text-5xl  ml-[50%]"
+                  style={{
+                    color: category.textColor,
+                    backgroundColor: category.backgroundColor,
+                  }}
                 >
-                  <div
-                    className="font-bold mt-0"
-                    style={{ color: storyItem.textColor }}
-                  >
-                    <span>{storyItem.caption}</span>
-                  </div>
-                </div>
-              </div>
-            );
-          },
-        };
-      } else if (storyItem.type === "typeImagePost") {
-        return {
-          content: ({ action, isPaused }) => {
-            return (
-              <div
-                className="w-full h-full bg-no-repeat border-8 bg-center flex justify-center items-center"
-                style={{ backgroundColor: storyItem.backgroundColor }}
-              >
-                <div className="max-w-screen-md flex-col ">
-                  <div
-                    className="flex justify-center items-center font-bold"
-                    style={{ color: storyItem.textColor }}
-                  >
-                    <span>{storyItem.title}</span>
-                  </div>
-                  <div>
-                    <img src={storyItem.postImage} />
-                  </div>
-                  <div className="text-left font-bold ml-1">
-                    <span>{storyItem.text}</span>
-                  </div>
-                </div>
+                  {category.caption}
+                </span>
               </div>
             );
           },
@@ -60,9 +45,6 @@ function StoriesComponent() {
       }
     });
     return story;
-  }
-  function gobackToHomePage() {
-    navigate("/");
   }
   return (
     <div className="flex justify-center items-center">
@@ -75,5 +57,4 @@ function StoriesComponent() {
     </div>
   );
 }
-
 export default StoriesComponent;
