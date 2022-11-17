@@ -1,24 +1,24 @@
-import React,{useEffect} from 'react'
+import React, { useEffect } from "react";
 import Home from "./pages/Home";
-import Input from "./components/input";
-import Postlist from "./components/PostList";
-import StoriesComponent from "./components/storiesComponent";
+import Input from "./components/Input";
+import PostList from "./components/PostList";
+import StoriesComponent from "./components/StoriesComponent";
 import Post from "./pages/Post";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase/firebase";
 import { useDispatch } from "react-redux";
-import { selectuser, setLogIn } from "./reducer/User/userSlice";
-import { useSelector } from 'react-redux';
-import SignUp from './components/signUp';
-const Router=()=> {
+import { selectuser, setLogIn } from "./reducer/User/UserSlice";
+import { useSelector } from "react-redux";
+import SignUp from "./components/SignUp";
+import AddEditUser from "./pages/AddEditUser";
+const Router = () => {
   const dispatch = useDispatch();
-  const user=useSelector(selectuser);
-  // const[User,setUser]=useState();
+  const user = useSelector(selectuser);
   useEffect(() => {
     onAuthStateChanged(auth, async (user) => {
       if (user) {
-       dispatch(
+        dispatch(
           setLogIn({
             name: user.displayName,
             email: user.email,
@@ -26,32 +26,26 @@ const Router=()=> {
           })
         );
       }
-     });
+    });
   }, []);
   return (
     <>
-     <BrowserRouter>
+      <BrowserRouter>
         <Routes>
-        <Route path="/story/:CategoryType"element={<StoriesComponent/>}/>
-          <Route path="/" element={user?<Home/>:<Input/>}/>
-          <Route path="/home" element={<Home/>}/>
-              <Route path='/signIn' element={<Input/>}/>
+          <Route path="/story/:id" element={<StoriesComponent />} />
+          <Route path="/" element={user ? <Home /> : <Input />} />
+          <Route path="/signIn" element={<Input />} />
           <Route path="/home" element={<Home />} />
-          <Route
-            path="/logIn"
-            element={<Input/>}
-            
-          />
-          <Route path="/post"element={<Postlist />}/> 
-          <Route path="/posts" element={<Post/>}/>
-          <Route path="/signup" element={<SignUp/>}/>
+          <Route path="/inputStory" element={<AddEditUser />} />
+          <Route path="/post" element={<PostList />} />
+          <Route path="/home" element={<Post />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/add" element={<AddEditUser />} />
+          <Route path="/update/:id" element={<AddEditUser />} />
         </Routes>
-
-    </BrowserRouter>
-    
-     
+      </BrowserRouter>
     </>
-  )
-}
+  );
+};
 
 export default Router;
