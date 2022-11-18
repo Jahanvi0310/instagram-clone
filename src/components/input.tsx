@@ -1,8 +1,8 @@
 import React, { useState, ChangeEvent, FC } from "react";
-import Button from "./Button";
-import "./Input.css";
+import Button from "./button";
+import "./input.css";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { saveUser } from "../reducer/User/UserSlice";
+import { saveUser } from "../reducer/User/userSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 const Input: FC = () => {

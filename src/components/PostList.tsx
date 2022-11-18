@@ -3,7 +3,7 @@ import { Favorite, FavoriteBorder } from "@mui/icons-material";
 import Avatar from "@mui/material/Avatar";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
-import { selectName, selectPhoto, selectUid } from "../reducer/User/UserSlice";
+import { selectName, selectPhoto, selectUid } from "../reducer/User/userSlice";
 import db from "../firebase/firebase";
 import {
   addDoc,
@@ -18,7 +18,7 @@ import {
 } from "firebase/firestore";
 import Comments from "./Comments";
 import { MoreHorizOutlined } from "@material-ui/icons";
-import "./PostList.css";
+import "./Postlist.css";
 interface Props {
   disabled: boolean;
 }
