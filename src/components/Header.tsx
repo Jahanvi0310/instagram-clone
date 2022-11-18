@@ -1,12 +1,14 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import { AddCircleOutline } from "@mui/icons-material";
-import { Avatar } from "@mui/material";
-import { useSelector } from "react-redux";
-import "./Header.css";
-import ContactStuff from "./ContactStuff";
+import React, { useState } from 'react';
+import styled from "styled-components"
+import {  AddCircleOutline } from '@mui/icons-material';
+import { Avatar } from '@mui/material';
+import {useSelector } from 'react-redux';
+import './Header.css';
+import {  selectPhoto,selectName,selectEmail } from '../reducer/User/userSlice';
+import ContactStuff from './contactstuff';
+// import { selectName, selectPhoto, setLogout } from '../reducer/User/userSlice';
 
-import { selectPhoto } from "../reducer/User/UserSlice";
+// import { selectPhoto } from "../reducer/User/UserSlice";
 import { useNavigate } from "react-router-dom";
 
 const Header = () => {
@@ -51,13 +53,9 @@ const Header = () => {
                 {<p>Story</p>}
               </List>
               <List>
-                <Avatar
-                  style={{ cursor: "pointer" }}
-                  onClick={handleClick}
-                  src={photo}
-                />
-                {isShown && <ContactStuff />}
-              </List>
+        <Avatar style={{cursor:"pointer"}}  onClick={handleClick} src={photo}/>
+            {isShown && <ContactStuff name={name}  photo={photo}/>}
+        </List>
             </Down>
           </>
           {null}
