@@ -12,12 +12,12 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import db, { storage } from "../firebase/firebase";
-import { selectBoolean, setBool } from "../reducer/Bool/BoolSlice";
+import { selectBoolean, setBool } from "../reducer/Bool/boolSlice";
 import {
   selectEmail,
   selectName,
   selectPhoto,
-} from "../reducer/User/UserSlice";
+} from "../reducer/User/userSlice";
 import { useNavigate } from "react-router-dom";
 
 interface Props {

@@ -2,9 +2,9 @@ import React, { ChangeEvent, useState, FC } from "react";
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import db from "../firebase/firebase";
 import { useDispatch } from "react-redux";
-import "./SignUp.css";
+import "./signup.css";
 import { useNavigate, useLocation } from "react-router-dom";
-import { saveUser } from "../reducer/User/UserSlice";
+import { saveUser } from "../reducer/User/userSlice";
 const SignUp: FC = (props) => {
   const auth = getAuth();
   const dispatch = useDispatch();

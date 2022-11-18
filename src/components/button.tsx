@@ -3,7 +3,7 @@ import "./Button.css";
 import { useDispatch } from "react-redux";
 import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../firebase/firebase";
-import { setLogIn } from "../reducer/User/UserSlice";
+import { setLogIn } from "../reducer/User/userSlice";
 import { useNavigate } from "react-router-dom";
 import EmailIcon from "@mui/icons-material/Email";
 interface Props {
