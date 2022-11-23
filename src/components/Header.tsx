@@ -7,12 +7,10 @@ import "./Header.css";
 import ContactStuff from "./contactstuff";
 import { selectPhoto } from "../reducer/User/userSlice";
 import { useNavigate } from "react-router-dom";
-
 const Header = () => {
   const [isShown, setShown] = useState<boolean>(false);
   const Navigate = useNavigate();
   const photo = useSelector(selectPhoto);
-
   const handleClick = () => {
     setShown((current) => !current);
   };
@@ -50,13 +48,9 @@ const Header = () => {
                 {<p>Story</p>}
               </List>
               <List>
-                <Avatar
-                  style={{ cursor: "pointer" }}
-                  onClick={handleClick}
-                  src={photo}
-                />
-                {isShown && <ContactStuff />}
-              </List>
+        <Avatar style={{cursor:"pointer"}}  onClick={handleClick} src={photo}/>
+            {isShown && <ContactStuff name={name}  photo={photo}/>}
+        </List>
             </Down>
           </>
           {null}
