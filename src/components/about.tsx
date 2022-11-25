@@ -1,5 +1,7 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
+import { selectName } from "../reducer/User/userSlice";
 
 const AboutWrapper = styled.div`
   padding: 5px 20px;
@@ -30,10 +32,11 @@ const BioLink = styled.a`
 `;
 
 function About(props) {
+  const name=useSelector(selectName);
 
   return (
-    <AboutWrapper>
-      <ProfileName>{props.name}</ProfileName>
+    <>
+      <ProfileName></ProfileName>
       {/* <ProfileCategory>Education</ProfileCategory>
       <BioText>🌐All About FrontEnd Web-Development</BioText>
       <BioText>📒Resources/tips/tricks/tutorials</BioText>
@@ -41,7 +44,7 @@ function About(props) {
       <BioText>💲Dm For Paid Promotions</BioText>
       <BioText>⬇️Join Our Telegram Channel</BioText>
       <BioLink href="https://t.me/sparshcodes">t.me/sparshcodes</BioLink> */}
-    </AboutWrapper>
+    </>
   );
 }
 

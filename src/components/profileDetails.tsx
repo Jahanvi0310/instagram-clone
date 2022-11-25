@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { Avatar } from "@mui/material";
+import { useSelector } from "react-redux";
+import { selectPhoto } from "../reducer/User/userSlice";
 
 const ProfileDetailsWrapper = styled.div`
   display: flex;
@@ -29,9 +31,10 @@ const StatsLabel = styled.span`
 `;
 
 function ProfileDetails(props) {
+  const photo=useSelector(selectPhoto);
   return (
     <ProfileDetailsWrapper>
-      <Avatar src={props.photo} />
+      <Avatar src={photo} />
       <ProfileStats>
         <StatsBlock>
           <StatsLabel>Posts</StatsLabel>

@@ -1,5 +1,7 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
+import { selectName } from "../reducer/User/userSlice";
 
 const TopNavWrapper = styled.div`
   display: flex;
@@ -29,12 +31,13 @@ const Menu = styled.div`
 `;
 
 function TopNav(props) {
+  const name=useSelector(selectName);
   return (
     <TopNavWrapper>
       <AccountNav>
         <ProfileName>
           {" "}
-          <span>Welcome <br/><b>{props.name}</b></span>
+          <span>Welcome <br/><b>{name}</b></span>
         </ProfileName>
       </AccountNav>
       <PostMenu>

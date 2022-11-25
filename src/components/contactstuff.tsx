@@ -7,7 +7,7 @@ import PostGrid from "./postGrid";
 
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { setLogout } from "../reducer/User/userSlice";
+import { selectName, selectPhoto, setLogout } from "../reducer/User/userSlice";
 import { auth } from "../firebase/firebase";
 import { useNavigate } from "react-router-dom";
 
@@ -24,10 +24,10 @@ const ContactStuff = (props) => {
   return (
     <>
       <Container>
-        <TopNav name={props.name} logout={logout} />
-        <ProfileDetails photo={props.photo} name={props.name} />
-        <About name={props.name} />
-        <PostGrid name={props.name} />
+        <TopNav  logout={logout} />
+        <ProfileDetails   />
+        <About  />
+        <PostGrid  />
       </Container>
     </>
   );

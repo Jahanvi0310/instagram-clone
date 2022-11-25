@@ -1,21 +1,16 @@
-import React, { useState } from 'react';
-import styled from "styled-components"
-import {  AddCircleOutline } from '@mui/icons-material';
-import { Avatar } from '@mui/material';
-import {useSelector } from 'react-redux';
-import './Header.css';
-import {  selectPhoto,selectName,selectEmail } from '../reducer/User/userSlice';
-import ContactStuff from './contactstuff';
-// import { selectName, selectPhoto, setLogout } from '../reducer/User/userSlice';
-
-// import { selectPhoto } from "../reducer/User/UserSlice";
+import React, { useState } from "react";
+import styled from "styled-components";
+import { AddCircleOutline } from "@mui/icons-material";
+import { Avatar } from "@mui/material";
+import { useSelector } from "react-redux";
+import "./Header.css";
+import ContactStuff from "./contactstuff";
+import { selectPhoto } from "../reducer/User/userSlice";
 import { useNavigate } from "react-router-dom";
-
 const Header = () => {
   const [isShown, setShown] = useState<boolean>(false);
   const Navigate = useNavigate();
   const photo = useSelector(selectPhoto);
-
   const handleClick = () => {
     setShown((current) => !current);
   };
@@ -27,7 +22,7 @@ const Header = () => {
 
   const handleClickPost = (e) => {
     e.preventDefault();
-    Navigate("/posts");
+    Navigate("/postcard");
   };
 
   return (
