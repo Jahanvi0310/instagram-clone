@@ -11,7 +11,7 @@ import { useDispatch } from "react-redux";
 import { selectuser, setLogIn } from "./reducer/User/userSlice";
 import { useSelector } from "react-redux";
 import SignUp from "./components/signUp";
-import AddEditUser from "./pages/AddEditUser";
+import AddEditUser from "./pages/addEditUser";
 const Router = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectuser);
