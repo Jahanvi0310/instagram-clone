@@ -4,9 +4,9 @@ import { AddCircleOutline } from "@mui/icons-material";
 import { Avatar } from "@mui/material";
 import { useSelector } from "react-redux";
 import "./Header.css";
-import ContactStuff from "./ContactStuff";
+import ContactStuff from "./contactstuff";
 
-import { selectPhoto } from "../reducer/User/UserSlice";
+import { selectPhoto } from "../reducer/User/userSlice";
 import { useNavigate } from "react-router-dom";
 
 const Header = () => {

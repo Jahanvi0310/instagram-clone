@@ -1,16 +1,16 @@
 import React, { useEffect } from "react";
 import Home from "./pages/Home";
-import Input from "./components/Input";
+import Input from "./components/input";
 import PostList from "./components/PostList";
-import StoriesComponent from "./components/StoriesComponent";
+import StoriesComponent from "./components/storiesComponent";
 import Post from "./pages/Post";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase/firebase";
 import { useDispatch } from "react-redux";
-import { selectuser, setLogIn } from "./reducer/User/UserSlice";
+import { selectuser, setLogIn } from "./reducer/User/userSlice";
 import { useSelector } from "react-redux";
-import SignUp from "./components/SignUp";
+import SignUp from "./components/signUp";
 import AddEditUser from "./pages/AddEditUser";
 const Router = () => {
   const dispatch = useDispatch();
