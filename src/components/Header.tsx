@@ -10,12 +10,14 @@ import { selectPhoto } from "../reducer/User/userSlice";
 import { useNavigate } from "react-router-dom";
 
 const Header = () => {
-  const [isShown, setShown] = useState<boolean>(false);
   const Navigate = useNavigate();
   const photo = useSelector(selectPhoto);
 
-  const handleClick = () => {
-    setShown((current) => !current);
+  const handleClick = (e) => {
+    e.preventDefault();
+    Navigate("/profile");
+    
+
   };
 
   const handleClickStory = (e) => {
@@ -25,7 +27,7 @@ const Header = () => {
 
   const handleClickPost = (e) => {
     e.preventDefault();
-    Navigate("/posts");
+    Navigate("/postcard");
   };
 
   return (
@@ -56,7 +58,7 @@ const Header = () => {
                   onClick={handleClick}
                   src={photo}
                 />
-                {isShown && <ContactStuff />}
+               
               </List>
             </Down>
           </>

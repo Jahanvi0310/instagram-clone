@@ -63,6 +63,7 @@ const Post = () => {
     setSelectImage(null);
     setLoading(false);
     dispatch(setBool({ boolean: false }));
+    Navigate("/home");
   };
   const ImageStuff = (e) => {
     const reader = new FileReader();

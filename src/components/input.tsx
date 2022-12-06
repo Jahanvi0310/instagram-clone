@@ -1,5 +1,5 @@
 import React, { useState, ChangeEvent, FC } from "react";
-import Button from "./button";
+import Button from "./Button";
 import "./input.css";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { saveUser } from "../reducer/User/userSlice";

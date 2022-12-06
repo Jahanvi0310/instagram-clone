@@ -12,6 +12,8 @@ import { selectuser, setLogIn } from "./reducer/User/userSlice";
 import { useSelector } from "react-redux";
 import SignUp from "./components/signUp";
 import AddEditUser from "./pages/addEditUser";
+// import Profile from "./components/profile/Profile";
+import ContactStuff from "./components/contactstuff";
 const Router = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectuser);
@@ -38,10 +40,11 @@ const Router = () => {
           <Route path="/home" element={<Home />} />
           <Route path="/inputStory" element={<AddEditUser />} />
           <Route path="/post" element={<PostList />} />
-          <Route path="/home" element={<Post />} />
+          <Route path="/postcard" element={<Post />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/add" element={<AddEditUser />} />
           <Route path="/update/:id" element={<AddEditUser />} />
+          <Route path="/profile" element={<ContactStuff />} />
         </Routes>
       </BrowserRouter>
     </>

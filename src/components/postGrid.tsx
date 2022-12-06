@@ -5,14 +5,6 @@ import { onSnapshot, collection, orderBy, query } from "firebase/firestore";
 import { selectName } from "../reducer/User/userSlice";
 import { useSelector } from "react-redux";
 
-const GridWrapper = styled.div`
-  display: flex;
-  flex-wrap:no-wrap;
-  img {
-    max-width: 100%;
-  }
-`;
-
 function PostGrid(props) {
   const name: any = useSelector(selectName);
   const [selected, setSelected] = useState<any>([]);
@@ -26,15 +18,16 @@ function PostGrid(props) {
   }, []);
 
   return (
-    <GridWrapper>
+    <div className="grid grid-cols-3 ">
       {selected.map((postImage) =>
         name === postImage.data().name ? (
-          <img src={postImage.data().photo} alt="" />
+          <div>
+          <img src={postImage.data().photo} className="h-64" /></div>
         ) : (
           <div></div>
         )
       )}
-    </GridWrapper>
+    </div>
   );
 }
 

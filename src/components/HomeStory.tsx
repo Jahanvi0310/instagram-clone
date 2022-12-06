@@ -79,7 +79,7 @@ function HomeStory(props) {
                       props.theme === "light" ? "text-black" : "text-white"
                     }
                   >
-                    {name}
+                    {category.names}
                   </span>
                 </div>
               </div>
