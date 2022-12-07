@@ -15,7 +15,6 @@ const InpBio = (props) => {
         <div className="max-w-6xl mx-5 p-10 xl:mx-auto">
         <div className='flex'>
         <textarea placeholder='ADD BIO' className='w-full h-full' onChange={change}/>
-        {/* <p>hello world</p> */}
         <button type='submit' onSubmit={sub} className="border-none">SUBMIT</button>
         </div>
         </div>

@@ -1,9 +1,6 @@
 import { signOut } from "firebase/auth";
 import React from "react";
 import TopNav from "./topNav";
-import ProfileDetails from "./profileDetails";
-import About from "./about";
-import PostGrid from "./postGrid";
 
 import { useDispatch } from "react-redux";
 
@@ -23,12 +20,7 @@ const ContactStuff = (props) => {
   };
   return (
     <>
-      {/* <Container> */}
         <TopNav name={props.name}  logout={logout} />
-        {/* <ProfileDetails photo={props.photo} name={props.name} />
-        <About name={props.name} /> */}
-        {/* <PostGrid name={props.name} /> */}
-      {/* </Container> */}
     </>
   );
 };

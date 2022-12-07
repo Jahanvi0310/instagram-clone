@@ -4,7 +4,6 @@ import db from "../firebase/firebase";
 import { selectName } from "../reducer/User/userSlice";
 import { useNavigate } from "react-router-dom";
 import { onSnapshot, collection, deleteDoc, doc ,orderBy} from "firebase/firestore";
-import {listAll} from "firebase/storage";
 import "./home.css";
 import { useSelector } from "react-redux";
 

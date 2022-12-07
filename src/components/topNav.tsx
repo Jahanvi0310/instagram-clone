@@ -7,36 +7,8 @@ import { useSelector } from "react-redux";
 import InpBio from "./InpBio";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faGripVertical} from "@fortawesome/free-solid-svg-icons";
-
-// const TopNavWrapper = styled.div`
-//   display: flex;
-//   justify-content: space-between;
-//   align-items: center;
-//   padding: 18px 20px 10px;
-//   border-bottom: 1px solid #151515;
-// `;
-// import React, { , useState } from "react";
-// import styled from "styled-components";
 import db, { storage } from "../firebase/firebase";
 import { onSnapshot, collection, orderBy, query } from "firebase/firestore";
-
-//   display: flex;
-//   align-items: center;
-// `;
-
-// const ProfileName = styled.h4`
-//   margin: 0;
-//   font-size: 20px;
-// `;
-// const PostMenu = styled.div`
-//   font-size: 25px;
-// `;
-
-// const Menu = styled.div`
-//   display: inline-block;
-//   position: relative;
-//   margin-left: 20px;
-// `;
 
 function TopNav(props) {
   const photo = useSelector(selectPhoto);
@@ -67,11 +39,6 @@ function TopNav(props) {
           <div >
             <span className="text-gray-800 text-2xl mr-4">WELCOME <b className="ml-6">{name}</b></span>
           </div>
-          {/* <div className="cursor-pointer inline text-sm font-semibold text-gray-700 p-1 px-2 border-gray-200 rounded mr-4"> */}
-            {/* <button onClick={click}>Edit Profile</button>
-            {isShown && <InpBio bio={bio} setBio={setBio} />} */}
-          {/* </div> */}
-          {/* <TfiSettings className="cursor-pointer inline h-6 flex-1" /> */}
           <div className="pt-3">
             <p className="text-base text-blue-700 mr-2"> {bio} </p>
           </div>
@@ -101,19 +68,6 @@ function TopNav(props) {
     </div>
     </div>
 
-    // <TopNavWrapper>
-    //   <AccountNav>
-    //     <ProfileName>
-    //       {" "}
-    //       <span>Welcome <br/><b>{props.name}</b></span>
-    //     </ProfileName>
-    //   </AccountNav>
-    //   <PostMenu>
-    //     <Menu>
-    //       <button className="text-lg" onClick={props.logout}>LogOut</button>
-    //     </Menu>
-    //   </PostMenu>
-    // </TopNavWrapper>
   );
 }
 
