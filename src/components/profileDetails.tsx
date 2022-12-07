@@ -42,4 +42,3 @@ function ProfileDetails(props) {
 }
 
 export default ProfileDetails;
-

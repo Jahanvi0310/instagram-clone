@@ -1,5 +1,7 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
+import { selectName } from "../reducer/User/userSlice";
 
 const AboutWrapper = styled.div`
   padding: 5px 20px;
