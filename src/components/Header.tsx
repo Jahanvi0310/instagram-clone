@@ -52,7 +52,7 @@ const Header = () => {
               </List>
               <List>
                 <Avatar
-                  style={{ cursor: "pointer" }}
+                  className="avatar"
                   onClick={handleClick}
                   src={photo}
                 />

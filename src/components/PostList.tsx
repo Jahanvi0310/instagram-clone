@@ -99,7 +99,7 @@ function Postlist({ avatar, img, id, email, p, name }: any) {
                   onClick={() => {
                     deleteDoc(doc(db, "insta", id));
                   }}
-                  style={{ cursor: "pointer" }}
+                  className="pointer"
                 >
                   Delete Post
                 </a>
@@ -115,7 +115,7 @@ function Postlist({ avatar, img, id, email, p, name }: any) {
           {!liked ? (
             <FavoriteBorder onClick={Post} />
           ) : (
-            <Favorite style={{ color: "red" }} onClick={Post} />
+            <Favorite className="colorRed" onClick={Post} />
           )}
           <Absoloute>
             {likes.length > 0 && <p>{likes.length} like </p>}
