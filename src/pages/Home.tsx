@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import Header from "../Components/Header";
-import Posts from "../Components/Posts";
+import Header from "../components/Header";
+import Posts from "../components/Posts";
 import { createContext } from "react";
-import HomeStory from "../Components/HomeStory";
+import HomeStory from "../components/HomeStory";
 import LightModeIcon from "@mui/icons-material/LightMode";
 export const ThemeContext: React.Context<any> = createContext(null);
 const Home = () => {
