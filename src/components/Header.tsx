@@ -5,12 +5,13 @@ import { Avatar } from "@mui/material";
 import { useSelector } from "react-redux";
 import "./Header.css";
 import ContactStuff from "./contactstuff";
-import { selectPhoto } from "../reducer/User/userSlice";
+import { selectName, selectPhoto } from "../reducer/User/userSlice";
 import { useNavigate } from "react-router-dom";
 const Header = () => {
   const [isShown, setShown] = useState<boolean>(false);
   const Navigate = useNavigate();
   const photo = useSelector(selectPhoto);
+  const name=useSelector(selectName);
   const handleClick = () => {
     setShown((current) => !current);
   };

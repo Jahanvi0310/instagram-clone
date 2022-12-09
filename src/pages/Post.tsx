@@ -106,14 +106,17 @@ const Post = () => {
             />
           </TopSection>
           <BottomSection>
+         
             <InputContainer>
+            
               <input
                 type="text"
                 disabled={!selectImage}
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
+                placeholder="caption"
               />
-              <label>caption</label>
+              
             </InputContainer>
             <button disabled={loading} onClick={Submit}>
               Post
@@ -126,7 +129,7 @@ const Post = () => {
 };
 export default Post;
 const Container = styled.div<Props>`
-  background-color: rgba(0, 0, 0, 0.7);
+  background-image: url("https://img.freepik.com/free-vector/pastel-ombre-background-pink-purple_53876-120750.jpg?w=2000");
   position: fixed;
   top: 0;
   bottom: 0;
@@ -140,9 +143,9 @@ const Container = styled.div<Props>`
   transform: ${(props) =>
     props.user ? `translateY(0)` : `translateY(-100%)`};
 `;
-const Wrapper = styled.div`max-height: 550px;
-height: 450px;
-width: 400px;
+const Wrapper = styled.div`
+height: 700px;
+width: 600px;
 background-color: #ffffff;
 border-radius: 20px;
 display: flex;
@@ -168,9 +171,11 @@ const BottomSection = styled.div`
   position: relative;
   padding-top: 30px;
   button {
+    height:70px;
+    width:80%;
     position: absolute;
-    bottom: 10px;
-    right: 10px;
+    bottom: 40px;
+    right: 60px;
     padding: 10px 20px;
     border: none;
     background-color: rgba(59, 130, 246, 1);
@@ -178,6 +183,7 @@ const BottomSection = styled.div`
     cursor: pointer;
     color: white;
     transition: all 150ms ease-out;
+    font-size:30px;
     :hover {
       opacity: 0.75;
     }
@@ -185,16 +191,22 @@ const BottomSection = styled.div`
 `;
 const InputContainer = styled.div`
 border:solid 1.5px #9e9e9e;
-width: 90%;
+width: 80%;
+height:100px;
+border:2px solid black;
+
+   
 border-bottom: 1px solid black;
 margin-left:5px;
 position:relative;
 
+    top:50px;
+    left: 50px;
 transition:150ms cubic-bezier(0.4,0,0.2,1);
 input{
     width: 100%;
-   border:none;
-   font-size:1rem;
+    height:100%;
+   font-size:2rem;
    border:radius:1rem;
 background:none;
 padding:1rem;
@@ -214,9 +226,16 @@ padding:1rem;
    }
 }`;
 const ImageContainer = styled.div`
-  width: 100%;
-  height: 50% img {
-    width: 100%;
+  width: 80%;
+  
+  position:relative;
+  top:40px;
+
+  
+  height: 350px; img {
+   
+    width: 600px;
+    height:100%;
     object-fit: contain;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
