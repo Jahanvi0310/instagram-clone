@@ -62,7 +62,7 @@ function TopNav(props) {
           <div>
           <img src={postImage.data().photo} className="h-64" /></div>
         ) : (
-          <div></div>
+          <p></p>
         )
       )}
     </div>

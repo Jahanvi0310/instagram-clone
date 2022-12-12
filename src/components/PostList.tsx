@@ -93,8 +93,8 @@ function Postlist({ avatar, img, id, email, p, name }: any) {
           </User>
           <MoreHorizOutlined onClick={handleOpen} />
           {open ? (
-            <ul>
-              <li>
+           
+             
                 <a
                   onClick={() => {
                     deleteDoc(doc(db, "insta", id));
@@ -103,15 +103,15 @@ function Postlist({ avatar, img, id, email, p, name }: any) {
                 >
                   Delete Post
                 </a>
-              </li>
-            </ul>
+              
+            
           ) : null}
         </PostHeader>
         <PostContainer>
           <img loading="lazy" src={img} alt="post" />
         </PostContainer>
 
-        <Social>
+        <Social style={{margin:"10px"}}>
           {!liked ? (
             <FavoriteBorder onClick={Post} />
           ) : (
@@ -122,10 +122,10 @@ function Postlist({ avatar, img, id, email, p, name }: any) {
           </Absoloute>
         </Social>
 
-        <Caption>
+        <Caption style={{margin:"10px"}}>
           <div>
-            <span>
-              posted by::{name}
+            <span style={{fontSize:"25px",margin:"5px"}}>
+              {name}
               {p.length >= 90 ? (
                 <p>
                   {pars}
@@ -144,11 +144,12 @@ function Postlist({ avatar, img, id, email, p, name }: any) {
                   )}
                 </p>
               ) : (
-                <p>Caption:{p}</p>
+                <p style={{fontSize:"20px",margin:"5px"}}>{p}</p>
               )}
             </span>
           </div>
         </Caption>
+        <hr />
         <ComentDisplay>
           {comment.map((post) => (
             <Comments
@@ -169,6 +170,7 @@ function Postlist({ avatar, img, id, email, p, name }: any) {
               value={input}
               // disabled={!names}
               onChange={(e) => setInput(e.target.value)}
+              placeholder="Comment Here"
             />
           </InputContainer>
           <ButtonBase onClick={submit} disabled={loading}>
@@ -182,7 +184,7 @@ function Postlist({ avatar, img, id, email, p, name }: any) {
 export default Postlist;
 
 const Container = styled.div`
-  max-width: 500px;
+  max-width: 900px;
   margin: 0 auto;
   background-color: #ffffff;
   padding: 10px 0;
@@ -195,13 +197,15 @@ const Container = styled.div`
 `;
 const PostHeader = styled.div`
   display: flex;
-  align-items: center;
+  
   justify-content: space-between;
-  margin: 5px 5px;
+  margin: 10px 10px 10px 10px;
+  font-size:20px;
 `;
 const User = styled.div`
   display: flex;
   align-items: center;
+  margin:10px 10px;
   span {
     margin-left: 10px;
     font-weight: bolder;
