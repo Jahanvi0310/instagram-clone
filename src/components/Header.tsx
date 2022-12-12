@@ -8,12 +8,14 @@ import ContactStuff from "./contactstuff";
 import { selectName, selectPhoto } from "../reducer/User/userSlice";
 import { useNavigate } from "react-router-dom";
 const Header = () => {
-  const [isShown, setShown] = useState<boolean>(false);
   const Navigate = useNavigate();
   const photo = useSelector(selectPhoto);
-  const name=useSelector(selectName);
-  const handleClick = () => {
-    setShown((current) => !current);
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    Navigate("/profile");
+    
+
   };
 
   const handleClickStory = (e) => {
@@ -49,9 +51,13 @@ const Header = () => {
                 {<p>Story</p>}
               </List>
               <List>
-        <Avatar style={{cursor:"pointer"}}  onClick={handleClick} src={photo}/>
-            {isShown && <ContactStuff name={name}  photo={photo}/>}
-        </List>
+                <Avatar
+                  className="avatar"
+                  onClick={handleClick}
+                  src={photo}
+                />
+               
+              </List>
             </Down>
           </>
           {null}

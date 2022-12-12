@@ -22,3 +22,6 @@ img {
 #dark {
   background-color: black;
 }
+.avatar{
+ cursor: "pointer";
+}

@@ -1,55 +1,72 @@
-import React from "react";
-import "./Button.css";
-import { useDispatch } from "react-redux";
-import { signInWithPopup } from "firebase/auth";
-import { auth, provider } from "../firebase/firebase";
-import { setLogIn } from "../reducer/User/userSlice";
+import React from 'react'
+import './Button.css'
+import {useDispatch} from 'react-redux';
+import {signInWithPopup} from "firebase/auth";
+import {auth,provider} from '../firebase/firebase';
+import {  setLogIn } from '../reducer/User/userSlice';
 import { useNavigate } from "react-router-dom";
-import EmailIcon from "@mui/icons-material/Email";
-interface Props {
-  className: string;
-  children?: React.ReactNode;
-  password: boolean;
+interface Props{
+
+className:string;
+password:boolean;
+children?:React.ReactNode;
+// onClick:()=>void;
+
 }
-const Button: React.FC<Props> = ({ children, password, className }) => {
-  const Navigate = useNavigate();
-  const dispatch = useDispatch();
-  const login = () => {
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        const user = result.user;
-        dispatch(
-          setLogIn({
-            name: user.displayName,
-            email: user.email,
-            uid: user.uid,
-            photo: user.photoURL,
-          })
-        );
-        Navigate("/home");
-      })
-      .catch((error) => console.error(error.message));
-  };
+const Button:React.FC<Props>=({
+  
+  
+  children,
+  password,
+//   onClick,
+  className
+
+})=> {
+    const Navigate=useNavigate();
+    const dispatch=useDispatch();
+    const login=()=>{
+        signInWithPopup(auth,provider)
+        .then((result)=>{
+const user=result.user;
+dispatch(
+    setLogIn({
+        name:user.displayName,
+        email:user.email,
+        uid:user.uid,
+        photo:user.photoURL,
+    })
+);
+Navigate('/home');
+        })
+        .catch((error)=>console.error(error.message));
+    }
   return (
     <div>
-      <button className={className} disabled={!password}>
-        {children}
-      </button>
-      <div className="separator">
-        <div className="line"></div>
-        <p className="font-xl">OR</p>
-        <div className="line"></div>
-      </div>
-      <div className="other">
-        <button className="icon-login-btn" type="button">
-          <EmailIcon fontSize="medium" />
-          <span onClick={login} className="log">
-            Log in with email
-          </span>
-        </button>
-      </div>
+       <button
+      className={className}
+      
+        
+       >{children}</button>
+            <div className="separator">
+                <div className="line"></div>
+                <p>OR</p>
+                <div className="line"></div>
+            </div>
+            <div className="other">
+                <button className="fb-login-btn" type="button">
+                    <i className="fa fa-facebook-official fb-icon"></i>
+                    <span className="" onClick={login}>Log in with email</span>
+                </button>
+                <a className="forgot-password" href="#">Forgot password?</a>
+            </div>
     </div>
-  );
-};
+  )
+}
 
 export default Button;
+
+
+
+
+
+

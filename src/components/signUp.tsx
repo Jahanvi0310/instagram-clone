@@ -16,7 +16,6 @@ const SignUp: FC = (props) => {
   const [passInput, setPassInput] = useState<string>();
   const [email, setEmail] = useState<string>("");
   const { state } = useLocation();
-  // const {togglePassword}  = state;
 
   const changeText: (event: ChangeEvent) => void = (event) => {
     setPassInput((event.target as HTMLInputElement).value);

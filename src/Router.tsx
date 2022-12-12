@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import Home from "./pages/Home";
-import Input from "./Components/input";
-import PostList from "./Components/PostList";
-import StoriesComponent from "./Components/storiesComponent";
+import Input from "./components/input";
+import PostList from "./components/PostList";
+import StoriesComponent from "./components/storiesComponent";
 import Post from "./pages/Post";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
@@ -10,8 +10,9 @@ import { auth } from "./firebase/firebase";
 import { useDispatch } from "react-redux";
 import { selectuser, setLogIn } from "./reducer/User/userSlice";
 import { useSelector } from "react-redux";
-import SignUp from "./Components/signUp";
+import SignUp from "./components/signUp";
 import AddEditUser from "./pages/addEditUser";
+import ContactStuff from "./components/contactstuff";
 const Router = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectuser);
@@ -42,6 +43,7 @@ const Router = () => {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/add" element={<AddEditUser />} />
           <Route path="/update/:id" element={<AddEditUser />} />
+          <Route path="/profile" element={<ContactStuff />} />
         </Routes>
       </BrowserRouter>
     </>

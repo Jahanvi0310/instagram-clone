@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Button, Form, Grid, Loader } from "semantic-ui-react";
 import db, { storage } from "../firebase/firebase";
 import { useParams, useNavigate } from "react-router-dom";
+import { selectName } from "../reducer/User/userSlice";
 import { getDownloadURL, uploadBytesResumable, ref } from "firebase/storage";
 import {
   addDoc,
@@ -11,6 +12,7 @@ import {
   doc,
   updateDoc
 } from "firebase/firestore";
+import { useSelector } from "react-redux";
 
 const initialState: any = {
   caption: "",
@@ -22,6 +24,7 @@ const AddEditUser = () => {
   const { caption, bgColor, textColor, type } = data;
   const [file, setFile] = useState(null);
   const [progress, setProgress] = useState(null);
+  const names=useSelector(selectName);
   const [errors, setErrors] = useState<object>({});
   const [isSubmit, setIsSubmit] = useState(false);
   const { id } = useParams();
@@ -101,6 +104,7 @@ const AddEditUser = () => {
 
         await addDoc(collection(db, "story"), {
           ...data,
+          names:names,
           timestamp: serverTimestamp(),
         });
       } catch (error) {
@@ -110,6 +114,7 @@ const AddEditUser = () => {
       try {
         await updateDoc(doc(db, "story", id), {
           ...data,
+          names:names,
           timestamp: serverTimestamp(),
         });
       } catch (error) {
